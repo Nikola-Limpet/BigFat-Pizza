@@ -1,0 +1,124 @@
+{
+  "pizzas": [
+    {
+      "id": "1",
+      "name": "Margherita Classic",
+      "description": "Classic Margherita with fresh tomatoes and basil.",
+      "price": 8.99,
+      "image": "https://veenaazmanov.com/wp-content/uploads/2020/04/Classic-Pizza-Margherita1-500x500.jpg",
+      "toppings": ["Tomatoes", "Basil", "Mozzarella"],
+      "size": "medium",
+      "category": "Margherita"
+    },
+    {
+      "id": "2",
+      "name": "Pepperoni Feast",
+      "description": "Loaded with pepperoni and cheese.",
+      "price": 9.99,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjHW62l4V4QtWObkwgKsWAIbGSYKvKeRm8zw&s",
+      "toppings": ["Pepperoni", "Cheese"],
+      "size": "large",
+      "category": "Pepperoni"
+    },
+    {
+      "id": "3",
+      "name": "BBQ Chicken",
+      "description": "Grilled chicken with BBQ sauce and onions.",
+      "price": 10.99,
+      "image": "https://www.allrecipes.com/thmb/APtZNY1GgOf3Ph0JUc-j4dImjrU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2467480-southern-bbq-chicken-Allrecipes-Magazine-4x3-1-3e180dccbaae446c8c2d05f708611fc6.jpg",
+      "toppings": ["Chicken", "BBQ Sauce", "Onions"],
+      "size": "large",
+      "category": "Chicken"
+    },
+    {
+      "id": "4",
+      "name": "Veggie Delight",
+      "description": "A mix of fresh vegetables on a crispy crust.",
+      "price": 8.49,
+      "image": "https://i0.wp.com/s.lightorangebean.com/media/20240914161534/Ultimate-Veggie-Delight-Sandwich_-post-3-768x482.png?resize=768%2C482&quality=80&ssl=1",
+      "toppings": ["Bell Peppers", "Olives", "Onions", "Tomatoes"],
+      "size": "medium",
+      "category": "Vegetarian"
+    },
+    {
+      "id": "5",
+      "name": "Hawaiian",
+      "description": "Ham and pineapple for a tropical taste.",
+      "price": 9.49,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhQY-bRRDrR3Y-KVfrQ93XDmM8sNLSsOEMRA&s",
+      "toppings": ["Ham", "Pineapple", "Cheese"],
+      "size": "large",
+      "category": "Hawaiian"
+    },
+    {
+      "id": "6",
+      "name": "Meat Lovers",
+      "description": "A carnivore's dream with multiple meats.",
+      "price": 11.99,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLgt20BxMwYJ6JMy4oTh5Gz0DA0u1iX3h-iw&s",
+      "toppings": ["Pepperoni", "Sausage", "Bacon", "Ham"],
+      "size": "large",
+      "category": "Meat"
+    },
+    {
+      "id": "7",
+      "name": "Four Cheese",
+      "description": "A blend of four cheeses for cheese lovers.",
+      "price": 9.99,
+      "image": "https://www.insidetherustickitchen.com/wp-content/uploads/2020/07/Quattro-Formaggi-1200px-Inside-the-Rustic-Kitchen-2.jpg",
+      "toppings": ["Mozzarella", "Cheddar", "Parmesan", "Gorgonzola"],
+      "size": "medium",
+      "category": "Cheese"
+    },
+    {
+      "id": "8",
+      "name": "Buffalo Chicken",
+      "description": "Spicy buffalo chicken with blue cheese.",
+      "price": 10.49,
+      "image": "https://www.loveandotherspices.com/wp-content/uploads/2022/02/air-fryer-buffalo-chicken-wings-featured.jpg",
+      "toppings": ["Chicken", "Buffalo Sauce", "Blue Cheese"],
+      "size": "large",
+      "category": "Chicken"
+    },
+    {
+      "id": "9",
+      "name": "Spinach Alfredo",
+      "description": "Creamy Alfredo sauce with spinach.",
+      "price": 9.99,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCmYaAh1LrJqa2xy_2Bnd6-JKafjPI_mth0A&s",
+      "toppings": ["Spinach", "Alfredo Sauce", "Cheese"],
+      "size": "medium",
+      "category": "Vegetarian"
+    },
+    {
+      "id": "10",
+      "name": "Taco Pizza",
+      "description": "Taco seasoned beef with lettuce and tomatoes.",
+      "price": 10.99,
+      "image": "https://www.the-girl-who-ate-everything.com/wp-content/uploads/2018/06/taco-pizza-recipe-003.jpg",
+      "toppings": ["Beef", "Lettuce", "Tomatoes", "Cheese"],
+      "size": "large",
+      "category": "Specialty"
+    },
+    {
+      "id": "11",
+      "name": "Mushroom Truffle",
+      "description": "Gourmet mushrooms with truffle oil.",
+      "price": 12.99,
+      "image": "https://www.sweetteaandthyme.com/wp-content/uploads/2024/02/truffle-mushroom-pasta-close-up.jpg",
+      "toppings": ["Mushrooms", "Truffle Oil", "Cheese"],
+      "size": "medium",
+      "category": "Gourmet"
+    },
+    {
+      "id": "12",
+      "name": "Greek Pizza",
+      "description": "Feta cheese, olives, and spinach.",
+      "price": 9.49,
+      "image": "https://www.laurafuentes.com/wp-content/uploads/2019/04/greek_pizza_square.jpg",
+      "toppings": ["Feta Cheese", "Olives", "Spinach"],
+      "size": "medium",
+      "category": "Vegetarian"
+    }
+  ]
+}
