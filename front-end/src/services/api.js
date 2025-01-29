@@ -1,10 +1,16 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+  timeout: 10000,
 });
 
-export const fetchPizzas = async () => {
-  const response = await api.get('/pizzas');
-  return response.data;
+export const fetchMenu = async () => {
+  try {
+    const response = await api.get('/menu');
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
 };

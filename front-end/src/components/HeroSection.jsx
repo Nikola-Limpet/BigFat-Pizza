@@ -117,12 +117,12 @@ const HeroSection = () => {
               <img
                 src="/hero.jpg"
                 alt="Signature Pizza"
-                className="w-full max-w-xl mx-auto rotate-[-5deg] shadow-2xl border-8 border-white/20 rounded-[40px]"
+                className="w-full lg:w-[720px] lg:h-[700px] max-w-xl mx-auto rotate-[-5deg] shadow-2xl border-8 border-white/20 rounded-[40px]"
               />
               <motion.div
                 animate={{ rotate: [0, -15, 0] }}
                 transition={{ duration: 8, repeat: Infinity }}
-                className="absolute -top-6 -right-6 bg-white/10 p-3 rounded-full backdrop-blur-sm shadow-lg"
+                className="absolute -top-3 right-6 bg-white/10 p-3 rounded-full backdrop-blur-sm shadow-lg"
               >
                 <span className="text-xl font-bold text-[#FFA726]">🔥 Hot!</span>
               </motion.div>

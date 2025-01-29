@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
         </Link>
         <div className="flex items-center">
           <Link to="/cart" className="nav-cart mr-4 flex items-center">
-            🛒 <span className="nav-cart-number text-[#33670a]/70 ml-2">{cartItemCount}</span>
+            🛒 <span className="nav-cart-number ml-2">{cartItemCount}</span>
           </Link>
           <Link to="/menu" className="px-4 py-2 text-4xl button-Order rounded-md">
             Menu

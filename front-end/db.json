@@ -1,115 +1,46 @@
 {
-  "pizzas": [
+  "menu": [
     {
-      "id": "1",
-      "name": "Margherita Classic",
-      "description": "Classic Margherita with fresh tomatoes and basil.",
-      "sizes": [
-        { "size": "small", "price": 6.99 },
-        { "size": "medium", "price": 8.99 },
-        { "size": "large", "price": 10.99 }
-      ],
-      "image": "https://veenaazmanov.com/wp-content/uploads/2020/04/Classic-Pizza-Margherita1-500x500.jpg",
-      "toppings": ["Tomatoes", "Basil", "Mozzarella"],
-      "extraToppings": [
-        { "name": "Mushrooms", "price": 1.0 },
-        { "name": "Extra Cheese", "price": 1.5 }
-      ],
-      "category": "Margherita",
-      "availability": true,
-      "customizable": true,
-      "discount": {
-        "type": "percentage",
-        "value": 10
-      },
-      "tags": ["vegetarian", "popular"]
+      "id": "signature",
+      "name": "Signature Pizzas",
+      "items": [
+        {
+          "id": 1,
+          "name": "The Big Fat Special",
+          "price": {
+            "small": 14.99,
+            "medium": 16.99,
+            "large": 18.99
+          },
+          "description": "Our signature pizza with triple cheese, premium pepperoni, and secret sauce.",
+          "meta": {
+            "rating": 4.9,
+            "calories": 850,
+            "crusts": ["Classic", "Thin", "Stuffed"],
+            "toppings": ["Pepperoni", "Mushrooms", "Olives"]
+          },
+          "image": "/Cheezypizza.jpg",
+          "badges": ["featured", "chefs-choice"]
+        }
+      ]
     },
     {
-      "id": "2",
-      "name": "Pepperoni Feast",
-      "description": "Loaded with pepperoni and cheese.",
-      "sizes": [
-        { "size": "small", "price": 7.99 },
-        { "size": "medium", "price": 9.99 },
-        { "size": "large", "price": 11.99 }
-      ],
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjHW62l4V4QtWObkwgKsWAIbGSYKvKeRm8zw&s",
-      "toppings": ["Pepperoni", "Cheese"],
-      "extraToppings": [
-        { "name": "Olives", "price": 0.5 },
-        { "name": "Mushrooms", "price": 1.0 }
-      ],
-      "category": "Pepperoni",
-      "availability": true,
-      "customizable": true,
-      "discount": null,
-      "tags": ["meat", "best-seller"]
-    },
-    {
-      "id": "3",
-      "name": "BBQ Chicken",
-      "description": "Grilled chicken with BBQ sauce and onions.",
-      "sizes": [
-        { "size": "small", "price": 8.99 },
-        { "size": "medium", "price": 10.99 },
-        { "size": "large", "price": 12.99 }
-      ],
-      "image": "https://www.allrecipes.com/thmb/APtZNY1GgOf3Ph0JUc-j4dImjrU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2467480-southern-bbq-chicken-Allrecipes-Magazine-4x3-1-3e180dccbaae446c8c2d05f708611fc6.jpg",
-      "toppings": ["Chicken", "BBQ Sauce", "Onions"],
-      "extraToppings": [
-        { "name": "Bacon", "price": 1.5 },
-        { "name": "Extra Cheese", "price": 1.5 }
-      ],
-      "category": "Chicken",
-      "availability": true,
-      "customizable": true,
-      "discount": null,
-      "tags": ["spicy", "meat"]
-    },
-    {
-      "id": "4",
-      "name": "Veggie Delight",
-      "description": "A mix of fresh vegetables on a crispy crust.",
-      "sizes": [
-        { "size": "small", "price": 6.49 },
-        { "size": "medium", "price": 8.49 },
-        { "size": "large", "price": 10.49 }
-      ],
-      "image": "https://i0.wp.com/s.lightorangebean.com/media/20240914161534/Ultimate-Veggie-Delight-Sandwich_-post-3-768x482.png?resize=768%2C482&quality=80&ssl=1",
-      "toppings": ["Bell Peppers", "Olives", "Onions", "Tomatoes"],
-      "extraToppings": [
-        { "name": "Feta Cheese", "price": 1.0 },
-        { "name": "Mushrooms", "price": 1.0 }
-      ],
-      "category": "Vegetarian",
-      "availability": true,
-      "customizable": true,
-      "discount": {
-        "type": "flat",
-        "value": 1.0
-      },
-      "tags": ["vegetarian", "healthy"]
-    },
-    {
-      "id": "5",
-      "name": "Hawaiian",
-      "description": "Ham and pineapple for a tropical taste.",
-      "sizes": [
-        { "size": "small", "price": 7.49 },
-        { "size": "medium", "price": 9.49 },
-        { "size": "large", "price": 11.49 }
-      ],
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhQY-bRRDrR3Y-KVfrQ93XDmM8sNLSsOEMRA&s",
-      "toppings": ["Ham", "Pineapple", "Cheese"],
-      "extraToppings": [
-        { "name": "Bacon", "price": 1.5 },
-        { "name": "Extra Cheese", "price": 1.5 }
-      ],
-      "category": "Hawaiian",
-      "availability": true,
-      "customizable": true,
-      "discount": null,
-      "tags": ["sweet", "meat"]
+      "id": "combo",
+      "name": "Meal Deals",
+      "items": [
+        {
+          "id": 4,
+          "name": "Family Feast",
+          "price": 29.99,
+          "description": "A combo meal with two large pizzas, breadsticks, and a 2L soda.",
+          "meta": {
+            "includes": ["2 Large Pizzas", "Garlic Breadsticks", "2L Soda"],
+            "calories": "Varies"
+          },
+          "image": "/chef.jpg",
+          "badges": ["discount"]
+        }
+      ]
     }
   ]
 }
