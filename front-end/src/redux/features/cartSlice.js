@@ -1,8 +1,3 @@
-// First, install the required packages:
-// npm install @reduxjs/toolkit react-redux @tanstack/react-query @tanstack/react-query-devtools
-// react-router-dom framer-motion react-hook-form zod @hookform/resolvers/zod
-
-// src/store/features/cartSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

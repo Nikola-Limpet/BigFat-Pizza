@@ -36,7 +36,7 @@ const Menu = () => {
             <p className="font-bold">${pizza.price}</p>
             <button
               onClick={() => handleAddToCart(pizza)}
-              className="mt-2 py-1 px-4 rounded"
+              className="mt-2 py-1 px-4 rounded bg-blue-500 text-white"
             >
               Add to Cart
             </button>

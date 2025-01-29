@@ -2,24 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #da2f04;
-  --secondary: #33670a;
-  --background: #fffaee;
-  --border: #ccc;
-  --font: Pacifico, cursive, sans-serif;
-  --second-green: #008556;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background font-sans antialiased;
+  }
+  
+  h1, h2, h3 {
+    @apply font-display;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer components {
+  .button-glow {
+    @apply relative overflow-hidden transition-all;
+    
+    &::after {
+      @apply content-[''] absolute inset-0 opacity-0 transition-opacity duration-300;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+    }
+    
+    &:hover::after {
+      @apply opacity-100;
+    }
+  }
+  
+  .pizza-border {
+    @apply border-[12px] border-white/20 rounded-[40px] shadow-2xl;
+  }
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: var(--background);
+/* Custom Fonts */
+@font-face {
+  font-family: 'Pacifico';
+  src: url('/Pacifico-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+.font-display {
+  font-family: 'Pacifico', cursive;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
 }
 
 ul,
@@ -70,15 +101,15 @@ nav > a {
 }
 
 .nav-cart {
-  grid-area: cart;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 40px;
 }
 
+
 .nav-cart-number {
-  background-color: var(--secondary);
+  background-color: #33670a; /* Assuming this is the secondary color */
   color: white;
   display: flex;
   align-items: center;
@@ -86,15 +117,17 @@ nav > a {
   position: relative;
   top: -17px;
   left: -17px;
-  width: 20px;
-  height: 20px;
-  font-size: 18px;
-  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 16px;
+  border-radius: 60%;
 }
 
-@font-face {
-  font-family: Pacifico;
-  src: url("/public/Pacifico-Regular.ttf");
+.feature-section {
+  background-color: tomato;
+  display: flex;
+  justify-content: center;
+  opacity: 0.7;
 }
 
 h2 {
@@ -238,6 +271,17 @@ button,
   cursor: pointer;
 }
 
+.button {
+  border: 1px solid var(--primary);
+  background-color: rgba(218, 47, 4, 0.7); /* var(--primary) with 60% opacity */
+  color: var(--background);
+  font-family: var(--font);
+  font-size: 25px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
 button:disabled {
   opacity: 0.5;
   background-color: #ccc;
