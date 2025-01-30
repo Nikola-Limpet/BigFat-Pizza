@@ -1,46 +1,60 @@
 {
-  "menu": [
+  "pizzas": [
     {
-      "id": "signature",
-      "name": "Signature Pizzas",
-      "items": [
-        {
-          "id": 1,
-          "name": "The Big Fat Special",
-          "price": {
-            "small": 14.99,
-            "medium": 16.99,
-            "large": 18.99
-          },
-          "description": "Our signature pizza with triple cheese, premium pepperoni, and secret sauce.",
-          "meta": {
-            "rating": 4.9,
-            "calories": 850,
-            "crusts": ["Classic", "Thin", "Stuffed"],
-            "toppings": ["Pepperoni", "Mushrooms", "Olives"]
-          },
-          "image": "/Cheezypizza.jpg",
-          "badges": ["featured", "chefs-choice"]
-        }
-      ]
+      "id": 1,
+      "name": "Pan Pizza",
+      "slug": "pan-pizza",
+      "description": "Classic pan pizza with a thick, fluffy crust",
+      "image": "/images/menu/pan.bmp"
     },
     {
-      "id": "combo",
-      "name": "Meal Deals",
-      "items": [
-        {
-          "id": 4,
-          "name": "Family Feast",
-          "price": 29.99,
-          "description": "A combo meal with two large pizzas, breadsticks, and a 2L soda.",
-          "meta": {
-            "includes": ["2 Large Pizzas", "Garlic Breadsticks", "2L Soda"],
-            "calories": "Varies"
-          },
-          "image": "/chef.jpg",
-          "badges": ["discount"]
-        }
-      ]
+      "id": 2,
+      "name": "Crispy Thin",
+      "slug": "crispy-thin",
+      "description": "Thin and crispy crust for a lighter option",
+      "image": "/images/menu/c&t.bmp"
+    },
+    {
+      "id": 3,
+      "name": "Extreme Cheese",
+      "slug": "extreme-cheese",
+      "description": "Loaded with extra cheese for the ultimate cheese lover",
+      "image": "/images/menu/et.bmp"
+    },
+    {
+      "id": 4,
+      "name": "Sausage & Cheese",
+      "slug": "sausage-cheese",
+      "description": "Savory sausage and melted cheese combination",
+      "image": "/images/menu/s&c.bmp"
+    },
+    {
+      "id": 5,
+      "name": "New York 9\"",
+      "slug": "new-york-9",
+      "description": "Authentic 9-inch New York-style pizza",
+      "image": "/images/menu/n9.bmp"
+    },
+    {
+      "id": 6,
+      "name": "New York 12\"",
+      "slug": "new-york-12",
+      "description": "Large 12-inch New York-style pizza",
+      "image": "/images/menu/n12.bmp"
+    },
+    {
+      "id": 7,
+      "name": "Super Save",
+      "slug": "super-save",
+      "description": "Budget-friendly without compromising taste",
+      "image": "/images/menu/ss.bmp"
+    },
+    {
+      "id": 8,
+      "name": "Cheesy Puff",
+      "slug": "cheesy-puff",
+      "description": "Flaky puff pastry filled with gooey cheese",
+      "image": "/images/menu/cp.bmp"
     }
   ]
 }

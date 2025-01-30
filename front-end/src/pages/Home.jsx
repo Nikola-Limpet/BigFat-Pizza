@@ -4,9 +4,10 @@ import FeaturedPizzas from '../components/FeaturedPizzas';
 import WhyChooseUs from '../components/WhyChooseUs';
 import CustomerTestimonials from '../components/CustomerTestimonials';
 import HoursLocation from '../components/HoursLocation';
+import Book from '../components/Book';
 
 const Home = () => {
-  const cart = useSelector(state => state.cart.items);
+  // const cart = useSelector(state => state.cart.items);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -14,6 +15,7 @@ const Home = () => {
       <FeaturedPizzas />
       <WhyChooseUs />
       <CustomerTestimonials />
+      <Book />
       <HoursLocation />
     </div>
   );

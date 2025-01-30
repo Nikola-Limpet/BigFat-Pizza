@@ -7,7 +7,7 @@ const api = axios.create({
 
 export const fetchMenu = async () => {
   try {
-    const response = await api.get('/menu');
+    const response = await api.get('/pizzas');
     console.log(response.data);
     return response.data;
   } catch (error) {
