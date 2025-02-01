@@ -5,6 +5,7 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import CustomerTestimonials from '../components/CustomerTestimonials';
 import HoursLocation from '../components/HoursLocation';
 import Book from '../components/Book';
+import About from '../components/About';
 
 const Home = () => {
   // const cart = useSelector(state => state.cart.items);
@@ -14,6 +15,7 @@ const Home = () => {
       <HeroSection />
       <FeaturedPizzas />
       <WhyChooseUs />
+      <About />
       <CustomerTestimonials />
       <Book />
       <HoursLocation />

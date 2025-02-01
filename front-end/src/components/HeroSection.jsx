@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Link as ScrollLink } from 'react-scroll';
 
 const HeroSection = () => {
   const ref = useRef(null);
@@ -47,7 +48,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
           poster="/hero.jpg"
         >
-          <source src="/background.mp4" type="video/mp4" />
+          <source src="/video.mp4" type="video/mp4" />
           <source src="/background.webm" type="video/webm" />
           <img src="/hero.jpg" alt="Artisanal pizza preparation" className="w-full h-full object-cover" />
         </video>
@@ -93,12 +94,15 @@ const HeroSection = () => {
               >
                 Explore Menu
               </Link>
-              <Link
-                to="/about"
-                className="border-2 border-white hover:border-[#FFA726] text-white hover:text-[#FFA726] text-lg font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:scale-105"
+              <ScrollLink
+                to="about-section"
+                smooth={true}
+                duration={600}
+                className="cursor-pointer border-2  border-white hover:border-[#FFA726] text-white hover:text-[#FFA726] text-lg font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:scale-105"
               >
                 Our Story
-              </Link>
+              </ScrollLink>
+
             </motion.div>
           </motion.div>
 

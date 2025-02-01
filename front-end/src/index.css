@@ -74,12 +74,12 @@ textarea {
   outline: none;
 }
 
-nav {
+/* nav {
   width: 100%;
   display: grid;
   border-bottom: 2px solid #ccc;
   grid-template-areas: ". logo logo logo logo cart";
-}
+} */
 
 /* .logo {
   width: 100%;
@@ -111,14 +111,14 @@ nav .logo {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
+/* 
 nav > a {
   grid-area: logo;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1px
-}
+} */
 
 .nav-cart {
   display: flex;
