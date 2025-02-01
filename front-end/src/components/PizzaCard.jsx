@@ -7,7 +7,7 @@ const PizzaCard = ({ pizzas }) => {
 
 
   return (
-    <div className="featured-section px-2 py-12 bg-gradient-to-b from-teal-50 to-white">
+    <div className="featured-section px-2 py-12 bg-gradient-to-b from-[#ffecd2] to-[#fcb69f]/60">
       <div className="max-w-7xl mx-auto lg:mx-20">
         <div className="flex items-center justify-between mb-8 px-4">
           <motion.h2
@@ -17,15 +17,6 @@ const PizzaCard = ({ pizzas }) => {
           >
             Featured Pizzas
           </motion.h2>
-          <Link
-            to="/menu"
-            className="hidden md:flex items-center space-x-2 text-xl text-teal-700 hover:text-teal-900 font-medium transition-colors"
-          >
-            <span>Explore Full Menu</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-            </svg>
-          </Link>
         </div>
 
         {/* Scrollable Container */}
@@ -38,9 +29,9 @@ const PizzaCard = ({ pizzas }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="flex-shrink-0 w-80 bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:shadow-2xl"
+                className="flex-shrink-0 w-80 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:shadow-2xl"
               >
-                <Link to={`/menu/${pizza.slug}`} className="block relative">
+                <Link to={`/menu/pizza/${pizza.slug}`} className="block relative">
                   <div className="relative h-60 overflow-hidden">
                     <img
                       src={pizza.image}

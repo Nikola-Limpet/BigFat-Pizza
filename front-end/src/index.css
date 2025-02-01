@@ -52,10 +52,10 @@
 .font-serif {
   font-family: 'Playfair Display', serif;
 }
-body {
+/* body {
   background-color: #fff9f0;
   
-}
+} */
 
 ul,
 ol {
@@ -77,8 +77,8 @@ textarea {
 nav {
   width: 100%;
   display: grid;
-  border-bottom: 1px solid #ccc;
-  grid-template-areas: ". logo logo logo logo logo cart";
+  border-bottom: 2px solid #ccc;
+  grid-template-areas: ". logo logo logo logo cart";
 }
 
 /* .logo {
@@ -151,7 +151,7 @@ nav > a {
 }
 
 h2 {
-  font-family: var(--font);
+  font-family: 'Pacifico';
   font-size: 40px;
   line-height: auto;
   font-weight: 400;
