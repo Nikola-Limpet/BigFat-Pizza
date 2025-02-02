@@ -7,7 +7,7 @@ const HeroSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Animation variants
+  // Animation variants jumps
   const staggerContainer = {
     hidden: { opacity: 0 },
     show: {

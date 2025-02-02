@@ -1,6 +1,6 @@
 const WhyChooseUs = () => {
   return (
-    <div className="why-choose-us py-10 bg-[#FFF5E6] relative overflow-hidden">
+    <div className="why-choose-us py-10  bg-[#FFF5E6] relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/placeHolder.bmp')] bg-repeat"></div>
       <div className="container mx-auto px-4 relative z-10">

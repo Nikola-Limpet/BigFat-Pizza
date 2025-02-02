@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // State to track if the user is at the top of the page
+
   const [isAtTop, setIsAtTop] = useState(true);
   const cartItemCount = useCartItemCount();
 
@@ -58,7 +59,7 @@ const Layout = ({ children }) => {
                 to="/#Drink"
                 className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
               >
-                Drinks
+                A
               </Link>
               <Link
                 to="/login"
