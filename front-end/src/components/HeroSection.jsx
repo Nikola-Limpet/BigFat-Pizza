@@ -128,7 +128,7 @@ const HeroSection = () => {
                 transition={{ duration: 8, repeat: Infinity }}
                 className="absolute -top-3 right-6 bg-white/10 p-3 rounded-full backdrop-blur-sm shadow-lg"
               >
-                <span className="text-xl font-bold text-[#FFA726]">🔥 Hot!</span>
+                <span className="text-xl font-bold text-[#FFA726]">🔥 Menu of The Day!</span>
               </motion.div>
             </motion.div>
           </motion.div>

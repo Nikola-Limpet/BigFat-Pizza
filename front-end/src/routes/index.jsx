@@ -4,8 +4,7 @@ import Home from '../pages/Home';
 import Menu from '../pages/Menu';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
-import Layout from '../components/Layout';
-
+import Layout from '../components/layout/Layout';
 function AppRoutes() {
   return (
     <AnimatePresence mode="wait">

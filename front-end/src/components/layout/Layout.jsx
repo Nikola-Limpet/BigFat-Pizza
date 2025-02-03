@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
-import { useCartItemCount } from '../hooks/cartItem';
+import { useCartItemCount } from '../../hooks/cartItem';
 import { Menu, X } from 'lucide-react';
+import Footer from './Footer';
 
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -123,11 +124,7 @@ const Layout = ({ children }) => {
 
       <main className="flex-grow">{children}</main>
 
-      <footer className="bg-white border-t py-6 px-4">
-        <div className="max-w-7xl mx-auto text-center text-gray-600">
-          <p>&copy; 2025 Big Fat Pizza. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
