@@ -1,17 +1,16 @@
-// components/auth/AuthForm.jsx
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from "@components/common/Button";
+import { Input } from "@components/common/Input";
+import { Label } from "@components/common/Label";
 import { Loader2 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUser, registerUser } from '@/store/slices/authSlice';
+import { loginUser, registerUser } from '@/redux/features/authSlice';
 import { motion } from 'framer-motion';
 
-// Schema definitions
+// Schema from by zod
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z.string().min(8, 'Password must be at least 8 characters')
@@ -40,7 +39,7 @@ const AuthForm = ({ isLogin }) => {
 
   const onSubmit = async (data) => {
     const action = isLogin ? loginUser : registerUser;
-    const result = await dispatch(action(data));
+    const result = await dispatch(action(data)); // action loginUser or registerUser
 
     if (result.meta.requestStatus === 'fulfilled') {
       navigate(isLogin ? '/' : '/profile');
