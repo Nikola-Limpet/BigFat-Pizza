@@ -15,6 +15,7 @@ function AppRoutes() {
           {/* <Route path="/menu/pizza/:slug" element={<PizzaDetailPage />} /> */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+
         </Routes>
       </Layout>
     </AnimatePresence>

@@ -45,7 +45,7 @@ const imageSlideVariants = {
 const WhyChooseUs = () => {
   return (
     <section className="py-16 bg-background">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left Column: Text Content */}
           <div className="flex-1">
@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
               variants={fadeUpVariants}
               className="mb-8"
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800">
+              <h2 className="text-4xl md:text-4xl font-extrabold text-gray-800">
                 Why Choose Big Fat Pizza?
               </h2>
               <p className="mt-4 text-xl text-gray-600">

@@ -30,7 +30,7 @@ const About = () => {
     <Element name="about-section">
       <section
         ref={containerRef}
-        className="bg-gradient-to-r from-[#FFF5E6] to-white py-20 px-4 md:px-20 overflow-hidden relative"
+        className="bg-gradient-to-r from-[#FFF5E6] to-white py-20 px-4 md:px-10 overflow-hidden relative"
       >
         <div className="max-w-5xl mx-auto relative">
           {/* Decorative Background Circles */}
@@ -48,13 +48,13 @@ const About = () => {
                 initial={{ rotate: 0 }}
                 animate={isInView ? { rotate: 360 } : {}}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="mb-4"
+                className="mb-4  m-0"
               >
-                <Pizza className="w-24 h-24 text-teal-700" />
+                <Pizza className="w-[70px] h-24  text-accent/90" />
               </motion.div>
               <motion.h2
                 variants={textVariants}
-                className="text-4xl md:text-5xl pl-32 font-bold text-teal-700 text-center"
+                className="text-5xl md:text-3xl lg:pl-24 sm:pl-2 items-center font-bold text-teal-700 "
               >
                 Our Story
               </motion.h2>
