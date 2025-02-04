@@ -539,3 +539,10 @@ td img {
   font-weight: normal;
   font-size: 30px;
 }
+
+
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 100svh; /* Use svh units for mobile browsers */
+  }
+}

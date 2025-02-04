@@ -1,13 +1,28 @@
 import { Link } from 'react-router-dom';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Animation variants jumps
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const slides = [
+    "images/menu/c&t.bmp",
+    "images/menu/pan.bmp",
+    "images/menu/ss.bmp",
+    "images/menu/et.bmp"
+  ];
+
+  // Animation variants
   const staggerContainer = {
     hidden: { opacity: 0 },
     show: {
@@ -33,10 +48,16 @@ const HeroSection = () => {
     }
   });
 
+  const slideVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -50 }
+  };
+
   return (
     <section
       ref={ref}
-      className="hero-section relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden"
+      className="relative h-screen min-h-[600px] md:min-h-[800px] flex items-center justify-center overflow-hidden"
     >
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
@@ -58,9 +79,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-[#2C1810]/90 via-[#FF4C4C]/60 to-[#FFA726]/50 mix-blend-multiply z-10" />
 
       {/* Content Container */}
-      <div className="relative z-20 container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Text Content */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between h-full gap-8 md:gap-12">
+          {/* Text Content - Left Half */}
           <motion.div
             initial="hidden"
             animate={isInView ? "show" : "hidden"}
@@ -69,16 +90,20 @@ const HeroSection = () => {
           >
             <motion.h2
               variants={textVariant()}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6"
               style={{ fontFamily: 'Pacifico, cursive' }}
             >
-              <span className="text-[#FFA726] block mb-4">Artisanal Pizza</span>
-              <span className="text-4xl md:text-5xl font-serif font-medium">Crafted with Passion</span>
+              <span className="text-[#FFA726] block my-2 sm:mb-4 text-3xl sm:text-4xl md:text-5xl">
+                Artisanal Pizza
+              </span>
+              <span className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium">
+                Crafted with Passion
+              </span>
             </motion.h2>
 
             <motion.p
               variants={textVariant(0.2)}
-              className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
               Experience authentic Italian flavors with our wood-fired masterpieces.
               Made from scratch daily using locally-sourced ingredients and traditional recipes.
@@ -86,11 +111,11 @@ const HeroSection = () => {
 
             <motion.div
               variants={textVariant(0.4)}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <Link
                 to="/menu"
-                className="button-glow bg-[#FF4C4C] hover:bg-[#FF3333] text-white text-lg font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:scale-105"
+                className="button-glow bg-[#FF4C4C] hover:bg-[#FF3333] text-white text-sm sm:text-base font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-full transition-all duration-300 hover:scale-105"
               >
                 Explore Menu
               </Link>
@@ -98,40 +123,46 @@ const HeroSection = () => {
                 to="about-section"
                 smooth={true}
                 duration={600}
-                className="cursor-pointer border-2  border-white hover:border-[#FFA726] text-white hover:text-[#FFA726] text-lg font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:scale-105"
+                className="cursor-pointer border-2 border-white hover:border-[#FFA726] text-white hover:text-[#FFA726] text-sm sm:text-base font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-full transition-all duration-300 hover:scale-105"
               >
                 Our Story
               </ScrollLink>
-
             </motion.div>
           </motion.div>
 
-          {/* Pizza Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="lg:w-1/2 relative"
-          >
-            <motion.div
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="relative"
-            >
-              <img
-                src="/hero.jpg"
-                alt="Signature Pizza"
-                className="w-full lg:w-[720px] lg:h-[700px] max-w-xl mx-auto rotate-[-5deg] shadow-2xl border-8 border-white/20 rounded-[40px]"
-              />
+          {/* Image Carousel - Right Half */}
+          <div className="lg:w-1/2 lg:h-[720px] md:h-full relative flex items-center justify-center">
+            <AnimatePresence mode='wait'>
               <motion.div
-                animate={{ rotate: [0, -15, 0] }}
-                transition={{ duration: 8, repeat: Infinity }}
-                className="absolute -top-3 right-6 bg-white/10 p-3 rounded-full backdrop-blur-sm shadow-lg"
+                key={currentSlide}
+                variants={slideVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.5 }}
+                className="relative w-full h-full max-w-[600px] mx-auto"
               >
-                <span className="text-xl font-bold text-[#FFA726]">🔥 Menu of The Day!</span>
+                <img
+                  src={slides[currentSlide]}
+                  alt="Featured pizza"
+                  className="w-full h-full object-contain lg:object-cover rounded-xl shadow-2xl border-4 border-white/20"
+                />
               </motion.div>
-            </motion.div>
-          </motion.div>
+            </AnimatePresence>
+
+            {/* Pagination Controls */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-[#FFA726] w-6' : 'bg-white/50 hover:bg-white/70'
+                    }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

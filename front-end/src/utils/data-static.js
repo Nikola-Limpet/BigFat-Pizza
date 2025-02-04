@@ -58,24 +58,6 @@ export const benefits = [
     color: 'bg-[#FFA726]/70',
   },
   {
-    title: 'Secret Family Recipes',
-    content: 'Generations-old dough recipe fermented for 48 hours',
-    icon: '👨🍳',
-    color: 'bg-[#33670A]/70',
-  },
-  {
-    title: 'Lightning Fast Delivery',
-    content: "Hot & fresh at your door in 30 minutes or your next pizza's free",
-    icon: '⚡',
-    color: 'bg-[#C41E3A]/70',
-  },
-  {
-    title: 'Custom Creations',
-    content: 'Build your own pizza with 40+ fresh toppings & sauces',
-    icon: '🎨',
-    color: 'bg-[#FFA726]/70',
-  },
-  {
     title: 'Eco-Friendly Packaging',
     content: '100% compostable boxes made from recycled materials',
     icon: '🌱',

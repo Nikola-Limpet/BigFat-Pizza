@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { useCartItemCount } from '../../hooks/cartItem';
-import { Menu, X } from 'lucide-react';
+import { ArrowUp, Menu, X } from 'lucide-react';
 import Footer from './Footer';
 
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // State to track if the user is at the top of the page
-
   const [isAtTop, setIsAtTop] = useState(true);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const cartItemCount = useCartItemCount();
 
   const toggleMenu = () => {
@@ -20,6 +20,7 @@ const Layout = ({ children }) => {
     const handleScroll = () => {
       // Check if the scroll position is 0 (at the very top)
       setIsAtTop(window.scrollY === 0);
+      setShowScrollTop(window.scrollY > 300); // Show button after 300px scroll
     };
 
     // Listen for scroll events
@@ -29,6 +30,13 @@ const Layout = ({ children }) => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -122,9 +130,19 @@ const Layout = ({ children }) => {
         )}
       </nav>
 
-      <main className="flex-grow">{children}</main>
+      <main className="m-0">{children}</main>
 
       <Footer />
+
+      {/* Scroll to top button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 bg-[#33670a] hover:bg-[#45800f] text-white p-3 rounded-full shadow-lg transition-all duration-300 ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`}
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="h-6 w-6" />
+      </button>
     </div>
   );
 };
