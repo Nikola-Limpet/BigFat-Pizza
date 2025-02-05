@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { SelectContext } from './select/Select';
+import { SelectContext } from './Select';
 
 const SelectValue = ({ placeholder = 'Select an option...' }) => {
   const { value } = useContext(SelectContext);

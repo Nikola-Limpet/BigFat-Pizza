@@ -1,4 +1,3 @@
-// components/checkout/StripePayment.jsx
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';

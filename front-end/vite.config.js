@@ -12,4 +12,12 @@ export default defineConfig({
       '@redux': path.resolve(__dirname, './src/redux'),
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
 });

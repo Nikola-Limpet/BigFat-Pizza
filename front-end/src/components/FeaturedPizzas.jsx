@@ -1,15 +1,11 @@
 import React from 'react';
 import PizzaCard from './PizzaCard';
 import { useQuery } from '@tanstack/react-query';
-import { fetchMenu } from '../services/api';
+import { useGetProductsQuery } from '../services/api';
 import { Link } from 'react-router-dom';
 
 const FeaturedPizzas = () => {
-  const { data: pizzas, isLoading, error } = useQuery({
-    queryKey: ['pizzas'],
-    queryFn: fetchMenu,
-    retry: false,
-  });
+  const { data: pizzas, isLoading, error } = useGetProductsQuery();
 
   if (isLoading) {
     return (
@@ -27,7 +23,7 @@ const FeaturedPizzas = () => {
     );
   }
 
-  const showFeature = pizzas.slice(0, 5);
+  const showFeature = pizzas?.slice(0, 5) || [];
   return (
     <div className="relative m-0 p-0">
       {/* Button container with responsive styling */}

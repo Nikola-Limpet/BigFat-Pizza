@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PizzaCard from '../components/PizzaCard';
 import { useQuery } from '@tanstack/react-query';
-import { fetchMenu } from '../services/api';
+import { useGetProductsQuery } from '../services/api';
 
 
 const categories = [
@@ -20,11 +20,12 @@ const categories = [
 
 
 const Menu = () => {
-  const { data: pizzas, isLoading, error } = useQuery({
-    queryKey: ['pizzas'],
-    queryFn: fetchMenu,
-    retry: false,
-  });
+  // const { data: pizzas, isLoading, error } = useQuery({
+  //   queryKey: ['Prodcuts'],
+  //   queryFn: useGetProductsQuery,
+  //   retry: false,
+  // });
+  const { data: pizzas, isLoading, error } = useGetProductsQuery();
 
   if (isLoading) {
     return (

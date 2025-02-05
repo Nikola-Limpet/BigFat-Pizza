@@ -92,6 +92,7 @@ const ProductListing = ({ products }) => {
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
+
             <SelectContent>
               {sortOptions.map(option => (
                 <SelectItem key={option.value} value={option.value}>
