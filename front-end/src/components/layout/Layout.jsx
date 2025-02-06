@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
                 A
               </Link>
               <Link
-                to="/login"
+                to="/auth/login"
                 className="text-[#33670a] hover:text-[#45800f] border-teal-300 font-display cursor-pointer transition-colors"
               >
                 Login / Sign Up

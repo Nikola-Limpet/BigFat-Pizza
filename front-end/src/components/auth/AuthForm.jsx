@@ -17,7 +17,7 @@ const loginSchema = z.object({
 });
 
 const registerSchema = loginSchema.extend({
-  name: z.string().min(3, 'Name must be at least 3 characters'),
+  username: z.string().min(3, 'username must be at least 3 characters'),
   confirmPassword: z.string()
 }).refine(data => data.password === data.confirmPassword, {
   message: "Passwords don't match",
@@ -64,15 +64,15 @@ const AuthForm = ({ isLogin }) => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {!isLogin && (
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="username">Name</Label>
             <Input
-              id="name"
-              {...register('name')}
-              placeholder="Mario Rossi"
-              className={errors.name && 'border-red-500'}
+              id="username"
+              {...register('username')}
+              placeholder="Yuujin Andromeda"
+              className={errors.username && 'border-red-500'}
             />
-            {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            {errors.username && (
+              <p className="text-red-500 text-sm">{errors.username.message}</p>
             )}
           </div>
         )}
@@ -83,7 +83,7 @@ const AuthForm = ({ isLogin }) => {
             id="email"
             type="email"
             {...register('email')}
-            placeholder="mario@example.com"
+            placeholder="yuujin123@example.com"
             className={errors.email && 'border-red-500'}
           />
           {errors.email && (
@@ -143,7 +143,7 @@ const AuthForm = ({ isLogin }) => {
           {isLogin ? (
             <>
               Don't have an account?{' '}
-              <Link to="/register" className="text-[#C41E3A] hover:underline">
+              <Link to="/auth/register" className="text-[#C41E3A] hover:underline">
                 Register here
               </Link>
             </>

@@ -2,21 +2,21 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PizzaCard from '../components/PizzaCard';
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 import { useGetProductsQuery } from '../services/api';
 
 
-const categories = [
-  { name: "Pizza", slug: "pizza" },
-  { name: "BITE", slug: "bite" },
-  { name: "Special Deals", slug: "special-deals" },
-  { name: "Set For One", slug: "set-for-one" },
-  { name: "Set For Group", slug: "set-for-group" },
-  { name: "Chicken", slug: "chicken" },
-  { name: "Pasta & Rice", slug: "pasta-rice" },
-  { name: "Appetizer", slug: "appetizer" },
-  { name: "Salad", slug: "salad" }
-]
+// const categories = [
+//   { name: "Pizza", id: "pizza" },
+//   { name: "BITE", id: "bite" },
+//   { name: "Special Deals", id: "special-deals" },
+//   { name: "Set For One", id: "set-for-one" },
+//   { name: "Set For Group", id: "set-for-group" },
+//   { name: "Chicken", id: "chicken" },
+//   { name: "Pasta & Rice", id: "pasta-rice" },
+//   { name: "Appetizer", id: "appetizer" },
+//   { name: "Salad", id: "salad" }
+// ]
 
 
 const Menu = () => {
@@ -82,8 +82,8 @@ const Menu = () => {
           <div className="flex space-x-6 overflow-x-auto pb-3 hide-scrollbar">
             {categories.map((category) => (
               <Link
-                key={category.slug}
-                to={`/menu/${category.slug}`}
+                key={category.id}
+                to={`/prodcuts/${category.id}`}
                 className="flex-shrink-0"
               >
                 <motion.div
