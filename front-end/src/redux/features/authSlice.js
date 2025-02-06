@@ -14,7 +14,7 @@ export const loginUser = createAsyncThunk(
     try {
       // const data = await authService.login(credentials);
       const { token, user } = await authService.login(credentials);
-      tokenManager.get(token);
+      tokenManager.set(token);
       return { user, token };
     } catch (error) {
       return rejectWithValue(
@@ -57,7 +57,7 @@ const authSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
       tokenManager.clear();
-      authService.resetAuthHeader();
+      authService.logout();
     },
     setCredentials: (state, action) => {
       state.user = action.payload.user;

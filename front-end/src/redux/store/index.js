@@ -7,12 +7,9 @@ export const store = configureStore({
   reducer: {
     cart: cartReducer,
     auth: authReducer,
-    [api.reducerPath]: api.reducer, // api redcuer
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware), // add api middlware
+    getDefaultMiddleware().concat(api.middleware),
+  devTools: process.env.NODE_ENV !== 'production',
 });
-
-// export hooks
-// export type RootState = ReturnType<typeof store.getState>;
-// export type AppDispatch = typeof store.dispatch;

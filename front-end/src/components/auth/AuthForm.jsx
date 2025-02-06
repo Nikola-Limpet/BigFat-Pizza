@@ -37,12 +37,21 @@ const AuthForm = ({ isLogin }) => {
     resolver: zodResolver(isLogin ? loginSchema : registerSchema)
   });
 
+  // const onSubmit = async (data) => {
+  //   const action = isLogin ? loginUser : registerUser;
+  //   const result = await dispatch(action(data)); // action loginUser or registerUser
+
+  //   if (result.meta.requestStatus === 'fulfilled') {
+  //     navigate(isLogin ? '/' : '/profile');
+  //   }
+  // };
   const onSubmit = async (data) => {
     const action = isLogin ? loginUser : registerUser;
-    const result = await dispatch(action(data)); // action loginUser or registerUser
+    const result = await dispatch(action(data));
 
     if (result.meta.requestStatus === 'fulfilled') {
-      navigate(isLogin ? '/' : '/profile');
+      const destination = location.state?.from?.pathname || '/';
+      navigate(destination, { replace: true });
     }
   };
 

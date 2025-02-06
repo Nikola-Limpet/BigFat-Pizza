@@ -65,10 +65,10 @@ const Layout = ({ children }) => {
                 Home
               </Link>
               <Link
-                to="/#Drink"
+                to="/profile"
                 className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
               >
-                A
+                Profile
               </Link>
               <Link
                 to="/auth/login"
