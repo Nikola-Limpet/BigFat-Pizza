@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Classic Pizzas",
+    "description": "Timeless favorites that never go out of style",
+    "image": "https://plus.unsplash.com/premium_photo-1667682942148-a0c98d1d70db?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "isActive": true
+  },
+  {
+    "name": "Vegetarian Specials",
+    "description": "Meat-free creations packed with fresh vegetables",
+    "image": "https://images.unsplash.com/photo-1617343251257-b5d709934ddd?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "isActive": true
+  },
+  {
+    "name": "Meat Lovers",
+    "description": "Carnivore's paradise loaded with premium meats",
+    "image": "https://via.placeholder.com/400x300.png?text=Meat+Lovers",
+    "isActive": true
+  },
+  {
+    "name": "Gourmet Selection",
+    "description": "Premium ingredients for sophisticated palates",
+    "image": "https://via.placeholder.com/400x300.png?text=Gourmet+Selection",
+    "isActive": true
+  },
+  {
+    "name": "Spicy Fiesta",
+    "description": "Fiery combinations for heat seekers",
+    "image": "https://via.placeholder.com/400x300.png?text=Spicy+Fiesta",
+    "isActive": true
+  },
+  {
+    "name": "White Pizzas",
+    "description": "Creamy bases without tomato sauce",
+    "image": "https://via.placeholder.com/400x300.png?text=White+Pizzas",
+    "isActive": true
+  },
+  {
+    "name": "Gluten-Free Options",
+    "description": "Delicious alternatives for gluten-sensitive diners",
+    "image": "https://via.placeholder.com/400x300.png?text=Gluten-Free+Options",
+    "isActive": true
+  },
+  {
+    "name": "Family Feast",
+    "description": "Large format pizzas for sharing",
+    "image": "https://via.placeholder.com/400x300.png?text=Family+Feast",
+    "isActive": true
+  },
+  {
+    "name": "Cheese Explosion",
+    "description": "Extra cheesy creations for dairy lovers",
+    "image": "https://via.placeholder.com/400x300.png?text=Cheese+Explosion",
+    "isActive": true
+  },
+  {
+    "name": "Mediterranean Flavors",
+    "description": "Sun-kissed ingredients from the Mediterranean",
+    "image": "https://via.placeholder.com/400x300.png?text=Mediterranean+Flavors",
+    "isActive": true
+  },
+  {
+    "name": "BBQ Specialties",
+    "description": "Smoky barbecue-inspired pizzas",
+    "image": "https://via.placeholder.com/400x300.png?text=BBQ+Specialties",
+    "isActive": true
+  },
+  {
+    "name": "Breakfast Pizzas",
+    "description": "Morning-friendly pizza creations",
+    "image": "https://via.placeholder.com/400x300.png?text=Breakfast+Pizzas",
+    "isActive": true
+  },
+  {
+    "name": "Seafood Selection",
+    "description": "Ocean-fresh toppings from the sea",
+    "image": "https://via.placeholder.com/400x300.png?text=Seafood+Selection",
+    "isActive": true
+  },
+  {
+    "name": "Dessert Pizzas",
+    "description": "Sweet endings to your meal",
+    "image": "https://via.placeholder.com/400x300.png?text=Dessert+Pizzas",
+    "isActive": true
+  },
+  {
+    "name": "Seasonal Specials",
+    "description": "Limited-time offerings based on fresh seasonal ingredients",
+    "image": "https://via.placeholder.com/400x300.png?text=Seasonal+Specials",
+    "isActive": true
+  }
+]

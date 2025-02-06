@@ -1,68 +1,45 @@
-const config = require('./config/config')
-const express = require('express')
+const config = require('./config/config');
+const express = require('express');
+const app = express();
+const cors = require('cors');
 
-const app = express()
+const logger = require('./utils/logger');
+const mongoose = require('mongoose');
+const errorHandler = require('./middlewares/errorHandler');
+const unknownEndpoint = require('./middlewares/unknownEndpoint');
 
-const cors = require('cors')
+mongoose.set('strictQuery', false);
+logger.info('connecting to ', config.MONGO_DB_URI);
 
-const logger = require('./utils/logger')
-const mongoose = require('mongoose')
-const errorHandler = require('./middlewares/errorHandler')
-const unknownEndpoint = require('./middlewares/unknownEndpoint')
-
-
-mongoose.set('strictQuery', false)
-logger.info('connecting to ', config.MONGO_DB_URI)
-
-// connect to mongodb 
-
-mongoose.connect(config.MONGO_DB_URI)
+mongoose
+  .connect(config.MONGO_DB_URI)
   .then(() => {
-    logger.info('connected to MongoDB')
+    logger.info('connected to MongoDB');
   })
   .catch((error) => {
-    logger.error('error connecting to MongoDb', error.message)
-  })
+    logger.error('error connecting to MongoDb', error.message);
+  });
 
-// Built-in MiddleWare
-app.use(cors())
-app.use(express.static('dist'))
-app.use(express.json())
-
-// custom middleware
-
-
+// Built-in Middleware
+app.use(cors());
+app.use(express.static('dist'));
+app.use(express.json());
 
 // Routes
+const authRoutes = require('./routes/authRoutes');
+const productRoutes = require('./routes/productRoutes');
+// const categoryRoutes = require('./routes/categoryRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const userRoutes = require('./routes/userRoutes');
 
-// auth
-app.use('/api/auth/register', )
-app.use('/api/auth/login', )
-app.use('/api/auth/refreseh-token', )
-
-// prodcuts
-app.use('/api/products', )
-app.use('/api/prodcuts/:id', )
-app.use('/api/categories', )
-
-
-// orders 
-app.use('/api/orders', )
-app.use('/api/orders/:id', )
-app.use('/api/orders/track/:id', )
-
-
-// users 
-app.use('/api/user/profile', )
-app.use('/api/user/orders', )
-app.use('/api/user/addresses', )
-
-
-
+app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+// app.use('/api/categories', categoryRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/user', userRoutes);
 
 // Custom error middlewares
-app.use(unknownEndpoint)
-app.use(errorHandler)
-
+app.use(unknownEndpoint);
+app.use(errorHandler);
 
 module.exports = app;
