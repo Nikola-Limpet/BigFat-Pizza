@@ -1,11 +1,11 @@
 import React from 'react';
 import PizzaCard from './PizzaCard';
-// import { useQuery } from '@tanstack/react-query';
-import { useGetCategoriesQuery } from '../services/api';
 import { Link } from 'react-router-dom';
+import { useGetCategoriesQuery } from '../services/api'
 
 const FeaturedPizzas = () => {
   const { data: pizzas, isLoading, error } = useGetCategoriesQuery();
+
 
   if (isLoading) {
     return (

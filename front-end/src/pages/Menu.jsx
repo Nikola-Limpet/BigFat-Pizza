@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PizzaCard from '../components/PizzaCard';
 // import { useQuery } from '@tanstack/react-query';
-import { useGetProductsQuery } from '../services/api';
+// import { getAllCategories } from '../services/api';
+// import { useQuery } from '@tanstack/react-query';
+// import { useGetProductsQuery } from '../services/api';
 
 
 // const categories = [
@@ -25,7 +27,10 @@ const Menu = () => {
   //   queryFn: useGetProductsQuery,
   //   retry: false,
   // });
-  const { data: pizzas, isLoading, error } = useGetProductsQuery();
+  // const { data: pizzas, isLoading, error } = useQuery({
+  //   queryKey: ['categories'],
+  //   queryFn: getAllCategories,
+  // });
 
   if (isLoading) {
     return (

@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 
 const Profile = () => {
-  const { user } = useSelector((state) => state.auth);
+  const data = useSelector((state) => state.auth);
+  const user = data.user;
   console.log("User object in Profile:", user);
 
 

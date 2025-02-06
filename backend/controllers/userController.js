@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const Order = require('../models/order');
 
 const getProfile = async (req, res, next) => {
   try {
@@ -29,5 +29,5 @@ const getUserAddresses = async (req, res, next) => {
 module.exports = {
   getProfile,
   getUserOrders,
-  getUserAddresses
-}
+  getUserAddresses,
+};

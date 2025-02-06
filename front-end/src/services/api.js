@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+// import axios from 'axios';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -25,7 +26,7 @@ export const api = createApi({
     }),
     getCategories: builder.query({
       query: () => '/products/categories',
-      providesTags: ['Products'],
+      providesTags: ['Categories'],
     }),
     // Orders
     createOrder: builder.mutation({
@@ -65,3 +66,17 @@ export const {
   useGetUserProfileQuery,
   useUpdateUserProfileMutation,
 } = api;
+
+// const basseURL = 'http://localhost:8080/api';
+
+// // let token = null;
+
+// // const setToken = (newtToken) => {
+// //   token = `Bearer ${newtToken}`;
+// // };
+
+// export const getAllCategories = async () => {
+//   const res = await axios.get(`${basseURL}/products/categories`);
+//   const data = res.data;
+//   return data;
+// };
