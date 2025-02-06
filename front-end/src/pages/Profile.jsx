@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-  console.log(user)
+  console.log("User object in Profile:", user);
+
 
   return (
     <div className="min-h-screen bg-[#FFF5E6] py-12 px-4">
@@ -11,7 +12,7 @@ const Profile = () => {
         <div className="space-y-4">
           <div>
             <label className="text-sm text-gray-600">Name</label>
-            <p className="text-lg font-medium">{user?.username}</p>
+            <p className="text-lg font-medium">{user?.name || user?.username}</p>
           </div>
           <div>
             <label className="text-sm text-gray-600">Email</label>

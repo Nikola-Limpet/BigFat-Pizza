@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
+    baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:8080/api',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
@@ -12,16 +12,20 @@ export const api = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Products', 'Orders', 'User'],
+  tagTypes: ['Products', 'Orders', 'User', 'Categories'],
   endpoints: (builder) => ({
     // Products
     getProducts: builder.query({
-      query: () => '/products',
+      query: () => '/products/',
       providesTags: ['Products'],
     }),
     getProduct: builder.query({
       query: (slug) => `/products/${slug}`,
       providesTags: (result, error, id) => [{ type: 'Products', id }],
+    }),
+    getCategories: builder.query({
+      query: () => '/products/categories',
+      providesTags: ['Products'],
     }),
     // Orders
     createOrder: builder.mutation({
@@ -55,6 +59,7 @@ export const api = createApi({
 export const {
   useGetProductsQuery,
   useGetProductQuery,
+  useGetCategoriesQuery,
   useCreateOrderMutation,
   useGetOrdersQuery,
   useGetUserProfileQuery,
