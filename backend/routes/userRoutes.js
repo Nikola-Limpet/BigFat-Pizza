@@ -4,8 +4,10 @@ const userController = require('../controllers/userController');
 // Assume tokenExtractor middleware populates req.user
 const tokenExtractor = require('../middlewares/verifyJWT');
 
-router.get('/profile', tokenExtractor, userController.getProfile);
-router.get('/orders', tokenExtractor, userController.getUserOrders);
-router.get('/addresses', tokenExtractor, userController.getUserAddresses);
+router.use(tokenExtractor);
+
+router.get('/profile', userController.getProfile);
+router.get('/orders', userController.getUserOrders);
+router.get('/addresses', userController.getUserAddresses);
 
 module.exports = router;
