@@ -7,6 +7,7 @@ import Checkout from '../pages/Checkout';
 import Layout from '../components/layout/Layout';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import PizzaDetails from '../pages/ProductDetails';
 import Profile from '../pages/Profile';
 import ProtectedRoute from '../components/common/ProtectedRoute'
 
@@ -17,6 +18,7 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/pizza/:slug" element={<PizzaDetails />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />

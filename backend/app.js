@@ -22,6 +22,12 @@ mongoose
 
 // Built-in Middleware
 app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Your Vite frontend URL
+  })
+);
+
 app.use(express.static('dist'));
 app.use(express.json());
 

@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
           <h3 className="text-xl font-bold mb-2">{product.name}</h3>
           <div className="flex items-center gap-1 mb-2">
             <Star className="w-4 h-4 fill-[#FFA726] text-[#FFA726]" />
-            <span className="text-sm">{product.rating} ({product.reviews} reviews)</span>
+            <span className="text-sm">{product.rating} overall rating!</span>
           </div>
           <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
           <div className="flex justify-between items-center">

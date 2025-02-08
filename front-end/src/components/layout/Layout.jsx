@@ -71,6 +71,12 @@ const Layout = ({ children }) => {
                 Profile
               </Link>
               <Link
+                to='past-orders'
+                className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+              >
+                Past Orders
+              </Link>
+              <Link
                 to="/auth/login"
                 className="text-[#33670a] hover:text-[#45800f] border-teal-300 font-display cursor-pointer transition-colors"
               >

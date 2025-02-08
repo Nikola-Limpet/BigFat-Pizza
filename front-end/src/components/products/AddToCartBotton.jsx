@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { ShoppingCart, Plus, Minus, Loader2 } from 'lucide-react';
 import { addToCart } from '@/redux/features/cartSlice';
-import { Button } from './common/button';
+import { Button } from '../common/Button';
 
 const AddToCartButton = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
