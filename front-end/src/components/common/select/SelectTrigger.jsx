@@ -12,7 +12,7 @@ const SelectTrigger = ({ children, className = '' }) => {
       onClick={() => setIsOpen(!isOpen)}
       className={`
         flex items-center justify-between w-full px-4 py-2
-        text-base border rounded-lg bg-white
+        text-base border rounded-lg bg-gray-50
         transition-all duration-200
         hover:border-[#FFA726]
         focus:border-[#C41E3A] focus:ring-2 focus:ring-[#C41E3A]/20

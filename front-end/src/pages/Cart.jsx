@@ -12,6 +12,7 @@ const Cart = () => {
   const taxes = subtotal * 0.07;
   const total = subtotal + deliveryFee + taxes;
 
+  console.log(items)
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-pacifico text-[#C41E3A] mb-8">Your Cart</h1>
@@ -38,7 +39,18 @@ const Cart = () => {
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-xl font-bold">{item.name}</h3>
-                      <p className="text-[#6B4226]">{item.size}</p>
+                      {/* <p className="text-[#6B4226]">{item.size?.name}</p>
+                      <p className="text-[#6B4226]">{item.size?.price}</p> */}
+                      {item.customizations?.size && (
+                        <p className="text-[#6B4226] p-2">Size: {item.customizations.size.name}</p>
+                      )}
+                      {item.customizations?.toppings && (
+                        <p className="text-[#6B4226] p-2">
+                          Topping:  {item.customizations.toppings.map(topping => topping.name).join(', ')}
+                        </p>
+                      )}
+
+
                     </div>
                     <button
                       onClick={() => dispatch(removeFromCart(item.id))}

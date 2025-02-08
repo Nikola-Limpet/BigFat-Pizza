@@ -11,6 +11,11 @@ const getAllProducts = async () => {
   return response.data;
 };
 
+const getProductGroupedByCategory = async (slug) => {
+  const response = await axios.get(`${baseURL}/${slug}`);
+  return response.data;
+};
+
 const getProductBySlug = async (slug) => {
   try {
     // Add category as a query parameter since it's in your API URL
@@ -22,4 +27,9 @@ const getProductBySlug = async (slug) => {
   }
 };
 
-export default { getAllCategories, getAllProducts, getProductBySlug };
+export default {
+  getAllCategories,
+  getAllProducts,
+  getProductBySlug,
+  getProductGroupedByCategory,
+};

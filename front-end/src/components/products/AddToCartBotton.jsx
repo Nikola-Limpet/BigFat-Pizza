@@ -14,15 +14,19 @@ const AddToCartButton = ({ product }) => {
     setIsLoading(true);
     try {
       await dispatch(addToCart({
-        id: product.id,
+        id: product._id,
         name: product.name,
-        price: product.price,
+        basePrice: product.basePrice,
+        price: product.price, // This now includes size and toppings
         quantity,
-        image: product.image
+        image: product.image,
+        size: product.selectedSize,
+        toppings: product.selectedToppings,
+        customizations: {
+          size: product.selectedSize,
+          toppings: product.selectedToppings
+        }
       }));
-      // Optional: Show success notification 
-    } catch (error) {
-      // Optional: Show error notification
     } finally {
       setIsLoading(false);
     }
@@ -40,11 +44,9 @@ const AddToCartButton = ({ product }) => {
         >
           <Minus className="w-5 h-5 text-gray-600" />
         </motion.button>
-
         <span className="font-bold text-xl min-w-[40px] text-center">
           {quantity}
         </span>
-
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setQuantity(quantity + 1)}

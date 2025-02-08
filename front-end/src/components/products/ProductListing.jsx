@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { Button } from '@/components/common/button';
@@ -9,7 +9,7 @@ const ProductListing = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState(products);
 
-  // Available filters
+  // Define available filter categories – adjust these to match your product category names
   const categories = ['All', 'Vegetarian', 'Meat Lovers', 'Specialty', 'Classic'];
 
   const sortOptions = [
@@ -19,7 +19,7 @@ const ProductListing = ({ products }) => {
     { value: 'popular', label: 'Popularity' }
   ];
 
-  // Get current filters from URL
+  // Get current filters from URL search parameters
   const currentCategory = searchParams.get('category') || 'All';
   const currentSort = searchParams.get('sort') || 'popular';
   const searchQuery = searchParams.get('search') || '';
@@ -35,20 +35,23 @@ const ProductListing = ({ products }) => {
       );
     }
 
-    // Category filter
+    // Category filter – product.categories is an array of objects; compare by name (or you could compare by slug)
     if (currentCategory !== 'All') {
       filtered = filtered.filter(product =>
-        product.categories.includes(currentCategory)
+        product.categories &&
+        product.categories.some(cat =>
+          cat.name.toLowerCase().includes(currentCategory.toLowerCase())
+        )
       );
     }
 
-    // Sorting
+    // Sorting – using basePrice, rating, and popularity
     switch (currentSort) {
       case 'price-asc':
-        filtered.sort((a, b) => a.price - b.price);
+        filtered.sort((a, b) => a.basePrice - b.basePrice);
         break;
       case 'price-desc':
-        filtered.sort((a, b) => b.price - a.price);
+        filtered.sort((a, b) => b.basePrice - a.basePrice);
         break;
       case 'rating':
         filtered.sort((a, b) => b.rating - a.rating);
@@ -58,7 +61,7 @@ const ProductListing = ({ products }) => {
     }
 
     setFilteredProducts(filtered);
-  }, [products, searchParams]);
+  }, [products, searchParams, currentCategory, currentSort, searchQuery]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -69,7 +72,9 @@ const ProductListing = ({ products }) => {
             <Button
               key={category}
               variant={currentCategory === category ? 'default' : 'outline'}
-              onClick={() => setSearchParams({ ...Object.fromEntries(searchParams), category })}
+              onClick={() =>
+                setSearchParams({ ...Object.fromEntries(searchParams), category })
+              }
               className="rounded-full"
             >
               {category}
@@ -81,18 +86,21 @@ const ProductListing = ({ products }) => {
           <Input
             placeholder="Search pizzas..."
             value={searchQuery}
-            onChange={(e) => setSearchParams({ ...Object.fromEntries(searchParams), search: e.target.value })}
+            onChange={(e) =>
+              setSearchParams({ ...Object.fromEntries(searchParams), search: e.target.value })
+            }
             className="max-w-[300px]"
           />
 
           <Select
             value={currentSort}
-            onValueChange={(value) => setSearchParams({ ...Object.fromEntries(searchParams), sort: value })}
+            onValueChange={(value) =>
+              setSearchParams({ ...Object.fromEntries(searchParams), sort: value })
+            }
           >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
-
             <SelectContent>
               {sortOptions.map(option => (
                 <SelectItem key={option.value} value={option.value}>
@@ -107,13 +115,13 @@ const ProductListing = ({ products }) => {
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
 
       {filteredProducts.length === 0 && (
         <div className="text-center py-12 text-gray-500">
-          No pizzas found matching your criteria
+          No pizzas found matching your criteria.
         </div>
       )}
     </div>

@@ -24,9 +24,12 @@ const ProductCard = ({ product }) => {
           <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
           <div className="flex justify-between items-center">
             <span className="text-2xl font-bold text-[#C41E3A]">
-              ${product.price.toFixed(2)}
+              ${product.basePrice.toFixed(2)}
             </span>
-            <Button variant="secondary" className="bg-[#FFA726]/10 text-[#C41E3A] hover:bg-[#FFA726]/20">
+            <Button
+              variant="secondary"
+              className="bg-[#FFA726]/10 text-[#C41E3A] hover:bg-[#FFA726]/20"
+            >
               Customize
             </Button>
           </div>
