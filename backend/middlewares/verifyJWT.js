@@ -16,7 +16,6 @@ const verifyJWT = async (req, res, next) => {
 
     const decoded = jwt.verify(token, config.JWT_SECRET);
 
-    // Find user and attach to request
     const user = await User.findById(decoded.id).select(
       '-passwordHash -refreshToken'
     );

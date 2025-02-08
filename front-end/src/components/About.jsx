@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Pizza } from 'lucide-react';
+import { Pizza, Wheat, ChefHat } from 'lucide-react';
 import { Element } from 'react-scroll';
 
 const About = () => {
@@ -30,71 +30,90 @@ const About = () => {
     <Element name="about-section">
       <section
         ref={containerRef}
-        className="bg-gradient-to-r from-[#FFF5E6] to-white py-20 px-4 md:px-10 overflow-hidden relative"
+        className="bg-[#FFF5E6] py-20 px-4 md:px-10 overflow-hidden relative 
+        bg-pattern-pizza bg-[length:400px] bg-opacity-10"
+        style={{ backgroundImage: 'url(/pizza-texture.png)' }}
       >
-        <div className="max-w-5xl mx-auto relative">
-          {/* Decorative Background Circles */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200 rounded-full blur-3xl opacity-20" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-200 rounded-full blur-3xl opacity-20" />
+        <div className="max-w-4xl mx-auto relative">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF6B6B] rounded-full blur-3xl opacity-20" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFD93D] rounded-full blur-3xl opacity-20" />
+
+          {/* Crust Border Elements */}
+          <div className="absolute top-0 left-0 right-0 h-4 bg-[#E8B56D] opacity-60" />
+          <div className="absolute bottom-0 left-0 right-0 h-4 bg-[#E8B56D] opacity-0" />
 
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            {/* Icon and Title */}
-            <div className="flex flex-col items-center mb-12">
+            {/* Header Section */}
+            <div className="flex flex-col items-center mb-12 space-y-4">
               <motion.div
-                initial={{ rotate: 0 }}
-                animate={isInView ? { rotate: 360 } : {}}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="mb-4  m-0"
+                initial={{ scale: 0 }}
+                animate={isInView ? { scale: 1 } : {}}
+                transition={{ type: 'spring', stiffness: 150 }}
+                className="mb-4 relative"
               >
-                <Pizza className="w-[70px] h-24  text-accent/90" />
+                <Pizza className="w-24 h-24 text-[#C41E3A]/90 animate-pulse" />
+                <ChefHat className="absolute -bottom-2 -right-4 w-8 h-8 text-amber-700" />
               </motion.div>
               <motion.h2
                 variants={textVariants}
-                className="text-5xl md:text-3xl lg:pl-24 sm:pl-2 items-center font-bold text-teal-700 "
+                className="text-5xl font-bold text-[#C41E3A] italic font-pacifico
+                bg-white px-8 text-center py-4 rounded-full shadow-lg border-4 border-amber-100"
               >
-                Our Story
+                Our Delicious Story
               </motion.h2>
             </div>
 
-            {/* Story Text */}
-            <div className="space-y-8 font-serif text-center">
-              <motion.p variants={textVariants} className="text-gray-700 text-xl leading-relaxed max-w-2xl mx-auto">
-                Welcome to Big Fat Pizza – where passion meets the plate.
-              </motion.p>
-              <motion.p variants={textVariants} className="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">
-                Our journey began over two decades ago with a simple belief: great food has the power to bring people together. Inspired by family recipes and local traditions, we set out to create not just a restaurant, but a community hub where everyone feels at home.
-              </motion.p>
-              <motion.p variants={textVariants} className="text-gray-700 text-xl leading-relaxed max-w-4xl mx-auto">
-                At Big Fat Pizza, every pizza is a work of art crafted with the freshest ingredients, hand-tossed dough, and a dash of love. Our menu is a celebration of bold flavors and creative combinations designed to delight your taste buds.
-              </motion.p>
-              <motion.p variants={textVariants} className="text-gray-700 text-xl leading-relaxed max-w-5xl mx-auto">
-                Join us on this delicious journey. Whether you're here for a quick bite or a family dinner, we promise an experience that's as delightful as our signature pizzas. Thank you for being a part of our story!
-              </motion.p>
+            {/* Content Section */}
+            <div className="space-y-8 font-serif text-center relative z-10">
+              <motion.div
+                variants={textVariants}
+                className="bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-lg
+                border-2 border-amber-50"
+              >
+                <p className="text-2xl text-amber-900 leading-relaxed mb-6">
+                  Since 1999, <span className="text-[#C41E3A] font-bold">Big Fat Pizza</span> has been crafting
+                  mouthwatering pies that make taste buds dance!
+                </p>
+
+                <div className="flex justify-center space-x-4 mb-6">
+                  <Wheat className="w-8 h-8 text-amber-700 animate-bounce" />
+                  <Pizza className="w-8 h-8 text-[#C41E3A] animate-spin-slow" />
+                  <Wheat className="w-8 h-8 text-amber-700 animate-bounce" />
+                </div>
+
+                <p className="text-lg font-serif text-amber-800 mb-6">
+                  Our secret? A fiery passion for perfection! Each pizza starts with
+                  hand-kneaded dough resting for 72 hours, topped with vine-ripened tomatoes
+                  and 100% real mozzarella.
+                </p>
+
+                <p className="text-lg font-serif text-amber-800 mb-6">
+                  From our brick ovens to your table, every pie is a masterpiece crafted
+                  with generations of pizza-making wisdom. We don't just make pizza -
+                  we create edible happiness!
+                </p>
+
+                <p className="text-xl text-[#C41E3A] font-semibold italic">
+                  Join our pizza family today and taste the difference tradition makes!
+                </p>
+              </motion.div>
             </div>
 
-            {/* Decorative Side Icons */}
+            {/* Floating Ingredients */}
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={isInView ? { opacity: 0.1, x: 0 } : {}}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="absolute hidden lg:block left-0 top-1/2 transform -translate-y-1/2"
+              initial={{ opacity: 0, y: 100 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              className="hidden lg:flex justify-between absolute -top-20 left-0 right-0"
             >
-              <Pizza className="w-24 h-24 text-teal-700" />
+              <Pizza className="w-16 h-16 text-amber-700 animate-float" />
+              <Pizza className="w-20 h-20 text-[#C41E3A] animate-float-delayed" />
+              <Pizza className="w-16 h-16 text-amber-700 animate-float" />
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={isInView ? { opacity: 0.1, x: 0 } : {}}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="absolute hidden lg:block right-0 top-1/2 transform -translate-y-1/2"
-            >
-              <Pizza className="w-24 h-24 text-teal-700" />
-            </motion.div>
-
           </motion.div>
         </div>
       </section>

@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import HeroSection from '../components/HeroSection';
 import FeaturedPizzas from '../components/FeaturedPizzas';
 import WhyChooseUs from '../components/WhyChooseUs';

@@ -6,8 +6,6 @@ const register = async (req, res, next) => {
   try {
     const { username, email, password, confirmPassword } = req.body;
 
-    // genearte salt with rounds
-
     const saltRounds = 16;
     const salt = await bcrypt.genSalt(saltRounds);
     const passwordHash = await bcrypt.hash(password, salt);

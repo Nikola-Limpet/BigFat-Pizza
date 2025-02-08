@@ -1,0 +1,1696 @@
+{
+  "products": [
+    {
+      "name": "Classic Margherita",
+      "slug": "classic-margherita",
+      "description": "A timeless pizza with fresh basil, tomatoes, and mozzarella.",
+      "categories": ["Classic Pizzas"],
+      "basePrice": 8.99,
+      "sizes": [
+        { "name": "Small", "price": 8.99 },
+        { "name": "Medium", "price": 10.99 },
+        { "name": "Large", "price": 12.99 }
+      ],
+      "toppings": [
+        { "name": "Extra Cheese", "price": 1.5 },
+        { "name": "Olives", "price": 1.0 }
+      ],
+      "tags": ["classic", "Italian"],
+      "image": "https://source.unsplash.com/featured/?classic-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 120,
+      "isNew": false,
+      "calories": 700
+    },
+    {
+      "name": "Four Cheese Classic",
+      "slug": "four-cheese-classic",
+      "description": "A cheesy delight loaded with mozzarella, cheddar, parmesan, and gorgonzola.",
+      "categories": ["Classic Pizzas"],
+      "basePrice": 9.99,
+      "sizes": [
+        { "name": "Small", "price": 9.99 },
+        { "name": "Medium", "price": 11.99 },
+        { "name": "Large", "price": 13.99 }
+      ],
+      "toppings": [
+        { "name": "Extra Cheese", "price": 1.5 },
+        { "name": "Basil", "price": 0.5 }
+      ],
+      "tags": ["cheesy", "classic"],
+      "image": "https://source.unsplash.com/featured/?four-cheese-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 95,
+      "isNew": false,
+      "calories": 750
+    },
+    {
+      "name": "Pepperoni Classic",
+      "slug": "pepperoni-classic",
+      "description": "A classic pepperoni pizza with a perfect balance of spice and cheese.",
+      "categories": ["Classic Pizzas"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Extra Pepperoni", "price": 2.0 },
+        { "name": "Extra Cheese", "price": 1.5 }
+      ],
+      "tags": ["spicy", "classic"],
+      "image": "https://source.unsplash.com/featured/?pepperoni-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 150,
+      "isNew": false,
+      "calories": 800
+    },
+    {
+      "name": "Marinara Classic",
+      "slug": "marinara-classic",
+      "description": "Simple and flavorful, featuring a robust tomato sauce with garlic and oregano.",
+      "categories": ["Classic Pizzas"],
+      "basePrice": 7.99,
+      "sizes": [
+        { "name": "Small", "price": 7.99 },
+        { "name": "Medium", "price": 9.99 },
+        { "name": "Large", "price": 11.99 }
+      ],
+      "toppings": [
+        { "name": "Garlic", "price": 0.5 },
+        { "name": "Oregano", "price": 0.5 }
+      ],
+      "tags": ["simple", "vegan"],
+      "image": "https://source.unsplash.com/featured/?marinara-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 80,
+      "isNew": false,
+      "calories": 650
+    },
+    {
+      "name": "Napoli Classic",
+      "slug": "napoli-classic",
+      "description": "Inspired by traditional Neapolitan recipes with a light, chewy crust.",
+      "categories": ["Classic Pizzas"],
+      "basePrice": 9.49,
+      "sizes": [
+        { "name": "Small", "price": 9.49 },
+        { "name": "Medium", "price": 11.49 },
+        { "name": "Large", "price": 13.49 }
+      ],
+      "toppings": [
+        { "name": "Basil", "price": 0.5 },
+        { "name": "Olives", "price": 1.0 }
+      ],
+      "tags": ["traditional", "Neapolitan"],
+      "image": "https://source.unsplash.com/featured/?napoli-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 110,
+      "isNew": false,
+      "calories": 720
+    },
+
+    {
+      "name": "Veggie Delight",
+      "slug": "veggie-delight",
+      "description": "A vibrant mix of bell peppers, onions, olives, and fresh tomatoes.",
+      "categories": ["Vegetarian Specials"],
+      "basePrice": 8.49,
+      "sizes": [
+        { "name": "Small", "price": 8.49 },
+        { "name": "Medium", "price": 10.49 },
+        { "name": "Large", "price": 12.49 }
+      ],
+      "toppings": [
+        { "name": "Extra Veggies", "price": 1.0 },
+        { "name": "Feta Cheese", "price": 1.5 }
+      ],
+      "tags": ["vegetarian", "fresh"],
+      "image": "https://source.unsplash.com/featured/?vegetarian-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 90,
+      "isNew": false,
+      "calories": 680
+    },
+    {
+      "name": "Garden Fresh Pizza",
+      "slug": "garden-fresh-pizza",
+      "description": "Loaded with seasonal vegetables and drizzled with a light pesto.",
+      "categories": ["Vegetarian Specials"],
+      "basePrice": 9.49,
+      "sizes": [
+        { "name": "Small", "price": 9.49 },
+        { "name": "Medium", "price": 11.49 },
+        { "name": "Large", "price": 13.49 }
+      ],
+      "toppings": [
+        { "name": "Pesto", "price": 1.0 },
+        { "name": "Cherry Tomatoes", "price": 0.8 }
+      ],
+      "tags": ["vegetarian", "fresh"],
+      "image": "https://source.unsplash.com/featured/?garden-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 85,
+      "isNew": false,
+      "calories": 700
+    },
+    {
+      "name": "Spinach & Feta Pizza",
+      "slug": "spinach-feta-pizza",
+      "description": "A healthy combination of spinach, feta, and a light garlic sauce.",
+      "categories": ["Vegetarian Specials"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Spinach", "price": 0.8 },
+        { "name": "Feta", "price": 1.5 }
+      ],
+      "tags": ["vegetarian", "healthy"],
+      "image": "https://source.unsplash.com/featured/?spinach-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 100,
+      "isNew": false,
+      "calories": 720
+    },
+    {
+      "name": "Mushroom Medley",
+      "slug": "mushroom-medley",
+      "description": "An earthy blend of wild mushrooms with a touch of garlic and thyme.",
+      "categories": ["Vegetarian Specials"],
+      "basePrice": 9.99,
+      "sizes": [
+        { "name": "Small", "price": 9.99 },
+        { "name": "Medium", "price": 11.99 },
+        { "name": "Large", "price": 13.99 }
+      ],
+      "toppings": [
+        { "name": "Truffle Oil", "price": 1.5 },
+        { "name": "Parmesan", "price": 1.0 }
+      ],
+      "tags": ["vegetarian", "mushrooms"],
+      "image": "https://source.unsplash.com/featured/?mushroom-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 75,
+      "isNew": false,
+      "calories": 690
+    },
+    {
+      "name": "Zesty Veggie Pizza",
+      "slug": "zesty-veggie-pizza",
+      "description": "A zesty combination of arugula, sun-dried tomatoes, and artichoke hearts.",
+      "categories": ["Vegetarian Specials"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Artichokes", "price": 1.0 },
+        { "name": "Sun-Dried Tomatoes", "price": 1.2 }
+      ],
+      "tags": ["vegetarian", "zesty"],
+      "image": "https://source.unsplash.com/featured/?zesty-veggie-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 80,
+      "isNew": false,
+      "calories": 710
+    },
+
+    {
+      "name": "Meat Lovers Supreme",
+      "slug": "meat-lovers-supreme",
+      "description": "A loaded pizza packed with pepperoni, sausage, bacon, and ham.",
+      "categories": ["Meat Lovers"],
+      "basePrice": 12.99,
+      "sizes": [
+        { "name": "Small", "price": 12.99 },
+        { "name": "Medium", "price": 14.99 },
+        { "name": "Large", "price": 16.99 }
+      ],
+      "toppings": [
+        { "name": "Extra Pepperoni", "price": 2.0 },
+        { "name": "Bacon", "price": 2.5 }
+      ],
+      "tags": ["meaty", "hearty"],
+      "image": "https://source.unsplash.com/featured/?meat-lovers-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 140,
+      "isNew": false,
+      "calories": 900
+    },
+    {
+      "name": "Carnivore's Dream",
+      "slug": "carnivores-dream",
+      "description": "For those who crave meat, this pizza features an assortment of premium meats.",
+      "categories": ["Meat Lovers"],
+      "basePrice": 13.49,
+      "sizes": [
+        { "name": "Small", "price": 13.49 },
+        { "name": "Medium", "price": 15.49 },
+        { "name": "Large", "price": 17.49 }
+      ],
+      "toppings": [
+        { "name": "Sausage", "price": 2.0 },
+        { "name": "Ham", "price": 2.0 }
+      ],
+      "tags": ["meat", "premium"],
+      "image": "https://source.unsplash.com/featured/?carnivore-pizza",
+      "isAvailable": true,
+      "rating": 4.9,
+      "popularity": 160,
+      "isNew": false,
+      "calories": 920
+    },
+    {
+      "name": "Loaded Meat Feast",
+      "slug": "loaded-meat-feast",
+      "description": "An indulgent mix of various meats for the ultimate meat feast.",
+      "categories": ["Meat Lovers"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [
+        { "name": "Bacon", "price": 2.0 },
+        { "name": "Pepperoni", "price": 2.0 }
+      ],
+      "tags": ["meat", "feast"],
+      "image": "https://source.unsplash.com/featured/?loaded-meat-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 135,
+      "isNew": false,
+      "calories": 910
+    },
+    {
+      "name": "Double Pepperoni Pizza",
+      "slug": "double-pepperoni-pizza",
+      "description": "Extra pepperoni for extra flavor on a classic crust.",
+      "categories": ["Meat Lovers"],
+      "basePrice": 11.99,
+      "sizes": [
+        { "name": "Small", "price": 11.99 },
+        { "name": "Medium", "price": 13.99 },
+        { "name": "Large", "price": 15.99 }
+      ],
+      "toppings": [
+        { "name": "Double Pepperoni", "price": 2.5 },
+        { "name": "Extra Cheese", "price": 1.5 }
+      ],
+      "tags": ["pepperoni", "meaty"],
+      "image": "https://source.unsplash.com/featured/?double-pepperoni-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 150,
+      "isNew": false,
+      "calories": 890
+    },
+    {
+      "name": "Sausage & Bacon Pizza",
+      "slug": "sausage-bacon-pizza",
+      "description": "A robust blend of sausage and bacon on a rich tomato sauce base.",
+      "categories": ["Meat Lovers"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [
+        { "name": "Sausage", "price": 2.0 },
+        { "name": "Bacon", "price": 2.5 }
+      ],
+      "tags": ["meat", "hearty"],
+      "image": "https://source.unsplash.com/featured/?sausage-bacon-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 145,
+      "isNew": false,
+      "calories": 930
+    },
+
+    {
+      "name": "Truffle Mushroom Pizza",
+      "slug": "truffle-mushroom-pizza",
+      "description": "A gourmet pizza topped with a blend of wild mushrooms and drizzled with truffle oil.",
+      "categories": ["Gourmet Selection"],
+      "basePrice": 14.99,
+      "sizes": [
+        { "name": "Small", "price": 14.99 },
+        { "name": "Medium", "price": 16.99 },
+        { "name": "Large", "price": 18.99 }
+      ],
+      "toppings": [
+        { "name": "Truffle Oil", "price": 2.0 },
+        { "name": "Parmesan", "price": 1.5 }
+      ],
+      "tags": ["gourmet", "truffle"],
+      "image": "https://source.unsplash.com/featured/?truffle-pizza",
+      "isAvailable": true,
+      "rating": 4.9,
+      "popularity": 110,
+      "isNew": true,
+      "calories": 850
+    },
+    {
+      "name": "Prosciutto Arugula Pizza",
+      "slug": "prosciutto-arugula-pizza",
+      "description": "Thin crust pizza topped with prosciutto, fresh arugula, and shaved parmesan.",
+      "categories": ["Gourmet Selection"],
+      "basePrice": 15.49,
+      "sizes": [
+        { "name": "Small", "price": 15.49 },
+        { "name": "Medium", "price": 17.49 },
+        { "name": "Large", "price": 19.49 }
+      ],
+      "toppings": [
+        { "name": "Arugula", "price": 1.0 },
+        { "name": "Shaved Parmesan", "price": 1.5 }
+      ],
+      "tags": ["gourmet", "prosciutto"],
+      "image": "https://source.unsplash.com/featured/?prosciutto-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 95,
+      "isNew": false,
+      "calories": 870
+    },
+    {
+      "name": "Fig & Goat Cheese Pizza",
+      "slug": "fig-goat-cheese-pizza",
+      "description": "A unique blend of sweet figs and tangy goat cheese on a thin crust.",
+      "categories": ["Gourmet Selection"],
+      "basePrice": 15.99,
+      "sizes": [
+        { "name": "Small", "price": 15.99 },
+        { "name": "Medium", "price": 17.99 },
+        { "name": "Large", "price": 19.99 }
+      ],
+      "toppings": [
+        { "name": "Goat Cheese", "price": 2.0 },
+        { "name": "Honey Drizzle", "price": 1.0 }
+      ],
+      "tags": ["gourmet", "sweet"],
+      "image": "https://source.unsplash.com/featured/?fig-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 105,
+      "isNew": true,
+      "calories": 840
+    },
+    {
+      "name": "Smoked Salmon Gourmet Pizza",
+      "slug": "smoked-salmon-gourmet-pizza",
+      "description": "An elegant pizza topped with smoked salmon, capers, and red onions.",
+      "categories": ["Gourmet Selection"],
+      "basePrice": 16.49,
+      "sizes": [
+        { "name": "Small", "price": 16.49 },
+        { "name": "Medium", "price": 18.49 },
+        { "name": "Large", "price": 20.49 }
+      ],
+      "toppings": [
+        { "name": "Capers", "price": 1.0 },
+        { "name": "Red Onions", "price": 0.8 }
+      ],
+      "tags": ["gourmet", "seafood"],
+      "image": "https://source.unsplash.com/featured/?salmon-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 90,
+      "isNew": false,
+      "calories": 860
+    },
+    {
+      "name": "Burrata Special Pizza",
+      "slug": "burrata-special-pizza",
+      "description": "A decadent pizza featuring fresh burrata, cherry tomatoes, and basil.",
+      "categories": ["Gourmet Selection"],
+      "basePrice": 16.99,
+      "sizes": [
+        { "name": "Small", "price": 16.99 },
+        { "name": "Medium", "price": 18.99 },
+        { "name": "Large", "price": 20.99 }
+      ],
+      "toppings": [
+        { "name": "Basil", "price": 0.5 },
+        { "name": "Cherry Tomatoes", "price": 1.0 }
+      ],
+      "tags": ["gourmet", "fresh"],
+      "image": "https://source.unsplash.com/featured/?burrata-pizza",
+      "isAvailable": true,
+      "rating": 4.9,
+      "popularity": 115,
+      "isNew": true,
+      "calories": 880
+    },
+
+    {
+      "name": "Spicy Jalapeno Pizza",
+      "slug": "spicy-jalapeno-pizza",
+      "description": "A fiery pizza loaded with jalapenos and a spicy tomato sauce.",
+      "categories": ["Spicy Fiesta"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Jalapenos", "price": 1.5 },
+        { "name": "Chili Flakes", "price": 0.8 }
+      ],
+      "tags": ["spicy", "fiesta"],
+      "image": "https://source.unsplash.com/featured/?spicy-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 100,
+      "isNew": false,
+      "calories": 780
+    },
+    {
+      "name": "Hot & Spicy Inferno",
+      "slug": "hot-spicy-inferno",
+      "description": "For those who dare: an extra spicy pizza with hot peppers and a kick of chili.",
+      "categories": ["Spicy Fiesta"],
+      "basePrice": 11.49,
+      "sizes": [
+        { "name": "Small", "price": 11.49 },
+        { "name": "Medium", "price": 13.49 },
+        { "name": "Large", "price": 15.49 }
+      ],
+      "toppings": [
+        { "name": "Hot Sauce", "price": 1.0 },
+        { "name": "Red Chili", "price": 1.0 }
+      ],
+      "tags": ["spicy", "hot"],
+      "image": "https://source.unsplash.com/featured/?hot-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 105,
+      "isNew": false,
+      "calories": 800
+    },
+    {
+      "name": "Chili Pepper Blast Pizza",
+      "slug": "chili-pepper-blast-pizza",
+      "description": "Packed with an assortment of chili peppers for a bold, spicy flavor.",
+      "categories": ["Spicy Fiesta"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Chili Peppers", "price": 1.5 },
+        { "name": "Extra Tomato Sauce", "price": 0.8 }
+      ],
+      "tags": ["spicy", "bold"],
+      "image": "https://source.unsplash.com/featured/?chili-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 95,
+      "isNew": false,
+      "calories": 790
+    },
+    {
+      "name": "Spicy Italian Pizza",
+      "slug": "spicy-italian-pizza",
+      "description": "A classic Italian pizza with an extra spicy kick.",
+      "categories": ["Spicy Fiesta"],
+      "basePrice": 11.99,
+      "sizes": [
+        { "name": "Small", "price": 11.99 },
+        { "name": "Medium", "price": 13.99 },
+        { "name": "Large", "price": 15.99 }
+      ],
+      "toppings": [
+        { "name": "Spicy Sausage", "price": 2.0 },
+        { "name": "Red Pepper Flakes", "price": 0.5 }
+      ],
+      "tags": ["spicy", "Italian"],
+      "image": "https://source.unsplash.com/featured/?spicy-italian-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 110,
+      "isNew": false,
+      "calories": 810
+    },
+    {
+      "name": "Firecracker Pizza",
+      "slug": "firecracker-pizza",
+      "description": "Explosive flavors with a mix of hot sauces and spicy toppings.",
+      "categories": ["Spicy Fiesta"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [
+        { "name": "Hot Pepperoni", "price": 2.0 },
+        { "name": "Spicy Jalapenos", "price": 1.5 }
+      ],
+      "tags": ["spicy", "fiery"],
+      "image": "https://source.unsplash.com/featured/?firecracker-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 115,
+      "isNew": false,
+      "calories": 830
+    },
+
+    {
+      "name": "White Garlic Pizza",
+      "slug": "white-garlic-pizza",
+      "description": "A creamy white pizza drizzled with garlic-infused olive oil.",
+      "categories": ["White Pizzas"],
+      "basePrice": 9.49,
+      "sizes": [
+        { "name": "Small", "price": 9.49 },
+        { "name": "Medium", "price": 11.49 },
+        { "name": "Large", "price": 13.49 }
+      ],
+      "toppings": [
+        { "name": "Ricotta", "price": 1.5 },
+        { "name": "Basil", "price": 0.5 }
+      ],
+      "tags": ["white", "garlic"],
+      "image": "https://source.unsplash.com/featured/?white-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 90,
+      "isNew": false,
+      "calories": 680
+    },
+    {
+      "name": "Ricotta & Spinach White Pizza",
+      "slug": "ricotta-spinach-white-pizza",
+      "description": "A light white pizza topped with fresh spinach and creamy ricotta.",
+      "categories": ["White Pizzas"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Ricotta", "price": 1.5 },
+        { "name": "Spinach", "price": 1.0 }
+      ],
+      "tags": ["white", "vegetarian"],
+      "image": "https://source.unsplash.com/featured/?ricotta-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 95,
+      "isNew": false,
+      "calories": 700
+    },
+    {
+      "name": "Creamy Alfredo Pizza",
+      "slug": "creamy-alfredo-pizza",
+      "description": "A decadent white pizza with a rich Alfredo sauce and mozzarella.",
+      "categories": ["White Pizzas"],
+      "basePrice": 11.49,
+      "sizes": [
+        { "name": "Small", "price": 11.49 },
+        { "name": "Medium", "price": 13.49 },
+        { "name": "Large", "price": 15.49 }
+      ],
+      "toppings": [
+        { "name": "Alfredo Sauce", "price": 1.5 },
+        { "name": "Mozzarella", "price": 1.0 }
+      ],
+      "tags": ["white", "creamy"],
+      "image": "https://source.unsplash.com/featured/?alfredo-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 85,
+      "isNew": false,
+      "calories": 720
+    },
+    {
+      "name": "Herb Infused White Pizza",
+      "slug": "herb-infused-white-pizza",
+      "description": "A delicate white pizza enhanced with fresh herbs and a touch of garlic.",
+      "categories": ["White Pizzas"],
+      "basePrice": 9.99,
+      "sizes": [
+        { "name": "Small", "price": 9.99 },
+        { "name": "Medium", "price": 11.99 },
+        { "name": "Large", "price": 13.99 }
+      ],
+      "toppings": [
+        { "name": "Garlic", "price": 0.5 },
+        { "name": "Herbs", "price": 0.8 }
+      ],
+      "tags": ["white", "herbal"],
+      "image": "https://source.unsplash.com/featured/?herb-white-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 80,
+      "isNew": false,
+      "calories": 690
+    },
+    {
+      "name": "Mozzarella White Pizza",
+      "slug": "mozzarella-white-pizza",
+      "description": "A simple white pizza loaded with fresh mozzarella and drizzled with olive oil.",
+      "categories": ["White Pizzas"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Mozzarella", "price": 1.5 },
+        { "name": "Olive Oil", "price": 0.5 }
+      ],
+      "tags": ["white", "cheesy"],
+      "image": "https://source.unsplash.com/featured/?mozzarella-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 88,
+      "isNew": false,
+      "calories": 710
+    },
+
+    {
+      "name": "Gluten-Free Margherita Pizza",
+      "slug": "gluten-free-margherita-pizza",
+      "description": "A classic margherita crafted on a gluten-free crust.",
+      "categories": ["Gluten-Free Options"],
+      "basePrice": 9.99,
+      "sizes": [
+        { "name": "Small", "price": 9.99 },
+        { "name": "Medium", "price": 11.99 },
+        { "name": "Large", "price": 13.99 }
+      ],
+      "toppings": [
+        { "name": "Basil", "price": 0.5 },
+        { "name": "Extra Mozzarella", "price": 1.5 }
+      ],
+      "tags": ["gluten-free", "classic"],
+      "image": "https://source.unsplash.com/featured/?gluten-free-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 75,
+      "isNew": false,
+      "calories": 680
+    },
+    {
+      "name": "Gluten-Free Veggie Pizza",
+      "slug": "gluten-free-veggie-pizza",
+      "description": "A vibrant mix of vegetables on a gluten-free base.",
+      "categories": ["Gluten-Free Options"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Bell Peppers", "price": 1.0 },
+        { "name": "Olives", "price": 1.0 }
+      ],
+      "tags": ["gluten-free", "vegetarian"],
+      "image": "https://source.unsplash.com/featured/?gluten-free-veggie-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 80,
+      "isNew": false,
+      "calories": 700
+    },
+    {
+      "name": "Gluten-Free Pepperoni Pizza",
+      "slug": "gluten-free-pepperoni-pizza",
+      "description": "A spicy pepperoni pizza made with a gluten-free crust.",
+      "categories": ["Gluten-Free Options"],
+      "basePrice": 11.49,
+      "sizes": [
+        { "name": "Small", "price": 11.49 },
+        { "name": "Medium", "price": 13.49 },
+        { "name": "Large", "price": 15.49 }
+      ],
+      "toppings": [
+        { "name": "Pepperoni", "price": 2.0 },
+        { "name": "Extra Cheese", "price": 1.5 }
+      ],
+      "tags": ["gluten-free", "spicy"],
+      "image": "https://source.unsplash.com/featured/?gluten-free-pepperoni-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 85,
+      "isNew": false,
+      "calories": 720
+    },
+    {
+      "name": "Gluten-Free Supreme Pizza",
+      "slug": "gluten-free-supreme-pizza",
+      "description": "An assortment of vegetables and meats on a gluten-free crust.",
+      "categories": ["Gluten-Free Options"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [
+        { "name": "Sausage", "price": 2.0 },
+        { "name": "Bell Peppers", "price": 1.0 }
+      ],
+      "tags": ["gluten-free", "supreme"],
+      "image": "https://source.unsplash.com/featured/?gluten-free-supreme-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 90,
+      "isNew": false,
+      "calories": 740
+    },
+    {
+      "name": "Gluten-Free Classic Pizza",
+      "slug": "gluten-free-classic-pizza",
+      "description": "A simple yet delicious gluten-free pizza with tomato sauce and mozzarella.",
+      "categories": ["Gluten-Free Options"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Tomato Sauce", "price": 0.8 },
+        { "name": "Mozzarella", "price": 1.5 }
+      ],
+      "tags": ["gluten-free", "classic"],
+      "image": "https://source.unsplash.com/featured/?gluten-free-classic-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 70,
+      "isNew": false,
+      "calories": 690
+    },
+
+    {
+      "name": "Family Feast Classic",
+      "slug": "family-feast-classic",
+      "description": "A large classic pizza perfect for family sharing.",
+      "categories": ["Family Feast"],
+      "basePrice": 16.99,
+      "sizes": [{ "name": "Large", "price": 16.99 }],
+      "toppings": [
+        { "name": "Extra Cheese", "price": 2.0 },
+        { "name": "Basil", "price": 0.5 }
+      ],
+      "tags": ["family", "sharing"],
+      "image": "https://source.unsplash.com/featured/?family-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 130,
+      "isNew": false,
+      "calories": 1100
+    },
+    {
+      "name": "Family Feast Supreme",
+      "slug": "family-feast-supreme",
+      "description": "A supreme pizza loaded with a variety of toppings for a family feast.",
+      "categories": ["Family Feast"],
+      "basePrice": 18.99,
+      "sizes": [{ "name": "Large", "price": 18.99 }],
+      "toppings": [
+        { "name": "Pepperoni", "price": 2.0 },
+        { "name": "Mushrooms", "price": 1.5 }
+      ],
+      "tags": ["family", "supreme"],
+      "image": "https://source.unsplash.com/featured/?family-supreme-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 140,
+      "isNew": false,
+      "calories": 1150
+    },
+    {
+      "name": "Family Feast Combo",
+      "slug": "family-feast-combo",
+      "description": "A combo offer featuring two large pizzas and sides for the whole family.",
+      "categories": ["Family Feast"],
+      "basePrice": 29.99,
+      "sizes": [{ "name": "Combo", "price": 29.99 }],
+      "toppings": [],
+      "tags": ["family", "combo"],
+      "image": "https://source.unsplash.com/featured/?family-combo-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 120,
+      "isNew": true,
+      "calories": "Varies"
+    },
+    {
+      "name": "Family Feast Special",
+      "slug": "family-feast-special",
+      "description": "A special edition pizza crafted for family gatherings.",
+      "categories": ["Family Feast"],
+      "basePrice": 17.99,
+      "sizes": [{ "name": "Large", "price": 17.99 }],
+      "toppings": [{ "name": "Extra Mozzarella", "price": 2.0 }],
+      "tags": ["family", "special"],
+      "image": "https://source.unsplash.com/featured/?family-special-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 125,
+      "isNew": false,
+      "calories": 1120
+    },
+    {
+      "name": "Family Feast Deluxe",
+      "slug": "family-feast-deluxe",
+      "description": "Our deluxe pizza with premium toppings designed for family feasts.",
+      "categories": ["Family Feast"],
+      "basePrice": 19.99,
+      "sizes": [{ "name": "Large", "price": 19.99 }],
+      "toppings": [
+        { "name": "Premium Pepperoni", "price": 2.5 },
+        { "name": "Extra Cheese", "price": 2.0 }
+      ],
+      "tags": ["family", "deluxe"],
+      "image": "https://source.unsplash.com/featured/?deluxe-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 135,
+      "isNew": true,
+      "calories": 1180
+    },
+
+    {
+      "name": "Cheese Explosion Classic",
+      "slug": "cheese-explosion-classic",
+      "description": "A pizza bursting with a variety of cheeses for true dairy lovers.",
+      "categories": ["Cheese Explosion"],
+      "basePrice": 11.49,
+      "sizes": [
+        { "name": "Small", "price": 11.49 },
+        { "name": "Medium", "price": 13.49 },
+        { "name": "Large", "price": 15.49 }
+      ],
+      "toppings": [{ "name": "Extra Cheese", "price": 2.0 }],
+      "tags": ["cheesy", "explosion"],
+      "image": "https://source.unsplash.com/featured/?cheese-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 120,
+      "isNew": false,
+      "calories": 800
+    },
+    {
+      "name": "Cheesy Overload Pizza",
+      "slug": "cheesy-overload-pizza",
+      "description": "Loaded with multiple cheese types for an intense cheesy flavor.",
+      "categories": ["Cheese Explosion"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [
+        { "name": "Cheddar", "price": 1.5 },
+        { "name": "Mozzarella", "price": 1.5 }
+      ],
+      "tags": ["cheesy", "overload"],
+      "image": "https://source.unsplash.com/featured/?overload-cheese-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 130,
+      "isNew": false,
+      "calories": 820
+    },
+    {
+      "name": "Four Cheese Blast Pizza",
+      "slug": "four-cheese-blast-pizza",
+      "description": "A blast of four different cheeses melting into perfection.",
+      "categories": ["Cheese Explosion"],
+      "basePrice": 11.99,
+      "sizes": [
+        { "name": "Small", "price": 11.99 },
+        { "name": "Medium", "price": 13.99 },
+        { "name": "Large", "price": 15.99 }
+      ],
+      "toppings": [
+        { "name": "Gorgonzola", "price": 1.5 },
+        { "name": "Parmesan", "price": 1.0 }
+      ],
+      "tags": ["cheesy", "blast"],
+      "image": "https://source.unsplash.com/featured/?four-cheese-blast-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 115,
+      "isNew": false,
+      "calories": 810
+    },
+    {
+      "name": "Extra Cheese Mania Pizza",
+      "slug": "extra-cheese-mania-pizza",
+      "description": "For the ultimate cheese lover, extra cheese on every slice.",
+      "categories": ["Cheese Explosion"],
+      "basePrice": 12.99,
+      "sizes": [
+        { "name": "Small", "price": 12.99 },
+        { "name": "Medium", "price": 14.99 },
+        { "name": "Large", "price": 16.99 }
+      ],
+      "toppings": [{ "name": "Extra Mozzarella", "price": 2.0 }],
+      "tags": ["cheesy", "mania"],
+      "image": "https://source.unsplash.com/featured/?extra-cheese-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 125,
+      "isNew": true,
+      "calories": 830
+    },
+    {
+      "name": "Cheese Lover's Dream Pizza",
+      "slug": "cheese-lovers-dream-pizza",
+      "description": "A dream come true for cheese enthusiasts with a melty, gooey topping.",
+      "categories": ["Cheese Explosion"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [{ "name": "Mixed Cheeses", "price": 2.0 }],
+      "tags": ["cheesy", "dream"],
+      "image": "https://source.unsplash.com/featured/?cheese-dream-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 120,
+      "isNew": false,
+      "calories": 840
+    },
+
+    {
+      "name": "Mediterranean Margherita Pizza",
+      "slug": "mediterranean-margherita-pizza",
+      "description": "A twist on the classic margherita with olives, feta, and oregano.",
+      "categories": ["Mediterranean Flavors"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Feta Cheese", "price": 1.5 },
+        { "name": "Olives", "price": 1.0 }
+      ],
+      "tags": ["mediterranean", "fresh"],
+      "image": "https://source.unsplash.com/featured/?mediterranean-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 105,
+      "isNew": false,
+      "calories": 750
+    },
+    {
+      "name": "Olive & Feta Pizza",
+      "slug": "olive-feta-pizza",
+      "description": "A delicious blend of briny olives and tangy feta cheese.",
+      "categories": ["Mediterranean Flavors"],
+      "basePrice": 11.49,
+      "sizes": [
+        { "name": "Small", "price": 11.49 },
+        { "name": "Medium", "price": 13.49 },
+        { "name": "Large", "price": 15.49 }
+      ],
+      "toppings": [
+        { "name": "Olives", "price": 1.0 },
+        { "name": "Feta", "price": 1.5 }
+      ],
+      "tags": ["mediterranean", "olive"],
+      "image": "https://source.unsplash.com/featured/?olive-feta-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 110,
+      "isNew": false,
+      "calories": 760
+    },
+    {
+      "name": "Sun-Dried Tomato Pizza",
+      "slug": "sun-dried-tomato-pizza",
+      "description": "Featuring concentrated sun-dried tomatoes and fresh basil.",
+      "categories": ["Mediterranean Flavors"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Sun-Dried Tomatoes", "price": 1.2 },
+        { "name": "Basil", "price": 0.5 }
+      ],
+      "tags": ["mediterranean", "tomato"],
+      "image": "https://source.unsplash.com/featured/?sun-dried-tomato-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 100,
+      "isNew": false,
+      "calories": 740
+    },
+    {
+      "name": "Greek Style Pizza",
+      "slug": "greek-style-pizza",
+      "description": "Inspired by Greek flavors with olives, red onions, and a sprinkle of oregano.",
+      "categories": ["Mediterranean Flavors"],
+      "basePrice": 11.99,
+      "sizes": [
+        { "name": "Small", "price": 11.99 },
+        { "name": "Medium", "price": 13.99 },
+        { "name": "Large", "price": 15.99 }
+      ],
+      "toppings": [
+        { "name": "Red Onions", "price": 1.0 },
+        { "name": "Kalamata Olives", "price": 1.5 }
+      ],
+      "tags": ["mediterranean", "Greek"],
+      "image": "https://source.unsplash.com/featured/?greek-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 115,
+      "isNew": false,
+      "calories": 770
+    },
+    {
+      "name": "Mediterranean Veggie Pizza",
+      "slug": "mediterranean-veggie-pizza",
+      "description": "A medley of Mediterranean vegetables, drizzled with olive oil.",
+      "categories": ["Mediterranean Flavors"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Bell Peppers", "price": 1.0 },
+        { "name": "Red Onions", "price": 0.8 }
+      ],
+      "tags": ["mediterranean", "veggie"],
+      "image": "https://source.unsplash.com/featured/?mediterranean-veggie-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 105,
+      "isNew": false,
+      "calories": 730
+    },
+
+    {
+      "name": "BBQ Chicken Pizza",
+      "slug": "bbq-chicken-pizza",
+      "description": "Grilled chicken with tangy BBQ sauce and caramelized onions.",
+      "categories": ["BBQ Specialties"],
+      "basePrice": 12.99,
+      "sizes": [
+        { "name": "Small", "price": 12.99 },
+        { "name": "Medium", "price": 14.99 },
+        { "name": "Large", "price": 16.99 }
+      ],
+      "toppings": [
+        { "name": "BBQ Sauce", "price": 1.5 },
+        { "name": "Caramelized Onions", "price": 1.0 }
+      ],
+      "tags": ["bbq", "chicken"],
+      "image": "https://source.unsplash.com/featured/?bbq-chicken-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 130,
+      "isNew": false,
+      "calories": 850
+    },
+    {
+      "name": "BBQ Beef Blast Pizza",
+      "slug": "bbq-beef-blast-pizza",
+      "description": "Smoky BBQ beef with a rich tomato base and a hint of spice.",
+      "categories": ["BBQ Specialties"],
+      "basePrice": 13.49,
+      "sizes": [
+        { "name": "Small", "price": 13.49 },
+        { "name": "Medium", "price": 15.49 },
+        { "name": "Large", "price": 17.49 }
+      ],
+      "toppings": [
+        { "name": "Smoked Beef", "price": 2.0 },
+        { "name": "Spicy Sauce", "price": 1.0 }
+      ],
+      "tags": ["bbq", "beef"],
+      "image": "https://source.unsplash.com/featured/?bbq-beef-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 135,
+      "isNew": false,
+      "calories": 870
+    },
+    {
+      "name": "Smoky BBQ Special Pizza",
+      "slug": "smoky-bbq-special-pizza",
+      "description": "A perfect blend of smoky flavors with chicken and bacon, drizzled with BBQ sauce.",
+      "categories": ["BBQ Specialties"],
+      "basePrice": 12.99,
+      "sizes": [
+        { "name": "Small", "price": 12.99 },
+        { "name": "Medium", "price": 14.99 },
+        { "name": "Large", "price": 16.99 }
+      ],
+      "toppings": [
+        { "name": "Chicken", "price": 2.0 },
+        { "name": "Bacon", "price": 2.0 }
+      ],
+      "tags": ["bbq", "smoky"],
+      "image": "https://source.unsplash.com/featured/?smoky-bbq-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 128,
+      "isNew": false,
+      "calories": 860
+    },
+    {
+      "name": "BBQ Bacon Pizza",
+      "slug": "bbq-bacon-pizza",
+      "description": "Crispy bacon and tangy BBQ sauce come together on a delicious crust.",
+      "categories": ["BBQ Specialties"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [
+        { "name": "Bacon", "price": 2.0 },
+        { "name": "Extra BBQ Sauce", "price": 1.0 }
+      ],
+      "tags": ["bbq", "bacon"],
+      "image": "https://source.unsplash.com/featured/?bbq-bacon-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 125,
+      "isNew": false,
+      "calories": 840
+    },
+    {
+      "name": "Barbecue Supreme Pizza",
+      "slug": "barbecue-supreme-pizza",
+      "description": "A supreme pizza featuring an array of BBQ flavors and premium toppings.",
+      "categories": ["BBQ Specialties"],
+      "basePrice": 13.99,
+      "sizes": [
+        { "name": "Small", "price": 13.99 },
+        { "name": "Medium", "price": 15.99 },
+        { "name": "Large", "price": 17.99 }
+      ],
+      "toppings": [
+        { "name": "Premium Pepperoni", "price": 2.0 },
+        { "name": "Smoked Sausage", "price": 2.0 }
+      ],
+      "tags": ["bbq", "supreme"],
+      "image": "https://source.unsplash.com/featured/?barbecue-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 138,
+      "isNew": true,
+      "calories": 880
+    },
+
+    {
+      "name": "Breakfast Margherita Pizza",
+      "slug": "breakfast-margherita-pizza",
+      "description": "A morning twist on the classic margherita, perfect for breakfast.",
+      "categories": ["Breakfast Pizzas"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Egg", "price": 1.0 },
+        { "name": "Bacon Bits", "price": 1.5 }
+      ],
+      "tags": ["breakfast", "morning"],
+      "image": "https://source.unsplash.com/featured/?breakfast-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 100,
+      "isNew": false,
+      "calories": 750
+    },
+    {
+      "name": "Egg & Bacon Pizza",
+      "slug": "egg-bacon-pizza",
+      "description": "A delicious combination of eggs and bacon on a crispy crust.",
+      "categories": ["Breakfast Pizzas"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Egg", "price": 1.0 },
+        { "name": "Bacon", "price": 1.5 }
+      ],
+      "tags": ["breakfast", "bacon"],
+      "image": "https://source.unsplash.com/featured/?egg-bacon-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 105,
+      "isNew": false,
+      "calories": 770
+    },
+    {
+      "name": "Breakfast Supreme Pizza",
+      "slug": "breakfast-supreme-pizza",
+      "description": "An ultimate breakfast pizza loaded with eggs, sausage, and cheese.",
+      "categories": ["Breakfast Pizzas"],
+      "basePrice": 11.49,
+      "sizes": [
+        { "name": "Small", "price": 11.49 },
+        { "name": "Medium", "price": 13.49 },
+        { "name": "Large", "price": 15.49 }
+      ],
+      "toppings": [
+        { "name": "Sausage", "price": 1.5 },
+        { "name": "Egg", "price": 1.0 }
+      ],
+      "tags": ["breakfast", "supreme"],
+      "image": "https://source.unsplash.com/featured/?breakfast-supreme-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 98,
+      "isNew": false,
+      "calories": 780
+    },
+    {
+      "name": "Morning Special Pizza",
+      "slug": "morning-special-pizza",
+      "description": "A light and tasty breakfast pizza to kickstart your day.",
+      "categories": ["Breakfast Pizzas"],
+      "basePrice": 10.49,
+      "sizes": [
+        { "name": "Small", "price": 10.49 },
+        { "name": "Medium", "price": 12.49 },
+        { "name": "Large", "price": 14.49 }
+      ],
+      "toppings": [
+        { "name": "Spinach", "price": 1.0 },
+        { "name": "Egg", "price": 1.0 }
+      ],
+      "tags": ["breakfast", "light"],
+      "image": "https://source.unsplash.com/featured/?morning-special-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 92,
+      "isNew": false,
+      "calories": 740
+    },
+    {
+      "name": "Sunrise Breakfast Pizza",
+      "slug": "sunrise-breakfast-pizza",
+      "description": "A vibrant pizza with a mix of fresh ingredients perfect for a sunrise meal.",
+      "categories": ["Breakfast Pizzas"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Egg", "price": 1.0 },
+        { "name": "Cherry Tomatoes", "price": 1.0 }
+      ],
+      "tags": ["breakfast", "sunrise"],
+      "image": "https://source.unsplash.com/featured/?sunrise-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 97,
+      "isNew": false,
+      "calories": 750
+    },
+
+    {
+      "name": "Seafood Delight Pizza",
+      "slug": "seafood-delight-pizza",
+      "description": "A delectable pizza topped with shrimp, calamari, and mussels.",
+      "categories": ["Seafood Selection"],
+      "basePrice": 14.99,
+      "sizes": [
+        { "name": "Small", "price": 14.99 },
+        { "name": "Medium", "price": 16.99 },
+        { "name": "Large", "price": 18.99 }
+      ],
+      "toppings": [
+        { "name": "Shrimp", "price": 2.0 },
+        { "name": "Calamari", "price": 2.5 }
+      ],
+      "tags": ["seafood", "fresh"],
+      "image": "https://source.unsplash.com/featured/?seafood-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 120,
+      "isNew": false,
+      "calories": 840
+    },
+    {
+      "name": "Shrimp Scampi Pizza",
+      "slug": "shrimp-scampi-pizza",
+      "description": "Delicious shrimp combined with garlic, lemon, and fresh herbs on a crisp crust.",
+      "categories": ["Seafood Selection"],
+      "basePrice": 15.49,
+      "sizes": [
+        { "name": "Small", "price": 15.49 },
+        { "name": "Medium", "price": 17.49 },
+        { "name": "Large", "price": 19.49 }
+      ],
+      "toppings": [
+        { "name": "Shrimp", "price": 2.0 },
+        { "name": "Garlic", "price": 0.8 }
+      ],
+      "tags": ["seafood", "shrimp"],
+      "image": "https://source.unsplash.com/featured/?shrimp-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 125,
+      "isNew": false,
+      "calories": 860
+    },
+    {
+      "name": "Tuna Melt Pizza",
+      "slug": "tuna-melt-pizza",
+      "description": "A unique twist on pizza with tuna, red onions, and a blend of cheeses.",
+      "categories": ["Seafood Selection"],
+      "basePrice": 14.49,
+      "sizes": [
+        { "name": "Small", "price": 14.49 },
+        { "name": "Medium", "price": 16.49 },
+        { "name": "Large", "price": 18.49 }
+      ],
+      "toppings": [
+        { "name": "Tuna", "price": 2.0 },
+        { "name": "Red Onions", "price": 0.8 }
+      ],
+      "tags": ["seafood", "tuna"],
+      "image": "https://source.unsplash.com/featured/?tuna-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 115,
+      "isNew": false,
+      "calories": 850
+    },
+    {
+      "name": "Crab & Spinach Pizza",
+      "slug": "crab-spinach-pizza",
+      "description": "Fresh crab meat combined with spinach and a hint of lemon zest.",
+      "categories": ["Seafood Selection"],
+      "basePrice": 15.99,
+      "sizes": [
+        { "name": "Small", "price": 15.99 },
+        { "name": "Medium", "price": 17.99 },
+        { "name": "Large", "price": 19.99 }
+      ],
+      "toppings": [
+        { "name": "Crab", "price": 2.5 },
+        { "name": "Spinach", "price": 1.0 }
+      ],
+      "tags": ["seafood", "crab"],
+      "image": "https://source.unsplash.com/featured/?crab-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 118,
+      "isNew": false,
+      "calories": 870
+    },
+    {
+      "name": "Ocean Fresh Pizza",
+      "slug": "ocean-fresh-pizza",
+      "description": "A refreshing seafood pizza with a mix of shrimp, calamari, and a drizzle of lemon.",
+      "categories": ["Seafood Selection"],
+      "basePrice": 15.49,
+      "sizes": [
+        { "name": "Small", "price": 15.49 },
+        { "name": "Medium", "price": 17.49 },
+        { "name": "Large", "price": 19.49 }
+      ],
+      "toppings": [{ "name": "Mixed Seafood", "price": 2.5 }],
+      "tags": ["seafood", "fresh"],
+      "image": "https://source.unsplash.com/featured/?ocean-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 110,
+      "isNew": false,
+      "calories": 860
+    },
+
+    {
+      "name": "Nutella Pizza",
+      "slug": "nutella-pizza",
+      "description": "A sweet dessert pizza with a generous spread of Nutella and fresh berries.",
+      "categories": ["Dessert Pizzas"],
+      "basePrice": 8.99,
+      "sizes": [
+        { "name": "Small", "price": 8.99 },
+        { "name": "Medium", "price": 10.99 },
+        { "name": "Large", "price": 12.99 }
+      ],
+      "toppings": [
+        { "name": "Strawberries", "price": 1.0 },
+        { "name": "Banana Slices", "price": 1.0 }
+      ],
+      "tags": ["dessert", "sweet"],
+      "image": "https://source.unsplash.com/featured/?nutella-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 90,
+      "isNew": true,
+      "calories": 600
+    },
+    {
+      "name": "Fruit Fiesta Dessert Pizza",
+      "slug": "fruit-fiesta-dessert-pizza",
+      "description": "A colorful dessert pizza topped with an assortment of fresh fruits and a drizzle of honey.",
+      "categories": ["Dessert Pizzas"],
+      "basePrice": 9.49,
+      "sizes": [
+        { "name": "Small", "price": 9.49 },
+        { "name": "Medium", "price": 11.49 },
+        { "name": "Large", "price": 13.49 }
+      ],
+      "toppings": [{ "name": "Mixed Fruits", "price": 1.5 }],
+      "tags": ["dessert", "fruit"],
+      "image": "https://source.unsplash.com/featured/?fruit-dessert-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 85,
+      "isNew": false,
+      "calories": 620
+    },
+    {
+      "name": "Chocolate Lovers Pizza",
+      "slug": "chocolate-lovers-pizza",
+      "description": "Indulge in a sweet treat with a rich chocolate spread and marshmallow topping.",
+      "categories": ["Dessert Pizzas"],
+      "basePrice": 9.99,
+      "sizes": [
+        { "name": "Small", "price": 9.99 },
+        { "name": "Medium", "price": 11.99 },
+        { "name": "Large", "price": 13.99 }
+      ],
+      "toppings": [{ "name": "Chocolate Chips", "price": 1.0 }],
+      "tags": ["dessert", "chocolate"],
+      "image": "https://source.unsplash.com/featured/?chocolate-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 95,
+      "isNew": true,
+      "calories": 630
+    },
+    {
+      "name": "Caramel Apple Pizza",
+      "slug": "caramel-apple-pizza",
+      "description": "A sweet and tangy dessert pizza featuring caramelized apples and a drizzle of caramel sauce.",
+      "categories": ["Dessert Pizzas"],
+      "basePrice": 9.49,
+      "sizes": [
+        { "name": "Small", "price": 9.49 },
+        { "name": "Medium", "price": 11.49 },
+        { "name": "Large", "price": 13.49 }
+      ],
+      "toppings": [
+        { "name": "Caramel Sauce", "price": 1.0 },
+        { "name": "Apple Slices", "price": 1.0 }
+      ],
+      "tags": ["dessert", "apple"],
+      "image": "https://source.unsplash.com/featured/?caramel-apple-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 90,
+      "isNew": false,
+      "calories": 640
+    },
+    {
+      "name": "Sweet Strawberry Pizza",
+      "slug": "sweet-strawberry-pizza",
+      "description": "A delightful dessert pizza topped with fresh strawberries and a light dusting of powdered sugar.",
+      "categories": ["Dessert Pizzas"],
+      "basePrice": 8.99,
+      "sizes": [
+        { "name": "Small", "price": 8.99 },
+        { "name": "Medium", "price": 10.99 },
+        { "name": "Large", "price": 12.99 }
+      ],
+      "toppings": [{ "name": "Strawberries", "price": 1.0 }],
+      "tags": ["dessert", "strawberry"],
+      "image": "https://source.unsplash.com/featured/?strawberry-pizza",
+      "isAvailable": true,
+      "rating": 4.5,
+      "popularity": 88,
+      "isNew": false,
+      "calories": 610
+    },
+
+    {
+      "name": "Spring Special Pizza",
+      "slug": "spring-special-pizza",
+      "description": "A fresh pizza celebrating spring with seasonal vegetables and herbs.",
+      "categories": ["Seasonal Specials"],
+      "basePrice": 10.99,
+      "sizes": [
+        { "name": "Small", "price": 10.99 },
+        { "name": "Medium", "price": 12.99 },
+        { "name": "Large", "price": 14.99 }
+      ],
+      "toppings": [
+        { "name": "Asparagus", "price": 1.0 },
+        { "name": "Mint", "price": 0.5 }
+      ],
+      "tags": ["seasonal", "spring"],
+      "image": "https://source.unsplash.com/featured/?spring-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 85,
+      "isNew": true,
+      "calories": 720
+    },
+    {
+      "name": "Summer Special Pizza",
+      "slug": "summer-special-pizza",
+      "description": "Enjoy the taste of summer with a pizza topped with fresh tomatoes, basil, and a hint of lemon.",
+      "categories": ["Seasonal Specials"],
+      "basePrice": 11.49,
+      "sizes": [
+        { "name": "Small", "price": 11.49 },
+        { "name": "Medium", "price": 13.49 },
+        { "name": "Large", "price": 15.49 }
+      ],
+      "toppings": [
+        { "name": "Basil", "price": 0.5 },
+        { "name": "Lemon Zest", "price": 0.8 }
+      ],
+      "tags": ["seasonal", "summer"],
+      "image": "https://source.unsplash.com/featured/?summer-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 90,
+      "isNew": true,
+      "calories": 730
+    },
+    {
+      "name": "Autumn Harvest Pizza",
+      "slug": "autumn-harvest-pizza",
+      "description": "A hearty pizza with roasted squash, caramelized onions, and a sprinkle of sage.",
+      "categories": ["Seasonal Specials"],
+      "basePrice": 11.99,
+      "sizes": [
+        { "name": "Small", "price": 11.99 },
+        { "name": "Medium", "price": 13.99 },
+        { "name": "Large", "price": 15.99 }
+      ],
+      "toppings": [
+        { "name": "Roasted Squash", "price": 1.5 },
+        { "name": "Sage", "price": 0.5 }
+      ],
+      "tags": ["seasonal", "autumn"],
+      "image": "https://source.unsplash.com/featured/?autumn-pizza",
+      "isAvailable": true,
+      "rating": 4.6,
+      "popularity": 88,
+      "isNew": false,
+      "calories": 750
+    },
+    {
+      "name": "Winter Wonderland Pizza",
+      "slug": "winter-wonderland-pizza",
+      "description": "A festive pizza with hearty toppings and a hint of spice to warm you up in winter.",
+      "categories": ["Seasonal Specials"],
+      "basePrice": 12.49,
+      "sizes": [
+        { "name": "Small", "price": 12.49 },
+        { "name": "Medium", "price": 14.49 },
+        { "name": "Large", "price": 16.49 }
+      ],
+      "toppings": [
+        { "name": "Roasted Chestnuts", "price": 1.5 },
+        { "name": "Cranberry Sauce", "price": 1.0 }
+      ],
+      "tags": ["seasonal", "winter"],
+      "image": "https://source.unsplash.com/featured/?winter-pizza",
+      "isAvailable": true,
+      "rating": 4.7,
+      "popularity": 92,
+      "isNew": true,
+      "calories": 760
+    },
+    {
+      "name": "Holiday Special Pizza",
+      "slug": "holiday-special-pizza",
+      "description": "A limited-time holiday pizza featuring festive toppings and flavors.",
+      "categories": ["Seasonal Specials"],
+      "basePrice": 12.99,
+      "sizes": [
+        { "name": "Small", "price": 12.99 },
+        { "name": "Medium", "price": 14.99 },
+        { "name": "Large", "price": 16.99 }
+      ],
+      "toppings": [
+        { "name": "Cranberries", "price": 1.0 },
+        { "name": "Brie", "price": 1.5 }
+      ],
+      "tags": ["seasonal", "holiday"],
+      "image": "https://source.unsplash.com/featured/?holiday-pizza",
+      "isAvailable": true,
+      "rating": 4.8,
+      "popularity": 95,
+      "isNew": true,
+      "calories": 770
+    }
+  ]
+}

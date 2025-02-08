@@ -5,10 +5,12 @@ import { Button } from "@components/common/Button";
 import { Input } from "@components/common/Input";
 import { Label } from "@components/common/Label";
 import { Loader2 } from 'lucide-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { loginUser, registerUser } from '@/redux/features/authSlice';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { setCredentials, clearTokenOfState } from '@/redux/features/authSlice';
 import { motion } from 'framer-motion';
+import authService from '@/services/auth';
+import { useMutation } from '@tanstack/react-query';
 
 // Schema from by zod
 const loginSchema = z.object({
@@ -24,10 +26,13 @@ const registerSchema = loginSchema.extend({
   path: ['confirmPassword']
 });
 
+
+
 const AuthForm = ({ isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error } = useSelector(state => state.auth);
+  const location = useLocation();
+
 
   const {
     register,
@@ -37,22 +42,21 @@ const AuthForm = ({ isLogin }) => {
     resolver: zodResolver(isLogin ? loginSchema : registerSchema)
   });
 
-  // const onSubmit = async (data) => {
-  //   const action = isLogin ? loginUser : registerUser;
-  //   const result = await dispatch(action(data)); // action loginUser or registerUser
-
-  //   if (result.meta.requestStatus === 'fulfilled') {
-  //     navigate(isLogin ? '/' : '/profile');
-  //   }
-  // };
-  const onSubmit = async (data) => {
-    const action = isLogin ? loginUser : registerUser;
-    const result = await dispatch(action(data));
-
-    if (result.meta.requestStatus === 'fulfilled') {
-      const destination = location.state?.from?.pathname || '/';
-      navigate(destination, { replace: true });
+  const { mutateAsync, isLoading, error } = useMutation({
+    mutationFn: isLogin ? authService.login : authService.register,
+    onSuccess: (data) => {
+      dispatch(setCredentials(data));
+      navigate(location?.state?.from ? location.state.from : '/');
+    },
+    onError: (error) => {
+      if (error.status === 401) {
+        dispatch(clearTokenOfState());
+      }
     }
+  })
+
+  const onSubmit = async (data) => {
+    await mutateAsync(data);
   };
 
   return (
@@ -137,9 +141,9 @@ const AuthForm = ({ isLogin }) => {
         <Button
           type="submit"
           className="w-full bg-[#C41E3A] hover:bg-[#A3172D] h-12 text-lg"
-          disabled={loading}
+          disabled={isLoading}
         >
-          {loading ? (
+          {isLoading ? (
             <Loader2 className="h-6 w-6 animate-spin" />
           ) : isLogin ? (
             'Sign In'
