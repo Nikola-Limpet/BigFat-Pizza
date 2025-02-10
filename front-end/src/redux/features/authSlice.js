@@ -1,10 +1,10 @@
 // authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import { getToken, clearToken } from '@/utils/tokenManager';
+import { getAccessToken, clearTokens } from '@/utils/tokenManager';
 
 const initialState = {
   user: null,
-  isAuthenticated: !!getToken(),
+  isAuthenticated: !!getAccessToken(),
   isLoading: false,
   error: null,
 };
@@ -20,7 +20,7 @@ const authSlice = createSlice({
     clearTokenOfState: (state) => {
       state.user = null;
       state.isAuthenticated = false;
-      clearToken();
+      clearTokens();
     },
   },
 });

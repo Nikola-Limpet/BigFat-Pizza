@@ -1,8 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 
 const Footer = () => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/'; // Check if the current page is the homepage
+
+
+  const handleNavigation = (to, isScroll) => {
+    if (isScroll && !isHomePage) {
+      // if it's a scroll link and we're not on the homepage, navigate to the homepage first
+      navigate('/', { state: { scrollTo: to } });
+    }
+  };
   return (
     <footer className="bg-gradient-to-b from-[#C41E3A]/70 to-[#7B2D26] text-[#FFF5E6] pt-16 pb-8 relative overflow-hidden">
       {/* Pizza crust border top */}
@@ -53,6 +65,7 @@ const Footer = () => {
                       smooth={true}
                       duration={500}
                       className="flex items-center text-[#FFE4C4] hover:text-white group transition-colors cursor-pointer"
+                      onClick={() => handleNavigation(link.to, link.scroll)}
                     >
                       <span className="mr-2">🍕</span>
                       {link.text}

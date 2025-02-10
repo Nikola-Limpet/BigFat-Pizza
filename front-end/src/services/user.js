@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { getToken } from '../utils/tokenManager';
+import { getAccessToken } from '../utils/tokenManager';
 
 const baseUrl = '/api/user';
 
 const getProfile = async () => {
   const config = {
-    headers: { Authorization: `Bearer ${getToken()}` },
+    headers: { Authorization: `Bearer ${getAccessToken()}` },
   };
   const response = await axios.get(`${baseUrl}/profile`, config);
   return response.data;
@@ -13,7 +13,7 @@ const getProfile = async () => {
 
 const getUserOrders = async () => {
   const config = {
-    headers: { Authorization: `Bearer ${getToken()}` },
+    headers: { Authorization: `Bearer ${getAccessToken()}` },
   };
   const response = await axios.get(`${baseUrl}/orders`, config);
   return response.data;
@@ -21,7 +21,7 @@ const getUserOrders = async () => {
 
 const getUserAddresses = async () => {
   const config = {
-    headers: { Authorization: `Bearer ${getToken()}` },
+    headers: { Authorization: `Bearer ${getAccessToken()}` },
   };
   const response = await axios.get(`${baseUrl}/addresses`, config);
   return response.data;

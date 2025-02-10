@@ -18,6 +18,7 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/:categorySlug" element={<Menu />} />
           <Route path="/menu/pizza/:slug" element={<PizzaDetails />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />

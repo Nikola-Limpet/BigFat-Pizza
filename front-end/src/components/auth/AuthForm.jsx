@@ -12,27 +12,23 @@ import { motion } from 'framer-motion';
 import authService from '@/services/auth';
 import { useMutation } from '@tanstack/react-query';
 
-// Schema from by zod
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z.string().min(8, 'Password must be at least 8 characters')
 });
 
 const registerSchema = loginSchema.extend({
-  username: z.string().min(3, 'username must be at least 3 characters'),
+  username: z.string().min(3, 'Username must be at least 3 characters'),
   confirmPassword: z.string()
 }).refine(data => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ['confirmPassword']
 });
 
-
-
 const AuthForm = ({ isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-
 
   const {
     register,
@@ -42,21 +38,36 @@ const AuthForm = ({ isLogin }) => {
     resolver: zodResolver(isLogin ? loginSchema : registerSchema)
   });
 
-  const { mutateAsync, isLoading, error } = useMutation({
+  const { mutateAsync, isPending, error: mutationError } = useMutation({
     mutationFn: isLogin ? authService.login : authService.register,
     onSuccess: (data) => {
-      dispatch(setCredentials(data));
+      const { user, accessToken, refreshToken } = data;
+      dispatch(setCredentials(user));
       navigate(location?.state?.from ? location.state.from : '/');
     },
     onError: (error) => {
-      if (error.status === 401) {
+      if (error.response?.status === 401) {
         dispatch(clearTokenOfState());
       }
     }
-  })
+  });
+
+  const getErrorMessage = (error) => {
+    if (error.response?.data?.message) {
+      return error.response.data.message;
+    }
+    if (error.message) {
+      return error.message;
+    }
+    return 'An error occurred. Please try again.';
+  };
 
   const onSubmit = async (data) => {
-    await mutateAsync(data);
+    try {
+      await mutateAsync(data);
+    } catch (error) {
+      console.error('Authentication error:', error);
+    }
   };
 
   return (
@@ -82,7 +93,7 @@ const AuthForm = ({ isLogin }) => {
               id="username"
               {...register('username')}
               placeholder="Yuujin Andromeda"
-              className={errors.username && 'border-red-500'}
+              className={errors.username ? 'border-red-500' : ''}
             />
             {errors.username && (
               <p className="text-red-500 text-sm">{errors.username.message}</p>
@@ -97,7 +108,7 @@ const AuthForm = ({ isLogin }) => {
             type="email"
             {...register('email')}
             placeholder="yuujin123@example.com"
-            className={errors.email && 'border-red-500'}
+            className={errors.email ? 'border-red-500' : ''}
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -111,7 +122,7 @@ const AuthForm = ({ isLogin }) => {
             type="password"
             {...register('password')}
             placeholder="••••••••"
-            className={errors.password && 'border-red-500'}
+            className={errors.password ? 'border-red-500' : ''}
           />
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
@@ -126,7 +137,7 @@ const AuthForm = ({ isLogin }) => {
               type="password"
               {...register('confirmPassword')}
               placeholder="••••••••"
-              className={errors.confirmPassword && 'border-red-500'}
+              className={errors.confirmPassword ? 'border-red-500' : ''}
             />
             {errors.confirmPassword && (
               <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>
@@ -134,17 +145,19 @@ const AuthForm = ({ isLogin }) => {
           </div>
         )}
 
-        {error && (
-          <p className="text-red-500 text-center text-sm">{error}</p>
+        {mutationError && (
+          <p className="text-red-500 text-center text-sm">
+            {getErrorMessage(mutationError)}
+          </p>
         )}
 
         <Button
           type="submit"
           className="w-full bg-[#C41E3A] hover:bg-[#A3172D] h-12 text-lg"
-          disabled={isLoading}
+          disabled={isPending}
         >
-          {isLoading ? (
-            <Loader2 className="h-6 w-6 animate-spin" />
+          {isPending ? (
+            <Loader2 className="h-6 w-6 animate-spin items-center" />
           ) : isLogin ? (
             'Sign In'
           ) : (

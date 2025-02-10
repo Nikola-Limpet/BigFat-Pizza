@@ -3,13 +3,18 @@ import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { useCartItemCount } from '../../hooks/cartItem';
 import { ArrowUp, Menu, X } from 'lucide-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearTokenOfState } from '../../redux/features/authSlice';
 import Footer from './Footer';
 
 const Layout = ({ children }) => {
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // State to track if the user is at the top of the page
   const [isAtTop, setIsAtTop] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
   const cartItemCount = useCartItemCount();
 
   const toggleMenu = () => {
@@ -38,9 +43,11 @@ const Layout = ({ children }) => {
     });
   };
 
+  const handleLogout = () => {
+    dispatch(clearTokenOfState());
+  };
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Conditionally apply sticky classes only when NOT at the top */}
       <nav
         className={`bg-[#fff9f0] shadow-md ${isAtTop ? '' : 'sticky top-0'
           } z-50`}
@@ -48,7 +55,7 @@ const Layout = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center py-3">
             {/* Logo */}
-            <Link to="/" className="flex-shrink-0">
+            <Link to="/" onClick={scrollToTop} className="flex-shrink-0">
               <img
                 src="/logo.jpg"
                 alt="Big Fat Pizza Logo"
@@ -61,27 +68,40 @@ const Layout = ({ children }) => {
               <Link
                 to="/"
                 className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                onClick={scrollToTop}
               >
                 Home
               </Link>
-              <Link
-                to="/profile"
-                className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
-              >
-                Profile
-              </Link>
-              <Link
-                to='past-orders'
-                className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
-              >
-                Past Orders
-              </Link>
-              <Link
-                to="/auth/login"
-                className="text-[#33670a] hover:text-[#45800f] border-teal-300 font-display cursor-pointer transition-colors"
-              >
-                Login / Sign Up
-              </Link>
+
+              {isAuthenticated ? (
+                <>
+                  <Link
+                    to="/profile"
+                    className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    to="/past-orders"
+                    className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                  >
+                    Past Orders
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                  >
+                    Log Out
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/auth/login"
+                  className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                >
+                  Login / Sign Up
+                </Link>
+              )}
             </div>
 
             {/* Cart Icon - Always Visible */}
@@ -102,39 +122,41 @@ const Layout = ({ children }) => {
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-        </div>
+        </div >
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4 px-2">
-              <Link
-                to="/"
-                className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                to="/#Drink"
-                className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Drinks
-              </Link>
-              <ScrollLink
-                to="about"
-                smooth={true}
-                duration={500}
-                className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 cursor-pointer transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </ScrollLink>
+        {
+          isMenuOpen && (
+            <div className="md:hidden py-4 border-t border-gray-200">
+              <div className="flex flex-col space-y-4 px-2">
+                <Link
+                  to="/"
+                  className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/#Drink"
+                  className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Drinks
+                </Link>
+                <ScrollLink
+                  to="about"
+                  smooth={true}
+                  duration={500}
+                  className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 cursor-pointer transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  About
+                </ScrollLink>
+              </div>
             </div>
-          </div>
-        )}
-      </nav>
+          )
+        }
+      </nav >
 
       <main className="m-0">{children}</main>
 
@@ -149,7 +171,7 @@ const Layout = ({ children }) => {
       >
         <ArrowUp className="h-6 w-6" />
       </button>
-    </div>
+    </div >
   );
 };
 
