@@ -36,6 +36,23 @@ const Layout = ({ children }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isMenuOpen]);
+
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -117,45 +134,97 @@ const Layout = ({ children }) => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden text-[#33670a] hover:text-[#45800f] transition-colors"
+              className="md:hidden p-2 rounded-md text-[#33670a] hover:text-[#45800f] hover:bg-[#33670a]/10 transition-colors"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div >
-
         {/* Mobile Navigation */}
-        {
-          isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200">
-              <div className="flex flex-col space-y-4 px-2">
+        {isMenuOpen && (
+          <div className="md:hidden fixed top-[100px] right-0 w-64 h-screen bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out">
+            <div className="flex flex-col h-full">
+              {/* Navigation Links */}
+              <div className="flex flex-col space-y-2 p-4 border-b border-gray-100">
                 <Link
                   to="/"
-                  className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                  className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Home
+                  <span>Home</span>
                 </Link>
+
+                {isAuthenticated ? (
+                  <>
+                    <Link
+                      to="/profile"
+                      className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <span>Profile</span>
+                    </Link>
+                    <Link
+                      to="/past-orders"
+                      className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <span>Past Orders</span>
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    to="/auth/login"
+                    className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span>Login / Sign Up</span>
+                  </Link>
+                )}
+              </div>
+
+              {/* Quick Actions */}
+              <div className="flex flex-col space-y-2 p-4 mt-auto border-t border-gray-100">
                 <Link
-                  to="/#Drink"
-                  className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                  to="/menu"
+                  className="flex items-center justify-center space-x-2 bg-[#33670a] text-white font-display px-4 py-2 rounded-md hover:bg-[#45800f] transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Drinks
+                  <span>Menu</span>
                 </Link>
-                <ScrollLink
-                  to="about"
-                  smooth={true}
-                  duration={500}
-                  className="text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 cursor-pointer transition-colors"
+
+                <Link
+                  to="/cart"
+                  className="flex items-center justify-center space-x-2 bg-white text-[#33670a] border border-[#33670a] font-display px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  About
-                </ScrollLink>
+                  <span>Cart ({cartItemCount})</span>
+                </Link>
+
+                {isAuthenticated && (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center space-x-2 text-red-600 hover:text-red-700 font-display px-3 py-2 rounded-md hover:bg-red-50 transition-colors"
+                  >
+                    <span>Log Out</span>
+                  </button>
+                )}
               </div>
             </div>
-          )
-        }
+          </div>
+        )}
+
+        {/* Backdrop */}
+        {isMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 md:hidden z-40"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
+
       </nav >
 
       <main className="m-0">{children}</main>

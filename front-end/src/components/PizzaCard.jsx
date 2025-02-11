@@ -23,17 +23,38 @@ const PizzaCard = ({ pizza, categorySlug }) => {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          {/* Price Badge */}
+          <div className="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full shadow-lg">
+            <span className="text-[#C41E3A] font-bold">
+              From ${pizza.basePrice.toFixed(2)}
+            </span>
+          </div>
+          {/* Tags */}
+          {pizza.tags && pizza.tags.length > 0 && (
+            <div className="absolute bottom-4 left-4 flex gap-2">
+              {pizza.tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="bg-white/90 px-2 py-1 rounded-full text-xs text-[#6B4226] capitalize"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <div className="p-4">
-          <h3 className="text-xl font-bold text-gray-800 line-clamp-1">
-            {pizza.name}
-          </h3>
+          <div className="flex justify-between items-start mb-2">
+            <h3 className="text-xl font-bold text-gray-800 line-clamp-1">
+              {pizza.name}
+            </h3>
+          </div>
           <p className="text-gray-600 text-sm mt-2 line-clamp-3">
             {pizza.description}
           </p>
           <div className="mt-4">
             <Button
-              className="w-full text-white text-center py-2 rounded-md font-medium transition-colors"
+              className="w-full bg-[#C41E3A] hover:bg-[#A3172D] text-white text-center py-2 rounded-md font-medium transition-colors"
             >
               Customize & Order
             </Button>

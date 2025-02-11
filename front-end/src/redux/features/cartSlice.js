@@ -54,10 +54,12 @@ const cartSlice = createSlice({
       }
     },
     moveToCart: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload);
+      const item = state.savedItems.find((item) => item.id === action.payload);
       if (item) {
         state.items.push(item);
-        state.savedItems.filter((item) => item.id !== action.payload);
+        state.savedItems = state.savedItems.filter(
+          (item) => item.id !== action.payload
+        );
       }
     },
     updateSpecialInstructions: (state, action) => {
@@ -87,6 +89,7 @@ export const {
   removeFromCart,
   updateQuantity,
   saveForLater,
-  moveToc,
+  updateSpecialInstructions,
+  moveToCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

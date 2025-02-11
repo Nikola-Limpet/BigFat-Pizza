@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Save, ShoppingCart } from 'lucide-react';
+import { X, Save, ShoppingCart, ChevronLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { removeFromCart, updateQuantity, updateSpecialInstructions, saveForLater, moveToCart } from '@redux/features/cartSlice';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -8,15 +10,21 @@ const Cart = () => {
 
   // Price calculations
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const deliveryFee = 5.99;
+  const deliveryFee = 3.99;
   const taxes = subtotal * 0.07;
   const total = subtotal + deliveryFee + taxes;
 
-  console.log(items)
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-pacifico text-[#C41E3A] mb-8">Your Cart</h1>
 
+      <Link
+        to="/menu"
+        className="flex items-center gap-2 px-4 py-2 text-[#6B4226] hover:text-[#C41E3A] transition-colors"
+      >
+        <ChevronLeft className="w-5 h-5" />
+        Back to Menu
+      </Link>
       {/* Active Cart Items */}
       <div className="lg:flex gap-8">
         <div className="lg:w-2/3 space-y-6">

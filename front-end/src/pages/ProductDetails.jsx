@@ -81,14 +81,46 @@ const ProductDetails = () => {
 
         {/* Product Details */}
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold">{product.name}</h1>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
-              <Star className="w-5 h-5 fill-[#FFA726] text-[#FFA726]" />
-              <span className="font-medium">{product.rating}/5</span>
+          <div className="flex items-center justify-between">
+            <h1 className="text-4xl font-bold">{product.name}</h1>
+            <div className="flex items-center gap-2">
+              {product.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-sm rounded-full bg-[#FFF5E6] text-[#C41E3A] capitalize"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
-            <span className="text-gray-500">({product.calories} reviews)</span>
           </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
+                <Star className="w-5 h-5 fill-[#FFA726] text-[#FFA726]" />
+                <span className="font-medium">{product.rating}/5</span>
+              </div>
+              <span className="text-gray-500">({product.popularity} reviews)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              {product.isNew && (
+                <span className="px-3 py-1 text-sm rounded-full bg-[#C41E3A] text-white">
+                  New!
+                </span>
+              )}
+              {product.isAvailable ? (
+                <span className="px-3 py-1 text-sm rounded-full bg-green-100 text-green-800">
+                  In Stock
+                </span>
+              ) : (
+                <span className="px-3 py-1 text-sm rounded-full bg-red-100 text-red-800">
+                  Out of Stock
+                </span>
+              )}
+            </div>
+          </div>
+
           {/* Dynamic Price Display */}
           <p className="text-2xl font-bold text-[#C41E3A]">
             ${totalPrice}
@@ -143,16 +175,31 @@ const ProductDetails = () => {
 
       {/* Nutrition Information */}
       <div className="mt-12 bg-[#FFF5E6] p-6 rounded-xl">
-        <h2 className="text-2xl font-bold mb-4">Nutrition Information</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center">
+        <h2 className="text-2xl font-bold mb-4">Product Information</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="text-center p-4 bg-white rounded-lg shadow-sm">
             <p className="font-bold text-[#C41E3A]">{product.calories}</p>
-            <p className="text-sm">Calories</p>
+            <p className="text-sm text-gray-600">Calories</p>
           </div>
-          {/* Additional nutritional info can be added here */}
+          <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+            <p className="font-bold text-[#C41E3A]">{product.rating}</p>
+            <p className="text-sm text-gray-600">Rating</p>
+          </div>
+          <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+            <p className="font-bold text-[#C41E3A]">{product.popularity}</p>
+            <p className="text-sm text-gray-600">Reviews</p>
+          </div>
+          <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+            <p className="font-bold text-[#C41E3A] capitalize">
+              {product.tags.join(', ')}
+            </p>
+            <p className="text-sm text-gray-600">Tags</p>
+          </div>
         </div>
       </div>
     </div>
+
+
   );
 };
 
