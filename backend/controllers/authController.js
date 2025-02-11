@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const generateTokens = require('../utils/token');
 
 const register = async (req, res, next) => {
   try {
@@ -12,12 +13,8 @@ const register = async (req, res, next) => {
     const user = new User({ username, email, passwordHash });
     await user.save();
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '12h' }
-    );
-    res.status(201).json({ user, token });
+    const tokens = generateTokens(user);
+    res.status(201).json({ user, ...tokens });
   } catch (error) {
     next(error);
   }
@@ -33,12 +30,8 @@ const login = async (req, res, next) => {
     if (!passwordValid)
       return res.status(401).json({ error: 'Invalid credentials' });
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '12h' }
-    );
-    res.json({ user, token });
+    const tokens = generateTokens(user);
+    res.json({ user, ...tokens });
   } catch (error) {
     next(error);
   }
@@ -46,18 +39,22 @@ const login = async (req, res, next) => {
 
 const refreshToken = async (req, res, next) => {
   try {
-    // Your refresh token logic here.
     const { token } = req.body;
     if (!token) return res.status(401).json({ error: 'Token missing' });
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const newToken = jwt.sign(
-      { id: decoded.id, email: decoded.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-    res.json({ token: newToken });
+    const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      return res.status(401).json({ error: 'User not found' });
+    }
+
+    const tokens = generateTokens(user);
+    res.json(tokens);
   } catch (error) {
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({ error: 'Invalid refresh token' });
+    }
     next(error);
   }
 };
