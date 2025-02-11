@@ -9,4 +9,6 @@ router.post('/', orderController.createOrder);
 router.get('/:id', orderController.getOrderById);
 router.get('/track/:id', orderController.trackOrder);
 
+router.put('/:id/status', orderController.updateOrderStatus);
+
 module.exports = router;

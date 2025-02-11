@@ -375,7 +375,7 @@
       "name": "Prosciutto Arugula Pizza",
       "slug": "prosciutto-arugula-pizza",
       "description": "Thin crust pizza topped with prosciutto, fresh arugula, and shaved parmesan.",
-      "categories": ["Gourmet Selection"],
+      "categories": ["Gourmet Selection "],
       "basePrice": 15.49,
       "sizes": [
         { "name": "Small", "price": 15.49 },

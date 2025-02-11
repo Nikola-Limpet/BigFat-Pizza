@@ -1,18 +1,44 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Save, ShoppingCart, ChevronLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { removeFromCart, updateQuantity, updateSpecialInstructions, saveForLater, moveToCart } from '@redux/features/cartSlice';
+import { saveCartToStorage } from '../utils/cartStorage';
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, savedItems } = useSelector(state => state.cart);
+  const { isAuthenticated, user } = useSelector(state => state.auth);
+
+  const navigate = useNavigate();
+
+
+
+  // Add an effect to sync cart with localStorage when component unmounts
+  useEffect(() => {
+    return () => {
+      const cartState = { items, savedItems };
+      saveCartToStorage(cartState, user?.id);
+    };
+  }, [items, savedItems, user?.id])
+
+
+  const handleCheckout = () => {
+    if (!isAuthenticated) {
+      navigate('/auth/login', { state: { from: '/cart' } });
+      return;
+    }
+    navigate('/checkout');
+  };
 
   // Price calculations
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const deliveryFee = 3.99;
   const taxes = subtotal * 0.07;
   const total = subtotal + deliveryFee + taxes;
+
+
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -31,7 +57,7 @@ const Cart = () => {
           <AnimatePresence>
             {items.map(item => (
               <motion.div
-                key={item.id}
+                key={item.uniqueId}
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
@@ -61,7 +87,7 @@ const Cart = () => {
 
                     </div>
                     <button
-                      onClick={() => dispatch(removeFromCart(item.id))}
+                      onClick={() => dispatch(removeFromCart(item.uniqueId))}
                       className="text-[#6B4226] hover:text-[#C41E3A]"
                     >
                       <X className="w-6 h-6" />
@@ -73,7 +99,7 @@ const Cart = () => {
                       <div className="flex items-center gap-3 bg-[#FFA726]/10 px-4 py-2 rounded-full">
                         <button
                           onClick={() => dispatch(updateQuantity({
-                            id: item.id,
+                            uniqueId: item.uniqueId,
                             quantity: item.quantity - 1
                           }))}
                           className="text-[#C41E3A] hover:text-[#A3172D]"
@@ -83,7 +109,7 @@ const Cart = () => {
                         <span className="font-bold">{item.quantity}</span>
                         <button
                           onClick={() => dispatch(updateQuantity({
-                            id: item.id,
+                            uniqueId: item.uniqueId,
                             quantity: item.quantity + 1
                           }))}
                           className="text-[#C41E3A] hover:text-[#A3172D]"
@@ -97,18 +123,48 @@ const Cart = () => {
                     </div>
                   </div>
 
-                  <textarea
-                    placeholder="Special instructions (e.g., extra cheese, no onions)"
-                    value={item.specialInstructions || ''}
-                    onChange={(e) => dispatch(updateSpecialInstructions({
-                      id: item.id,
-                      instructions: e.target.value
-                    }))}
-                    className="w-full p-2 border border-[#FFA726]/30 rounded-lg"
-                  />
+                  <div className="mt-4">
+                    <label
+                      htmlFor={`instructions-${item.uniqueId}`}
+                      className="block text-sm font-medium text-[#6B4226] mb-2"
+                    >
+                      Special Instructions
+                    </label>
+                    <textarea
+                      id={`instructions-${item.uniqueId}`}
+                      placeholder="Add special instructions for your pizza (e.g., extra crispy, light sauce)"
+                      value={item.specialInstructions || ''}
+                      onChange={(e) => dispatch(updateSpecialInstructions({
+                        id: item.uniqueId,
+                        instructions: e.target.value
+                      }))}
+                      className="w-full min-h-[80px] p-3 text-[#6B4226]
+                        border-2 border-[#FFA726]/30 rounded-lg placeholder:text-[#6B4226]/60
+                        focus:border-[#FFA726]focus:ring-2 focus:ring-[#FFA726]/20 hover:border-[#FFA726]/50
+                        transition-colors resize-y
+                        bg-[#FFF9F0]"
+                      maxLength={200}
+                    />
+                    <div className="flex justify-between mt-1">
+                      <p className="text-xs text-[#6B4226]/60">
+                        {item.specialInstructions?.length || 0}/200 characters
+                      </p>
+                      {item.specialInstructions?.length > 0 && (
+                        <button
+                          onClick={() => dispatch(updateSpecialInstructions({
+                            id: item.uniqueId,
+                            instructions: ''
+                          }))}
+                          className="text-xs text-[#C41E3A] hover:text-[#A3172D]"
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
+                  </div>
 
                   <button
-                    onClick={() => dispatch(saveForLater(item.id))}
+                    onClick={() => dispatch(saveForLater(item.uniqueId))}
                     className="mt-4 flex items-center gap-2 text-[#6B4226] hover:text-[#C41E3A]"
                   >
                     <Save className="w-5 h-5" />
@@ -147,7 +203,11 @@ const Cart = () => {
               </div>
             </div>
 
-            <button className="w-full bg-[#C41E3A] text-white py-4 rounded-full text-lg font-bold hover:bg-[#A3172D]">
+            <button
+              onClick={handleCheckout}
+              className="w-full bg-[#C41E3A] text-white py-4 rounded-full text-lg font-bold hover:bg-[#A3172D] disabled:opacity-50"
+              disabled={items.length === 0}
+            >
               Proceed to Checkout
             </button>
           </div>
@@ -160,7 +220,7 @@ const Cart = () => {
           <h2 className="text-2xl font-pacifico text-[#C41E3A] mb-6">Saved for Later</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {savedItems.map(item => (
-              <div key={item.id} className="bg-white rounded-xl shadow-lg p-6 flex gap-6">
+              <div key={item.uniqueId} className="bg-white rounded-xl shadow-lg p-6 flex gap-6">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -173,7 +233,7 @@ const Cart = () => {
                       ${item.price.toFixed(2)}
                     </span>
                     <button
-                      onClick={() => dispatch(moveToCart(item.id))}
+                      onClick={() => dispatch(moveToCart(item.uniqueId))}
                       className="flex items-center gap-2 text-[#6B4226] hover:text-[#C41E3A]"
                     >
                       <ShoppingCart className="w-5 h-5" />

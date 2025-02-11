@@ -1,16 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-// features save for later use local storage
-const localCartFromStorage = () => {
-  try {
-    const storedCart = localStorage.getItem('cart');
-    return storedCart ? JSON.parse(storedCart) : { items: [], savedItems: [] };
-  } catch {
-    return { items: [], savedItems: [] };
-  }
-};
-
-const initialState = localCartFromStorage();
+import { loadCartFromStorage, saveCartToStorage } from '@/utils/cartStorage';
+const initialState = loadCartFromStorage();
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -21,7 +11,7 @@ const cartSlice = createSlice({
         ...action.payload,
         uniqueId: `${action.payload.id}-${
           action.payload.size?.name || 'base'
-        }-${Date.now()}`,
+        }-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       };
 
       const existingItem = state.items.find(
@@ -37,33 +27,43 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload);
+      state.items = state.items.filter(
+        (item) => item.uniqueId !== action.payload
+      );
     },
 
     updateQuantity: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
+      const item = state.items.find(
+        (item) => item.uniqueId === action.payload.uniqueId
+      );
       if (item) {
-        item.quantity = Math.max(1, action.payload.quantity); // prevent negative number
+        item.quantity = Math.max(1, action.payload.quantity);
       }
     },
     saveForLater: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload);
+      const item = state.items.find((item) => item.uniqueId === action.payload);
       if (item) {
         state.savedItems.push(item);
-        state.items = state.items.filter((item) => item.id !== action.payload);
+        state.items = state.items.filter(
+          (item) => item.uniqueId !== action.payload
+        );
       }
     },
     moveToCart: (state, action) => {
-      const item = state.savedItems.find((item) => item.id === action.payload);
+      const item = state.savedItems.find(
+        (item) => item.uniqueId === action.payload
+      );
       if (item) {
         state.items.push(item);
         state.savedItems = state.savedItems.filter(
-          (item) => item.id !== action.payload
+          (item) => item.uniqueId !== action.payload
         );
       }
     },
     updateSpecialInstructions: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
+      const item = state.items.find(
+        (item) => item.uniqueId === action.payload.uniqueId
+      );
       if (item) {
         item.specialInstructions = action.payload.instructions;
       }
@@ -71,16 +71,33 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = [];
     },
+    rehydrate: (state, action) => {
+      return {
+        ...state,
+        items: Array.isArray(action.payload.items) ? action.payload.items : [],
+        savedItems: Array.isArray(action.payload.savedItems)
+          ? action.payload.savedItems
+          : [],
+      };
+    },
   },
 });
 
 // MiddleWare to persist cart state
-export const cartPersistMiddleWare = (store) => (next) => (action) => {
+
+export const cartPersistMiddleware = (store) => (next) => (action) => {
   const result = next(action);
-  if (action.type?.startsWith('/cart')) {
-    const state = store.getState().cart;
-    localStorage.setItem('cart', JSON.stringify(state));
+
+  if (action.type?.startsWith('cart/')) {
+    const { cart, auth } = store.getState();
+    const userId = auth.user?.id;
+
+    // Don't save empty carts
+    if (cart.items.length > 0 || cart.savedItems.length > 0) {
+      saveCartToStorage(cart, userId);
+    }
   }
+
   return result;
 };
 
@@ -91,5 +108,6 @@ export const {
   saveForLater,
   updateSpecialInstructions,
   moveToCart,
+  clearCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

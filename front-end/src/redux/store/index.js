@@ -12,3 +12,14 @@ export const store = configureStore({
       serializableCheck: false,
     }),
 });
+
+// Rehydrate cart from localStorage on store initialization
+const savedCart = localStorage.getItem('cart');
+if (savedCart) {
+  try {
+    const parsedCart = JSON.parse(savedCart);
+    store.dispatch({ type: 'cart/rehydrate', payload: parsedCart });
+  } catch (error) {
+    console.error('Error loading cart:', error);
+  }
+}

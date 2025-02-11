@@ -1,35 +1,24 @@
-import axios from 'axios';
-import { getToken } from '../utils/tokenManager';
+import axiosInstance from '../utils/axios';
 
 const baseURL = '/api/orders';
 
-const useCreateOrder = async (order) => {
-  return useMutation(async () => {
-    const config = {
-      headers: { Authorization: `Bearer ${getToken()}` },
-    };
-    const response = await axios.post(baseURL, order, config);
-    return response.data;
-  });
+export const createOrder = async (orderData) => {
+  const response = await axiosInstance.post(baseURL, orderData);
+  return response.data;
 };
 
-const useGetOrderById = async (orderId) => {
-  return useQuery(['order', orderId], async () => {
-    const config = {
-      headers: { Authorization: `Bearer ${getToken()}` },
-    };
-    const response = await axios.get(`${baseURL}/${orderId}`, config);
-    return response.data;
-  });
+export const getOrderById = async (orderId) => {
+  const response = await axiosInstance.get(`${baseURL}/${orderId}`);
+  return response.data;
 };
 
-const useTrackOrder = async (orderId) => {
-  return useQuery(['order', orderId], async () => {
-    const config = {
-      headers: { Authorization: `Bearer ${getToken()}` },
-    };
-    const response = await axios.get(`${baseURL}/track/${orderId}`, config);
-    return response.data;
-  });
+export const trackOrder = async (orderId) => {
+  const response = await axiosInstance.get(`${baseURL}/track/${orderId}`);
+  return response.data;
 };
-export default { useCreateOrder, useGetOrderById, useTrackOrder };
+
+export default {
+  createOrder,
+  getOrderById,
+  trackOrder,
+};
