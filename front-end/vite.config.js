@@ -10,6 +10,10 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@services': path.resolve(__dirname, './src/services'),
       '@redux': path.resolve(__dirname, './src/redux'),
+      '@utils': path.resolve(__dirname, './src/utils'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
     },
   },
   server: {

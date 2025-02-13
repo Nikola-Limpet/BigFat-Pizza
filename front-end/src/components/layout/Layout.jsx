@@ -6,9 +6,10 @@ import { ArrowUp, Menu, X } from 'lucide-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearTokenOfState } from '../../redux/features/authSlice';
 import Footer from './Footer';
-
+import { useToast } from '@/contexts/ToastContext';
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
+  const { showToast } = useToast()
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,7 +62,12 @@ const Layout = ({ children }) => {
   };
 
   const handleLogout = () => {
-    dispatch(clearTokenOfState());
+    if (window.confirm('Are you sure you want to log out?')) {
+      dispatch(clearTokenOfState());
+      showToast('Logged out successfully', 'success');
+    } else {
+      showToast('Logout cancelled', 'info');
+    }
   };
   return (
     <div className="min-h-screen flex flex-col">
@@ -69,19 +75,18 @@ const Layout = ({ children }) => {
         className={`bg-[#fff9f0] shadow-md ${isAtTop ? '' : 'sticky top-0'
           } z-50`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3">
-            {/* Logo */}
             <Link to="/" onClick={scrollToTop} className="flex-shrink-0">
               <img
-                src="/logo.jpg"
+                src="/logo1.png"
                 alt="Big Fat Pizza Logo"
-                className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] object-contain"
+                className="h-12 w-12 sm:h-14 sm:w-14 md:h-[80px] md:w-[80px] object-contain transition-transform rounded-full duration-300 hover:scale-110"
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center text-2xl space-x-16">
+            <div className="hidden md:flex items-center text-xl lg:text-2xl space-x-8 xl:space-x-16">
               <Link
                 to="/"
                 className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
@@ -122,11 +127,11 @@ const Layout = ({ children }) => {
             </div>
 
             {/* Cart Icon - Always Visible */}
-            <div className="flex items-center">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <Link to="/cart" className="nav-cart mr-4 flex items-center">
-                🛒 <span className="nav-cart-number ml-2">{cartItemCount}</span>
+                🛒 <span className="nav-cart-number ml-1 p-0 sm:text-base font-display ">{cartItemCount}</span>
               </Link>
-              <Link to="/menu" className="px-4 py-2 font-display button-Order rounded-md">
+              <Link to="/menu" className="px-3 py-1.5 sm:px-4 sm:py-2 text-3xl font-display button-Order rounded-md">
                 Menu
               </Link>
             </div>
@@ -140,19 +145,20 @@ const Layout = ({ children }) => {
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-        </div >
+        </div>
         {/* Mobile Navigation */}
+
         {isMenuOpen && (
-          <div className="md:hidden fixed top-[100px] right-0 w-64 h-screen bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out">
-            <div className="flex flex-col h-full">
+          <div className="md:hidden fixed inset-y-0 right-0 w-full max-w-48 h-screen bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out">
+            <div className="flex flex-col h-full p-4">
               {/* Navigation Links */}
-              <div className="flex flex-col space-y-2 p-4 border-b border-gray-100">
+              <div className="flex flex-col space-y-4 border-b border-gray-100 pb-4">
                 <Link
                   to="/"
-                  className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                  className="text-lg text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span>Home</span>
+                  Home
                 </Link>
 
                 {isAuthenticated ? (
@@ -184,13 +190,13 @@ const Layout = ({ children }) => {
               </div>
 
               {/* Quick Actions */}
-              <div className="flex flex-col space-y-2 p-4 mt-auto border-t border-gray-100">
+              <div className="flex flex-col space-y-4 p-4 mt-auto pt-4 border-gray-100">
                 <Link
                   to="/menu"
-                  className="flex items-center justify-center space-x-2 bg-[#33670a] text-white font-display px-4 py-2 rounded-md hover:bg-[#45800f] transition-colors"
+                  className="text-lg text-center bg-[#33670a] text-white font-display px-4 py-3 rounded-md hover:bg-[#45800f]"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span>Menu</span>
+                  Menu
                 </Link>
 
                 <Link
@@ -227,18 +233,19 @@ const Layout = ({ children }) => {
 
       </nav >
 
-      <main className="m-0">{children}</main>
+      <main className="flex-1 m-0 p-2 sm:p-4">{children}</main>
+
 
       <Footer />
 
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 bg-[#33670a] hover:bg-[#45800f] text-white p-3 rounded-full shadow-lg transition-all duration-300 ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        className={`fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-[#33670a] hover:bg-[#45800f] text-white p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
         aria-label="Scroll to top"
       >
-        <ArrowUp className="h-6 w-6" />
+        <ArrowUp className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
     </div >
   );

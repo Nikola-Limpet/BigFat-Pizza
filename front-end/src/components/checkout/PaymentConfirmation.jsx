@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AlertCircle, Banknote } from 'lucide-react';
+import { AlertCircle, Banknote, Loader2 } from 'lucide-react';
 import { Button } from '@/components/common/Button';
 
-const PaymentConfirmation = ({ total, onNext, onBack }) => {
+const PaymentConfirmation = ({ total, onNext, onBack, isLoading }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -51,10 +51,17 @@ const PaymentConfirmation = ({ total, onNext, onBack }) => {
           </Button>
           <Button
             onClick={onNext}
-
+            disabled={isLoading}
             className="bg-[#C41E3A] hover:bg-[#A3172D] text-white"
           >
-            Confirm Order
+            {isLoading ? (
+              <div className="flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Processing...
+              </div>
+            ) : (
+              'Confirm Order'
+            )}
           </Button>
         </div>
       </div>

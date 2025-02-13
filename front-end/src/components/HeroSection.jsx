@@ -17,9 +17,9 @@ const HeroSection = () => {
 
   const slides = [
     "images/menu/c&t.bmp",
-    "images/menu/pan.bmp",
-    "images/menu/ss.bmp",
-    "images/menu/et.bmp"
+    "images/menu/post2.jpg",
+    "images/menu/post3.jpeg",
+    "images/menu/post4.png"
   ];
 
   // Animation variants

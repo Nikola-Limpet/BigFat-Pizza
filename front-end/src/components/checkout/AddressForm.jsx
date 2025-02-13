@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/common/Button';
-import { Input } from '@/components/common/Input';
+import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/common/Label';
 
 const addressSchema = z.object({

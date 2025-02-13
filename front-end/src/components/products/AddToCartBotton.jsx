@@ -4,11 +4,13 @@ import { motion } from 'framer-motion';
 import { ShoppingCart, Plus, Minus, Loader2 } from 'lucide-react';
 import { addToCart } from '@/redux/features/cartSlice';
 import { Button } from '../common/Button';
+import { useToast } from '@contexts/ToastContext';
 
 const AddToCartButton = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+  const { showToast } = useToast();
 
   const handleAddToCart = async () => {
     setIsLoading(true);
@@ -29,6 +31,7 @@ const AddToCartButton = ({ product }) => {
       }));
     } finally {
       setIsLoading(false);
+      showToast('Added to cart!🛒 ✅', 'success');
     }
   };
 

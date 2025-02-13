@@ -11,15 +11,13 @@ import PizzaDetails from '../pages/ProductDetails';
 import Profile from '../pages/Profile';
 import ProtectedRoute from '@components/common/ProtectedRoute';
 import ErrorBoundary from '@components/layout/ErrorBoundary';
+import OrderDetail from '@pages/OrderDetail'; // Changed from components to pages
 
 function AppRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Layout>
-        <Routes
-          future={{ v7_relativeSplatPath: true }}
-          errorElement={<ErrorBoundary />}
-        >
+        <Routes>
           <Route path="/" element={<Home />} errorElement={<ErrorBoundary />} />
           <Route path="/menu" element={<Menu />} errorElement={<ErrorBoundary />} />
           <Route
@@ -44,7 +42,13 @@ function AppRoutes() {
           />
           <Route path="/cart" element={<Cart />} errorElement={<ErrorBoundary />} />
 
-          <Route element={<ProtectedRoute />} errorElement={<ErrorBoundary />}>
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/orders/:orderId"
+              element={<OrderDetail />}
+              errorElement={<ErrorBoundary />}
+            />
             <Route
               path="/profile"
               element={<Profile />}

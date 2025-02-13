@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { Button } from '@/components/common/button';
-import { Input } from '@/components/common/input';
+import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/common/select';
 
 const ProductListing = ({ products }) => {

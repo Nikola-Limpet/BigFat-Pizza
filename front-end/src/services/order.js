@@ -1,24 +1,24 @@
 import axiosInstance from '../utils/axios';
 
-const baseURL = '/api/orders';
+const baseURL = '/orders';
+export const orderService = {
+  createOrder: async (orderData) => {
+    const response = await axiosInstance.post(baseURL, orderData);
+    return response.data;
+  },
 
-export const createOrder = async (orderData) => {
-  const response = await axiosInstance.post(baseURL, orderData);
-  return response.data;
-};
+  getOrderById: async (orderId) => {
+    const response = await axiosInstance.get(`${baseURL}/${orderId}`);
+    return response.data;
+  },
 
-export const getOrderById = async (orderId) => {
-  const response = await axiosInstance.get(`${baseURL}/${orderId}`);
-  return response.data;
-};
+  trackOrder: async (orderId) => {
+    const response = await axiosInstance.get(`${baseURL}/track/${orderId}`);
+    return response.data;
+  },
 
-export const trackOrder = async (orderId) => {
-  const response = await axiosInstance.get(`${baseURL}/track/${orderId}`);
-  return response.data;
-};
-
-export default {
-  createOrder,
-  getOrderById,
-  trackOrder,
+  getUserOrders: async () => {
+    const response = await axiosInstance.get(`${baseURL}/user`);
+    return response.data;
+  },
 };

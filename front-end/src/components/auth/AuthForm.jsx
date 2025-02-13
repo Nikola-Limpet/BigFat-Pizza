@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from 'react-hook-form';
 import { Button } from "@components/common/Button";
-import { Input } from "@components/common/Input";
+import { Input } from "@components/ui/Input";
 import { Label } from "@components/common/Label";
 import { Loader2 } from 'lucide-react';
 import { useDispatch } from 'react-redux';
@@ -11,6 +11,8 @@ import { setCredentials, clearTokenOfState } from '@/redux/features/authSlice';
 import { motion } from 'framer-motion';
 import authService from '@/services/auth';
 import { useMutation } from '@tanstack/react-query';
+import { useToast } from '@contexts/ToastContext';
+
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -30,6 +32,8 @@ const AuthForm = ({ isLogin }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { showToast } = useToast();
+
   const {
     register,
     handleSubmit,
@@ -43,6 +47,12 @@ const AuthForm = ({ isLogin }) => {
     onSuccess: (data) => {
       const { user, accessToken, refreshToken } = data;
       dispatch(setCredentials(user));
+      showToast(
+        isLogin
+          ? `Welcome back, ${user.username}! 🍕`
+          : 'Account created successfully! 🎉',
+        'success'
+      );
       navigate(location?.state?.from ? location.state.from : '/');
     },
     onError: (error) => {
@@ -51,6 +61,7 @@ const AuthForm = ({ isLogin }) => {
       }
     }
   });
+
 
   const getErrorMessage = (error) => {
     if (error.response?.data?.message) {
@@ -153,7 +164,7 @@ const AuthForm = ({ isLogin }) => {
 
         <Button
           type="submit"
-          className="w-full bg-[#C41E3A] hover:bg-[#A3172D] h-12 text-lg"
+          className="w-full bg-[#C41E3A] hover:bg-[#A3172D] h-12 items-center justify-center text-lg"
           disabled={isPending}
         >
           {isPending ? (

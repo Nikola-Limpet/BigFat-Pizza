@@ -7,28 +7,65 @@ import PaymentConfirmation from '@/components/checkout/PaymentConfirmation';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart } from '@/redux/features/cartSlice'; // Make sure to create this action
 import { useNavigate } from 'react-router-dom';
+import { orderService } from '../services/order';
+import { useToast } from '@/contexts/ToastContext';
+import { useMutation } from '@tanstack/react-query';
+import { StretchHorizontal } from 'lucide-react';
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [deliveryData, setDeliveryData] = useState(null);
+  const [orderId, setOrderId] = useState(null);
+
   const { items } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { showToast } = useToast();
+
 
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const deliveryFee = 3.99;
+  const deliveryFee = 3.33;
   const taxes = subtotal * 0.07;
   const total = subtotal + deliveryFee + taxes;
 
-  // const handlePaymentConfirmation = () => {
-  //   const orderId = `ORD${Date.now().toString(36)}${Math.random().toString(36).substr(2, 5)}`.toUpperCase();
-  //   // Here you would typically save the order to your backend
-  //   dispatch(clearCart()); // Clear the cart after successful order
-  //   setActiveStep(3);
-  // };
+  const createOrderMutation = useMutation({
+    mutationFn: orderService.createOrder,
+    onSuccess: (data) => {
+      setOrderId(data._id);
+      dispatch(clearCart());
+      showToast('Order placed successfully! 🍕', 'success');
+    },
+    onError: (error) => {
+      showToast(error.message, 'error');
+    }
+  })
+
+  const handleConfirmOrder = async () => {
+    const orderData = {
+      items: items.map(item => ({
+        productId: item.id,
+        quantity: item.quantity,
+        size: item.customizations?.size?.name || 'Regular',
+        toppings: item.customizations?.toppings?.map(t => t.name) || [],
+        specialInstructions: item.specialInstructions
+      })),
+      total,
+      deliveryAddress: {
+        street: deliveryData.street,
+        city: deliveryData.city,
+      },
+      deliveryTime: deliveryData.deliveryTime,
+      userId: user._id
+    };
+    await createOrderMutation.mutateAsync(orderData);
+    setActiveStep(3);
+
+  };
 
   const handleTrackOrder = () => {
-    navigate('/orders'); // Navigate to orders page
+    navigate(`/past-orders/${orderId}`);
   };
 
   const renderStep = () => {
@@ -48,21 +85,22 @@ const Checkout = () => {
       case 2:
         return (
           <PaymentConfirmation
-            onNext={() => setActiveStep(3)}
+            onNext={handleConfirmOrder}
             total={total}
             onBack={() => setActiveStep(1)}
+            isLoading={createOrderMutation.isPending}
           />
         );
       case 3:
         return (
           <OrderConfirmation
+            orderNumber={orderId}
             address={deliveryData}
             payment={{
               method: 'cash',
               amount: total,
               message: 'Please prepare exact change if possible'
             }}
-            orderId={`ORD${Date.now().toString(36)}${Math.random().toString(36).substr(2, 5)}`.toUpperCase()}
             onNext={handleTrackOrder}
           />
         );

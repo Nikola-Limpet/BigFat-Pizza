@@ -42,7 +42,7 @@ const FeaturedPizzas = () => {
   // Get featured products (top 5 by rating)
   const featuredPizzas = products
     ?.sort((a, b) => b.rating - a.rating)
-    .slice(0, 3) || [];
+    .slice(0, 5) || [];
 
   return (
     <motion.section
