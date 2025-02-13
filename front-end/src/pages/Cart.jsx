@@ -135,7 +135,7 @@ const Cart = () => {
                       placeholder="Add special instructions for your pizza (e.g., extra crispy, light sauce)"
                       value={item.specialInstructions || ''}
                       onChange={(e) => dispatch(updateSpecialInstructions({
-                        id: item.uniqueId,
+                        uniqueId: item.uniqueId,
                         instructions: e.target.value
                       }))}
                       className="w-full min-h-[80px] p-3 text-[#6B4226]
@@ -152,7 +152,7 @@ const Cart = () => {
                       {item.specialInstructions?.length > 0 && (
                         <button
                           onClick={() => dispatch(updateSpecialInstructions({
-                            id: item.uniqueId,
+                            uniqueId: item.uniqueId,
                             instructions: ''
                           }))}
                           className="text-xs text-[#C41E3A] hover:text-[#A3172D]"
