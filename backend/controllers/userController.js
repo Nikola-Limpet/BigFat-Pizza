@@ -35,9 +35,13 @@ const getUserOrders = async (req, res, next) => {
       return res.status(401).json({ message: 'Authentication required' });
     }
 
-    const orders = await Order.find({ userId: req.user._id }).sort({
-      createdAt: -1,
-    });
+    const orders = await Order.find({ userId: req.user._id })
+      .sort({ createdAt: -1 })
+      .populate({
+        path: 'items.productId',
+        select: 'name price imageUrl',
+        model: 'Product',
+      });
 
     res.json(orders);
   } catch (error) {

@@ -5,10 +5,16 @@ const verifyJWT = require('../middlewares/verifyJWT');
 
 router.use(verifyJWT);
 
-router.post('/', orderController.createOrder);
-router.get('/:id', orderController.getOrderById);
+// Get routes
+router.get('/all', orderController.getAllOrders);
 router.get('/track/:id', orderController.trackOrder);
+router.get('/:id', orderController.getOrderById);
 
+// Create route
+router.post('/', orderController.createOrder);
+
+// Update routes
 router.put('/:id/status', orderController.updateOrderStatus);
+router.put('/:id/tracking', orderController.updateTrackingNumber);
 
 module.exports = router;

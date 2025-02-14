@@ -28,12 +28,27 @@ const login = async (req, res, next) => {
 
     const passwordValid = await bcrypt.compare(password, user.passwordHash);
     if (!passwordValid)
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid credentials',
+      });
 
     const tokens = generateTokens(user);
-    res.json({ user, ...tokens });
+    res.json({
+      success: true,
+      user: {
+        id: user._id,
+        email: user.email,
+        username: user.username,
+        isAdmin: user.isAdmin,
+      },
+      ...tokens,
+    });
   } catch (error) {
-    next(error);
+    res.status(500).json({
+      success: false,
+      message: 'Login failed',
+    });
   }
 };
 
