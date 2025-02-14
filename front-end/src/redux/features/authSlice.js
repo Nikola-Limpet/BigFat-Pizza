@@ -22,6 +22,7 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isAuthenticated = true;
         state.error = null;
+        state.isAdmin = action.payload.user.isAdmin;
 
         // Merge guest cart with user cart if exists
         const guestCart = loadCartFromStorage();
@@ -46,6 +47,7 @@ const authSlice = createSlice({
         state.user = null;
         state.isAuthenticated = false;
         state.error = null;
+        state.isAdmin = false;
         clearTokens();
       } catch (error) {
         console.error('Error during logout:', error);

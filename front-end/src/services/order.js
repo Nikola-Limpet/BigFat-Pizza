@@ -21,4 +21,33 @@ export const orderService = {
     const response = await axiosInstance.get(`${baseURL}/user`);
     return response.data;
   },
+  getAllOrders: async ({ page = 1, status }) => {
+    const response = await axiosInstance.get('/admin/orders', {
+      params: { page, status },
+    });
+    return response.data;
+  },
+  updateTrackingNumber: async (orderId, trackingNumber) => {
+    const response = await axiosInstance.put(
+      `/admin/orders/${orderId}/tracking`,
+      {
+        trackingNumber,
+      }
+    );
+    return response.data;
+  },
+  updateOrderStatus: async (orderId, status) => {
+    const response = await axiosInstance.put(
+      `/admin/orders/${orderId}/status`,
+      {
+        status,
+      }
+    );
+    return response.data;
+  },
+
+  getDashboardStats: async () => {
+    const response = await axiosInstance.get('/admin/stats');
+    return response.data;
+  },
 };
