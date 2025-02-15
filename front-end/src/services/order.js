@@ -1,6 +1,7 @@
 import axiosInstance from '../utils/axios';
 
 const baseURL = '/orders';
+
 export const orderService = {
   createOrder: async (orderData) => {
     const response = await axiosInstance.post(baseURL, orderData);
@@ -21,13 +22,20 @@ export const orderService = {
     const response = await axiosInstance.get(`${baseURL}/user`);
     return response.data;
   },
-  getAllOrders: async ({ page, status }) => {
-    const params = {
+  getAllOrders: async ({
+    page,
+    status,
+    sortBy = 'createdAt',
+    sortOrder = 'desc',
+  }) => {
+    const params = new URLSearchParams({
       page: page.toString(),
-      status: status !== 'all' ? status : undefined,
-    };
+      ...(status && status !== 'all' && { status }),
+      sortBy,
+      sortOrder,
+    });
 
-    const response = await axiosInstance.get('/admin/orders', { params });
+    const response = await axiosInstance.get(`/admin/orders?${params}`);
     return response.data;
   },
   updateOrderStatus: async (orderId, status) => {

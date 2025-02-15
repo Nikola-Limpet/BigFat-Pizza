@@ -6,7 +6,7 @@ const verifyJWT = require('../middlewares/verifyJWT');
 router.use(verifyJWT);
 
 // Get routes
-router.get('/all', orderController.getAllOrders);
+router.get('/', orderController.getAllOrders);
 router.get('/track/:id', orderController.trackOrder);
 router.get('/:id', orderController.getOrderById);
 

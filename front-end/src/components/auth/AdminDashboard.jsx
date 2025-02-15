@@ -4,8 +4,11 @@ import { orderService } from '@/services/order';
 
 import { BarChart3, Clock, DollarSign, Truck } from 'lucide-react';
 import StatsCard from '../ui/StatesCard';
+import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   const { data: stats, isLoading } = useQuery({
     queryKey: ['adminStats'],
     queryFn: orderService.getDashboardStats,
@@ -25,7 +28,12 @@ const AdminDashboard = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-3xl font-bold text-[#C41E3A] mb-8">Admin Dashboard</h1>
-
+      <button
+        onClick={() => navigate('/admin/orders')}
+        className="bg-[#C41E3A] text-white px-6 py-2 m-2  rounded-lg hover:bg-[#A3172D] transition-colors"
+      >
+        View All Orders
+      </button>
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatsCard
@@ -55,46 +63,47 @@ const AdminDashboard = () => {
       </div>
 
       {/* Recent Orders Preview */}
-      <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-        <h2 className="text-xl font-semibold text-[#6B4226] mb-6">Recent Orders</h2>
+      <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold text-[#6B4226]">Recent Orders</h2>
+          <span className="text-sm text-gray-500">Last 5 orders</span>
+        </div>
+
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Order ID
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Customer
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Total
-                </th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Order ID</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Customer</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Date</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Total</th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Status</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {stats?.recentOrders?.map((order) => (
-                <tr key={order._id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <tbody>
+              {stats?.recentOrders?.map(order => (
+                <tr key={order._id} className="border-t hover:bg-gray-50 cursor-pointer"
+                  onClick={() => navigate(`/orders/${order._id}`)}>
+                  <td className="px-4 py-4 text-sm font-medium text-[#6B4226]">
                     #{order._id.slice(-6)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {order.userId.username}
+                  <td className="px-4 py-4 text-sm text-gray-700">
+                    {order.userId?.username}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                      order.status === 'preparing' ? 'bg-blue-100 text-blue-800' :
-                        order.status === 'in_transit' ? 'bg-purple-100 text-purple-800' :
+                  <td className="px-4 py-4 text-sm text-gray-500">
+                    {format(new Date(order.createdAt), 'MM/dd/yyyy HH:mm')}
+                  </td>
+                  <td className="px-4 py-4 text-sm font-semibold text-[#C41E3A]">
+                    ${order.total.toFixed(2)}
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${order.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                      order.status === 'Preparing' ? 'bg-blue-100 text-blue-800' :
+                        order.status === 'In Transit' ? 'bg-purple-100 text-purple-800' :
                           'bg-green-100 text-green-800'
                       }`}>
                       {order.status}
                     </span>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    ${order.total.toFixed(2)}
                   </td>
                 </tr>
               ))}
@@ -105,5 +114,7 @@ const AdminDashboard = () => {
     </div>
   );
 };
+
+
 
 export default AdminDashboard;

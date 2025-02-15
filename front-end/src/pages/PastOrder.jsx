@@ -129,30 +129,9 @@ const PastOrders = () => {
                         </p>
                       </div>
                     </div>
-
-                    <div className="flex items-start space-x-3">
-                      <Truck className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium">Tracking Number</p>
-                        <p className="text-gray-600">
-                          {order.trackingNumber || 'Not available'}
-                        </p>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Reorder Button */}
-            <div className="border-t border-gray-100 pt-4 mt-4">
-              <Link
-                to={`/menu`}
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700"
-              >
-                <CheckCircle className="w-5 h-5 mr-2" />
-                Reorder Items
-              </Link>
             </div>
           </div>
         ))}

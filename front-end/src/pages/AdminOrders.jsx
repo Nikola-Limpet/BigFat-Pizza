@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { orderService } from '@/services/order';
 import { Select } from '@/components/common/select/Select';
 import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 
 // Define status options with proper values
 const statusOptions = [
@@ -17,10 +18,16 @@ const AdminOrders = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [statusFilter, setStatusFilter] = useState('all');
+  const [sortOrder, setSortOrder] = useState('desc');
 
-  const { data: ordersData, refetch } = useQuery({
-    queryKey: ['adminOrders', page, statusFilter],
-    queryFn: () => orderService.getAllOrders({ page, status: statusFilter })
+  const { data: ordersData, refetch, isLoading, error } = useQuery({
+    queryKey: ['adminOrders', page, statusFilter, sortOrder],
+    queryFn: () => orderService.getAllOrders({
+      page,
+      status: statusFilter,
+      sortBy: 'createdAt',
+      sortOrder
+    })
   });
 
   const statusMutation = useMutation({
@@ -29,9 +36,22 @@ const AdminOrders = () => {
     onSuccess: () => refetch()
   });
 
+  const handleSort = () => {
+    setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+  };
+
   const handleStatusChange = (orderId) => (newStatus) => {
     statusMutation.mutate({ orderId, status: newStatus });
   };
+
+  if (isLoading) {
+    return <div className='min-h-screen flex items-center justify-center'>Loading orders...</div>;
+
+  }
+
+  if (error) {
+    return <div className='min-h-screen flex items-center justify-center'>Error loading orders: {error.message}</div>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -58,6 +78,18 @@ const AdminOrders = () => {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+                <button
+                  onClick={handleSort}
+                  className="inline-flex items-center gap-2 hover:text-[#C41E3A]"
+                  aria-label={`Sort by date ${sortOrder === 'asc' ? 'descending' : 'ascending'}`}
+                >
+                  <span>Order Date</span>
+                  <span className="text-[#C41E3A]">
+                    {sortOrder === 'asc' ? 'asc ⬆️' : 'desc ⬇️'}
+                  </span>
+                </button>
+              </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Order ID</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Customer</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
@@ -66,8 +98,12 @@ const AdminOrders = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
+
             {ordersData?.orders?.map(order => (
               <tr key={order._id}>
+                <td className="px-4 py-4 text-sm text-gray-500">
+                  {format(new Date(order.createdAt), 'MMM dd, yyyy - HH:mm')}
+                </td>
                 <td className="px-6 py-4">#{order._id.slice(-6)}</td>
                 <td className="px-6 py-4">{order.userId?.username}</td>
                 <td className="px-6 py-4">${order.total.toFixed(2)}</td>

@@ -65,7 +65,7 @@ const Checkout = () => {
   };
 
   const handleTrackOrder = () => {
-    navigate(`/past-orders/${orderId}`);
+    navigate(`/past-orders/`);
   };
 
   const renderStep = () => {

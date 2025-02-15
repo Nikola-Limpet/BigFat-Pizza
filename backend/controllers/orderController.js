@@ -128,32 +128,39 @@ exports.deleteOrder = async (req, res) => {
 
 exports.getDashboardStats = async (req, res) => {
   try {
-    const stats = await Order.aggregate([
-      {
-        $group: {
-          _id: null,
-          totalOrders: { $sum: 1 },
-          totalRevenue: { $sum: '$total' },
-          pendingOrders: {
-            $sum: { $cond: [{ $eq: ['$status', 'Pending'] }, 1, 0] },
+    const [totalOrders, pendingOrders, inTransitOrders, recentOrders, revenue] =
+      await Promise.all([
+        Order.countDocuments(),
+        Order.countDocuments({ status: 'Pending' }),
+        Order.countDocuments({ status: 'In Transit' }),
+        Order.find()
+          .sort({ createdAt: -1 })
+          .limit(5)
+          .populate('userId', 'username')
+          .lean(),
+        Order.aggregate([
+          {
+            $group: {
+              _id: null,
+              total: { $sum: '$total' },
+            },
           },
-          inTransit: {
-            $sum: { $cond: [{ $eq: ['$status', 'In Transit'] }, 1, 0] },
-          },
-        },
-      },
-    ]);
+        ]),
+      ]);
 
-    res.json(
-      stats[0] || {
-        totalOrders: 0,
-        totalRevenue: 0,
-        pendingOrders: 0,
-        inTransit: 0,
-      }
-    );
+    res.json({
+      success: true,
+      totalOrders,
+      pendingOrders,
+      inTransit: inTransitOrders,
+      totalRevenue: revenue[0]?.total || 0,
+      recentOrders,
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to load stats' });
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch dashboard stats',
+    });
   }
 };
 
@@ -162,15 +169,18 @@ exports.getAllOrders = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 10;
     const skip = (page - 1) * limit;
+    const status = req.query.status || '';
+    const sortBy = req.query.sortBy || 'createdAt';
+    const sortOrder = req.query.sortOrder === 'asc' ? 1 : -1;
 
     let query = {};
-    if (req.query.status) {
-      query.status = req.query.status;
+    if (status && status !== 'all') {
+      query.status = status;
     }
 
     const [orders, total] = await Promise.all([
       Order.find(query)
-        .sort({ createdAt: -1 })
+        .sort({ [sortBy]: sortOrder })
         .skip(skip)
         .limit(limit)
         .populate('userId', 'username email')
@@ -178,11 +188,19 @@ exports.getAllOrders = async (req, res) => {
       Order.countDocuments(query),
     ]);
 
+    if (!orders) {
+      return res.status(404).json({
+        success: false,
+        message: 'No orders found',
+      });
+    }
+
     res.json({
+      success: true,
       orders,
-      totalPages: Math.ceil(total / limit),
       currentPage: page,
-      totalOrders: total,
+      totalPages: Math.ceil(total / limit),
+      total,
     });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch orders' });
