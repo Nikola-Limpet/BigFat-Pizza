@@ -33,6 +33,7 @@ const PastOrders = () => {
       default: return 'bg-gray-100 text-gray-800';
     }
   };
+  console.log(orders)
 
   const formatDate = (dateString) => {
     const options = {

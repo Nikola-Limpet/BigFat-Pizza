@@ -101,46 +101,6 @@ exports.trackOrder = async (req, res) => {
   }
 };
 
-exports.getDashboardStats = async (req, res) => {
-  try {
-    const stats = await Order.aggregate([
-      {
-        $group: {
-          _id: null,
-          totalOrders: { $sum: 1 },
-          totalRevenue: { $sum: '$total' },
-          pendingOrders: {
-            $sum: {
-              $cond: [{ $eq: ['$status', 'Pending'] }, 1, 0],
-            },
-          },
-          inTransit: {
-            $sum: {
-              $cond: [{ $eq: ['$status', 'In Transit'] }, 1, 0],
-            },
-          },
-        },
-      },
-    ]);
-    const recentOrders = await Order.find()
-      .sort({ createdAt: -1 })
-      .limit(5)
-      .populate('userId', 'username email')
-      .populate('items.productId', 'name price');
-
-    res.json({
-      ...stats[0],
-      recentOrders,
-    });
-  } catch (error) {
-    console.error('Get stats error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to load dashboard stats',
-    });
-  }
-};
-
 exports.deleteOrder = async (req, res) => {
   try {
     const { id } = req.params;
@@ -233,6 +193,11 @@ exports.updateOrderStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
+
+    const validStatuses = ['Pending', 'Preparing', 'In Transit', 'Delivered'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ error: 'Invalid status' });
+    }
 
     const order = await Order.findByIdAndUpdate(id, { status }, { new: true })
       .populate('userId', 'username email')

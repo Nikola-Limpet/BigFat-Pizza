@@ -1,15 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAccessToken, clearTokens } from '@/utils/tokenManager';
-import {
-  clearUserCart,
-  loadCartFromStorage,
-  saveCartToStorage,
-} from '@/utils/cartStorage';
+import { clearUserCart } from '@/utils/cartStorage';
 
 const initialState = {
   user: null,
   isAuthenticated: !!getAccessToken(),
   isLoading: false,
+  isAdmin: false,
   error: null,
 };
 
@@ -19,23 +16,11 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (state, action) => {
       try {
-        state.user = action.payload;
+        const { user, accessToken, refreshToken } = action.payload;
+        state.user = user;
         state.isAuthenticated = true;
+        state.isAdmin = user?.isAdmin || false;
         state.error = null;
-        state.isAdmin = action.payload.user.isAdmin;
-
-        // Merge guest cart with user cart if exists
-        const guestCart = loadCartFromStorage();
-        const userCart = loadCartFromStorage(action.payload.id);
-
-        if (guestCart.items.length > 0 || guestCart.savedItems.length > 0) {
-          const mergedCart = {
-            items: [...userCart.items, ...guestCart.items],
-            savedItems: [...userCart.savedItems, ...guestCart.savedItems],
-          };
-          saveCartToStorage(mergedCart, action.payload.id);
-          clearUserCart(); // Clear guest cart
-        }
       } catch (error) {
         console.error('Error during login:', error);
         state.error = 'Failed to setup user session';

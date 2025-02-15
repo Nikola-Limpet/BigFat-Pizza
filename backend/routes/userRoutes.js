@@ -8,6 +8,11 @@ router.get('/', async (req, res) => {
   const allAcc = await Acc.find({});
   res.json(allAcc).status(200);
 });
+router.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+  await Acc.findByIdAndDelete(id);
+  res.json({ message: 'Account deleted' }).status(200);
+});
 router.use(verifyJWT);
 
 router.get('/profile', userController.getProfile);

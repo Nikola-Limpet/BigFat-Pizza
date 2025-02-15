@@ -35,6 +35,8 @@ const orderSchema = new mongoose.Schema({
   },
   trackingNumber: String,
   createdAt: { type: Date, default: Date.now },
+  deliveryTime: { type: Date },
+  createAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Order', orderSchema);

@@ -13,10 +13,10 @@ import ProtectedRoute from '@components/common/ProtectedRoute';
 import ErrorBoundary from '@components/layout/ErrorBoundary';
 import OrderDetail from '@pages/OrderDetail'; // Changed from components to pages
 import PastOrders from '../pages/PastOrder';
-import AdminRoute from '../components/auth/AdminRoute';
+// import AdminRoute from '../components/auth/AdminRoute';
 import AdminOrders from '../pages/AdminOrders';
 import AdminDashboard from '../components/auth/AdminDashboard';
-import AdminLogin from '../components/auth/AdminLogin';
+
 
 function AppRoutes() {
   return (
@@ -51,11 +51,9 @@ function AppRoutes() {
           <Route element={<ProtectedRoute />}>
 
             <Route path="/past-orders" element={<PastOrders />} />
-            <Route
-              path="/orders/:orderId"
-              element={<OrderDetail />}
-              errorElement={<ErrorBoundary />}
-            />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/orders/:orderId" element={<OrderDetail />} />
+            </Route>
             <Route
               path="/profile"
               element={<Profile />}
@@ -68,13 +66,10 @@ function AppRoutes() {
             />
           </Route>
 
-          {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-
-          <Route element={<AdminRoute />}>
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/orders" element={<AdminOrders />} />
-          </Route>
+          {/* <Route element={<AdminRoute />}> */}
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
+          {/* </Route> */}
         </Routes>
       </Layout>
     </AnimatePresence>

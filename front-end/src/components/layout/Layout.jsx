@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
 import { useCartItemCount } from '../../hooks/cartItem';
 import { ArrowUp, Menu, X } from 'lucide-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearTokenOfState } from '../../redux/features/authSlice';
 import Footer from './Footer';
 import { useToast } from '@/contexts/ToastContext';
+
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
-  const { showToast } = useToast()
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { showToast } = useToast();
+  const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
@@ -53,7 +53,6 @@ const Layout = ({ children }) => {
     };
   }, [isMenuOpen]);
 
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -69,12 +68,10 @@ const Layout = ({ children }) => {
       showToast('Logout cancelled', 'info');
     }
   };
+
   return (
     <div className="min-h-screen flex flex-col">
-      <nav
-        className={`bg-[#fff9f0] shadow-md ${isAtTop ? '' : 'sticky top-0'
-          } z-50`}
-      >
+      <nav className={`bg-[#fff9f0] shadow-md ${isAtTop ? '' : 'sticky top-0'} z-50`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3">
             <Link to="/" onClick={scrollToTop} className="flex-shrink-0">
@@ -97,18 +94,37 @@ const Layout = ({ children }) => {
 
               {isAuthenticated ? (
                 <>
-                  <Link
-                    to="/profile"
-                    className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
-                  >
-                    Profile
-                  </Link>
-                  <Link
-                    to="/past-orders"
-                    className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
-                  >
-                    Past Orders
-                  </Link>
+                  {isAdmin ? (
+                    <>
+                      <Link
+                        to="/admin/dashboard"
+                        className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                      >
+                        Dashboard
+                      </Link>
+                      <Link
+                        to="/admin/orders"
+                        className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                      >
+                        Orders
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        to="/profile"
+                        className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                      >
+                        Profile
+                      </Link>
+                      <Link
+                        to="/past-orders"
+                        className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
+                      >
+                        Past Orders
+                      </Link>
+                    </>
+                  )}
                   <button
                     onClick={handleLogout}
                     className="text-[#33670a] hover:text-[#45800f] font-display transition-colors"
@@ -163,20 +179,41 @@ const Layout = ({ children }) => {
 
                 {isAuthenticated ? (
                   <>
-                    <Link
-                      to="/profile"
-                      className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <span>Profile</span>
-                    </Link>
-                    <Link
-                      to="/past-orders"
-                      className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <span>Past Orders</span>
-                    </Link>
+                    {isAdmin ? (
+                      <>
+                        <Link
+                          to="/admin/dashboard"
+                          className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <span>Dashboard</span>
+                        </Link>
+                        <Link
+                          to="/admin/orders"
+                          className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <span>Orders</span>
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <Link
+                          to="/profile"
+                          className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <span>Profile</span>
+                        </Link>
+                        <Link
+                          to="/past-orders"
+                          className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <span>Past Orders</span>
+                        </Link>
+                      </>
+                    )}
                   </>
                 ) : (
                   <Link
@@ -230,11 +267,9 @@ const Layout = ({ children }) => {
             onClick={() => setIsMenuOpen(false)}
           />
         )}
-
-      </nav >
+      </nav>
 
       <main className="flex-1 m-0 p-2 sm:p-4">{children}</main>
-
 
       <Footer />
 
@@ -247,7 +282,7 @@ const Layout = ({ children }) => {
       >
         <ArrowUp className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
-    </div >
+    </div>
   );
 };
 

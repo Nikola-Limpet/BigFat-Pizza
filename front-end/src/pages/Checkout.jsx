@@ -57,7 +57,7 @@ const Checkout = () => {
         city: deliveryData.city,
       },
       deliveryTime: deliveryData.deliveryTime,
-      userId: user._id
+      userId: user.id
     };
     await createOrderMutation.mutateAsync(orderData);
     setActiveStep(3);

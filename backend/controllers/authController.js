@@ -34,13 +34,14 @@ const login = async (req, res, next) => {
       });
 
     const tokens = generateTokens(user);
+
     res.json({
       success: true,
       user: {
         id: user._id,
         email: user.email,
         username: user.username,
-        isAdmin: user.isAdmin,
+        isAdmin: user.isAdmin || false,
       },
       ...tokens,
     });

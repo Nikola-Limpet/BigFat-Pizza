@@ -12,6 +12,8 @@ const AdminDashboard = () => {
     refetchInterval: 30000 // Refresh every 30 seconds
   });
 
+  console.log(stats);
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">

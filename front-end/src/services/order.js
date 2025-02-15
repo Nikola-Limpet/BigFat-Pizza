@@ -21,12 +21,23 @@ export const orderService = {
     const response = await axiosInstance.get(`${baseURL}/user`);
     return response.data;
   },
-  getAllOrders: async ({ page = 1, status }) => {
-    const response = await axiosInstance.get('/admin/orders', {
-      params: { page, status },
-    });
+  getAllOrders: async ({ page, status }) => {
+    const params = {
+      page: page.toString(),
+      status: status !== 'all' ? status : undefined,
+    };
+
+    const response = await axiosInstance.get('/admin/orders', { params });
     return response.data;
   },
+  updateOrderStatus: async (orderId, status) => {
+    const response = await axiosInstance.put(
+      `/admin/orders/${orderId}/status`,
+      { status } // Backend should handle status casing
+    );
+    return response.data;
+  },
+
   updateTrackingNumber: async (orderId, trackingNumber) => {
     const response = await axiosInstance.put(
       `/admin/orders/${orderId}/tracking`,
@@ -36,16 +47,6 @@ export const orderService = {
     );
     return response.data;
   },
-  updateOrderStatus: async (orderId, status) => {
-    const response = await axiosInstance.put(
-      `/admin/orders/${orderId}/status`,
-      {
-        status,
-      }
-    );
-    return response.data;
-  },
-
   getDashboardStats: async () => {
     const response = await axiosInstance.get('/admin/stats');
     return response.data;

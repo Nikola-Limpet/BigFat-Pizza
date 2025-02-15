@@ -35,6 +35,7 @@ const userSchema = new mongoose.Schema(
     ],
     loyaltyPoints: { type: Number, default: 0 },
     refreshToken: String,
+    isAdmin: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

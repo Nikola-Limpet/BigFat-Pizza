@@ -45,15 +45,25 @@ const AuthForm = ({ isLogin }) => {
   const { mutateAsync, isPending, error: mutationError } = useMutation({
     mutationFn: isLogin ? authService.login : authService.register,
     onSuccess: (data) => {
-      const { user, accessToken, refreshToken } = data;
-      dispatch(setCredentials(user));
+      dispatch(setCredentials({
+        user: data.user,
+        accessToken: data.accessToken,
+        refreshToken: data.refreshToken
+      }));
+
       showToast(
         isLogin
-          ? `Welcome back, ${user.username}! 🍕`
+          ? `Welcome back, ${data.user.username}! 🍕`
           : 'Account created successfully! 🎉',
         'success'
       );
-      navigate(location?.state?.from ? location.state.from : '/');
+
+      // Redirect admins to dashboard
+      if (data.user.isAdmin) {
+        navigate('/admin/dashboard');
+      } else {
+        navigate(location?.state?.from || '/');
+      }
     },
     onError: (error) => {
       if (error.response?.status === 401) {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { Star } from 'lucide-react';
+import { ChevronRight, Star } from 'lucide-react';
 import PizzaSizeSelector from '@/components/products/PizzaSizeSelector';
 import AddToCartButton from '../components/products/AddToCartBotton';
 import productService from '@/services/product';
@@ -62,6 +62,26 @@ const ProductDetails = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="grid md:grid-cols-2 gap-12">
+        {/* Back to Menu Button - Improved responsiveness */}
+        <div className="w-full md:col-span-2 mb-6">
+          <Link
+            to="/menu"
+            className="group inline-flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg 
+          bg-gradient-to-r from-[#C41E3A]/90 to-[#FF6B6B] 
+          hover:from-[#A3172D]/90 hover:to-[#E65C5C]
+          text-white text-sm sm:text-base font-medium
+          shadow-md hover:shadow-lg
+          transform hover:-translate-y-0.5
+          transition-all duration-300 ease-in-out
+          whitespace-nowrap"
+          >
+            <ChevronRight
+              className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform"
+            />
+            <span className="hidden sm:inline">Back to Menu</span>
+            <span className="sm:hidden">Menu</span>
+          </Link>
+        </div>
         {/* Product Image */}
         <div className="relative">
           <img
