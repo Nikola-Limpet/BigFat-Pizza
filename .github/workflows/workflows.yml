@@ -13,9 +13,8 @@ on:
           - production
 
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,17 +23,53 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          # Remove cache option since we'll handle it manually
-          
+
+      - name: Cache Frontend Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./front-end/node_modules
+            ~/.npm
+          key: ${{ runner.os }}-frontend-${{ hashFiles('./front-end/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-frontend-
+
+      - name: Cache Backend Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./backend/node_modules
+            ~/.npm
+          key: ${{ runner.os }}-backend-${{ hashFiles('./backend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-backend-
+
       - name: Install Frontend Dependencies
         working-directory: ./front-end
-        run: |
-          npm ci
-          npm run build
+        run: npm ci
+
+      - name: Run Frontend Tests
+        working-directory: ./front-end
+        run: npm test
+        
+      - name: Build Frontend
+        working-directory: ./front-end
+        run: npm run build
 
       - name: Install Backend Dependencies
         working-directory: ./backend
         run: npm ci
+
+      - name: Run Backend Tests
+        working-directory: ./backend
+        run: npm test
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -50,6 +85,8 @@ jobs:
         with:
           context: ./front-end
           push: true
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/pizza-frontend:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/pizza-frontend:buildcache,mode=max
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/pizza-frontend:${{ github.sha }}
             ${{ secrets.DOCKERHUB_USERNAME }}/pizza-frontend:latest
@@ -59,6 +96,8 @@ jobs:
         with:
           context: ./backend
           push: true
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/pizza-backend:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/pizza-backend:buildcache,mode=max
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/pizza-backend:${{ github.sha }}
             ${{ secrets.DOCKERHUB_USERNAME }}/pizza-backend:latest
