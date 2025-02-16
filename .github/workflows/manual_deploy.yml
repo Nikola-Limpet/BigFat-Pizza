@@ -16,19 +16,49 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
+
+      - name: Cache Frontend Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./front-end/node_modules
+            ~/.npm
+          key: ${{ runner.os }}-frontend-${{ hashFiles('./front-end/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-frontend-
+
+      - name: Cache Backend Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./backend/node_modules
+            ~/.npm
+          key: ${{ runner.os }}-backend-${{ hashFiles('./backend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-backend-
 
       - name: Install Frontend Dependencies
         working-directory: ./front-end
-        run: npm install
+        run: |
+          if [ ! -f package-lock.json ]; then
+            npm install
+          else
+            npm ci
+          fi
+
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: |
+          if [ ! -f package-lock.json ]; then
+            npm install
+          else
+            npm ci
+          fi
 
       # - name: Run Frontend Tests
       #   working-directory: ./front-end
       #   run: npm test
 
-      - name: Install Backend Dependencies
-        working-directory: ./backend
-        run: npm install
       # - name: Run Backend Tests
       #   working-directory: ./backend
-      #   run: npm test
+      #   run: npm test   
