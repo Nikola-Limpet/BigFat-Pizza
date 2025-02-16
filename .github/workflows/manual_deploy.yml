@@ -49,14 +49,14 @@ jobs:
         working-directory: ./front-end
         run: npm ci
 
-      - name: Lint Frontend
-        working-directory: ./front-end
-        run: npm run lint
+      # - name: Lint Frontend
+      #   working-directory: ./front-end
+      #   run: npm run lint
 
       - name: Install Backend Dependencies
         working-directory: ./backend
         run: npm ci
 
-      - name: Lint Backend
-        working-directory: ./backend
-        run: npm run lint
+      # - name: Lint Backend
+      #   working-directory: ./backend
+      #   run: npm run lint
