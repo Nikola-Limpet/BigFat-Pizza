@@ -9,7 +9,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const unknownEndpoint = require('./middlewares/unknownEndpoint');
 
 mongoose.set('strictQuery', false);
-logger.info('connecting to ', config.MONGO_DB_URI);
+logger.info('connecting to MongoDB');
 
 mongoose
   .connect(config.MONGO_DB_URI)
@@ -40,6 +40,18 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+
+app.get('/api/health', (req, res) => {
+  const mongoStatus =
+    mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+  res.status(200).json({
+    status: 'ok',
+    message: 'Server is running',
+    mongoDb: mongoStatus,
+    environment: process.env.NODE_ENV,
+    timestamp: new Date().toISOString(),
+  });
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
