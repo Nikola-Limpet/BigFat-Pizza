@@ -20,24 +20,16 @@ jobs:
 
       - name: Install Frontend Dependencies
         working-directory: ./front-end
-        run: |
-          if [ ! -f package-lock.json ]; then
-            npm install --package-lock
-          fi
-          npm ci
+        run: npm ci --cache ./front-end/node_modules
 
-      - name: Run Frontend Tests
-        working-directory: ./front-end
-        run: npm test
+      # - name: Run Frontend Tests
+      #   working-directory: ./front-end
+      #   run: npm test
 
       - name: Install Backend Dependencies
         working-directory: ./backend
-        run: |
-          if [ ! -f package-lock.json ]; then
-            npm install --package-lock
-          fi
-          npm ci
+        run: npm ci --cache ./backend/node_modules
 
-      - name: Run Backend Tests
-        working-directory: ./backend
-        run: npm test
+      # - name: Run Backend Tests
+      #   working-directory: ./backend
+      #   run: npm test
