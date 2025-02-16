@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Frontend Dependencies
         working-directory: ./front-end
-        run: npm install --cache ./front-end/node_modules
+        run: npm install
 
       # - name: Run Frontend Tests
       #   working-directory: ./front-end
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install Backend Dependencies
         working-directory: ./backend
-        run: npm install --cache ./backend/node_modules
+        run: npm install
       # - name: Run Backend Tests
       #   working-directory: ./backend
       #   run: npm test
