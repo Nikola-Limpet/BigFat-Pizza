@@ -1,3 +1,10 @@
-node_modules/
-
+# Environment files
 .env
+.env.*
+!.env.example
+
+# Docker volumes
+docker-volumes/
+
+# Node
+node_modules/
