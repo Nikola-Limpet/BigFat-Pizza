@@ -16,8 +16,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -44,28 +43,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-backend-
 
-      # Frontend steps
       - name: Install Frontend Dependencies
         working-directory: ./front-end
         run: |
-          if [ -f "package-lock.json" ]; then
-            npm ci
-          else
+          if [ ! -f package-lock.json ]; then
             npm install
+          else
+            npm ci
           fi
 
-      # - name: Run Frontend Tests
-      #   working-directory: ./front-end
-      #   run: npm test
-        
-      # Backend steps
       - name: Install Backend Dependencies
         working-directory: ./backend
         run: |
-          if [ -f "package-lock.json" ]; then
-            npm ci
-          else
+          if [ ! -f package-lock.json ]; then
             npm install
+          else
+            npm ci
           fi
 
   deploy:
