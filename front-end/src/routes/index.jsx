@@ -12,7 +12,7 @@ import Profile from '../pages/Profile';
 import ProtectedRoute from '@components/common/ProtectedRoute';
 import ErrorBoundary from '@components/layout/ErrorBoundary';
 import OrderDetail from '@pages/OrderDetail';
-import PastOrders from '../pages/PastOrder';
+import PastOrders from '../pages/PastOrders';
 import AdminOrders from '../pages/AdminOrders';
 import AdminDashboard from '../components/auth/AdminDashboard';
 import NotFound from '../components/NotFound'; // Import NotFound component
@@ -46,24 +46,14 @@ function AppRoutes() {
           />
           <Route path="/cart" element={<Cart />} errorElement={<ErrorBoundary />} />
 
-          {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/past-orders" element={<PastOrders />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/orders/:orderId" element={<OrderDetail />} />
-            </Route>
-            <Route
-              path="/profile"
-              element={<Profile />}
-              errorElement={<ErrorBoundary />}
-            />
-            <Route
-              path="/checkout"
-              element={<Checkout />}
-              errorElement={<ErrorBoundary />}
-            />
+            <Route path="/orders/:orderId" element={<OrderDetail />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Route>
 
+          <Route path="past-orders" element={<PastOrders />} />
           {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/orders" element={<AdminOrders />} />

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAccessToken } from '../utils/tokenManager';
 
-const baseUrl = '/api/user';
+const baseUrl = '/user';
 
 const getProfile = async () => {
   const config = {
