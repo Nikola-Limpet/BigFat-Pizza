@@ -52,8 +52,6 @@ function AppRoutes() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/checkout" element={<Checkout />} />
           </Route>
-
-          <Route path="past-orders" element={<PastOrders />} />
           {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
