@@ -11,12 +11,11 @@ import PizzaDetails from '../pages/ProductDetails';
 import Profile from '../pages/Profile';
 import ProtectedRoute from '@components/common/ProtectedRoute';
 import ErrorBoundary from '@components/layout/ErrorBoundary';
-import OrderDetail from '@pages/OrderDetail'; // Changed from components to pages
+import OrderDetail from '@pages/OrderDetail';
 import PastOrders from '../pages/PastOrder';
-// import AdminRoute from '../components/auth/AdminRoute';
 import AdminOrders from '../pages/AdminOrders';
 import AdminDashboard from '../components/auth/AdminDashboard';
-
+import NotFound from '../components/NotFound'; // Import NotFound component
 
 function AppRoutes() {
   return (
@@ -49,7 +48,6 @@ function AppRoutes() {
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
-
             <Route path="/past-orders" element={<PastOrders />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/orders/:orderId" element={<OrderDetail />} />
@@ -66,10 +64,12 @@ function AppRoutes() {
             />
           </Route>
 
-          {/* <Route element={<AdminRoute />}> */}
+          {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
-          {/* </Route> */}
+
+          {/* Catch-all route for undefined paths */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </AnimatePresence>

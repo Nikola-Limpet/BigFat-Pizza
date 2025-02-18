@@ -203,17 +203,17 @@ const AuthForm = ({ isLogin }) => {
             </>
           )}
         </div>
-
+        {/* 
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-[#FFA726]/30"></div>
-          </div>
-          <div className="relative flex justify-center text-sm">
+          </div> */}
+        {/* <div className="relative flex justify-center text-sm">
             <span className="px-2 bg-white text-[#6B4226]">Or continue with</span>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex gap-4 justify-center">
+        {/* <div className="flex gap-4 justify-center">
           <Button
             variant="outline"
             className="flex items-center gap-2 border-[#FFA726]/30 hover:bg-[#FFA726]/10"
@@ -230,7 +230,7 @@ const AuthForm = ({ isLogin }) => {
             <img src="/facebook-icon.svg" alt="Facebook" className="w-5 h-5" />
             Facebook
           </Button>
-        </div>
+        </div> */}
       </form>
     </motion.div>
   );
