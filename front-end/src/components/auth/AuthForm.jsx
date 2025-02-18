@@ -197,7 +197,7 @@ const AuthForm = ({ isLogin }) => {
           ) : (
             <>
               Already have an account?{' '}
-              <Link to="/login" className="text-[#C41E3A] hover:underline">
+              <Link to="/auth/login" className="text-[#C41E3A] hover:underline">
                 Sign in here
               </Link>
             </>
