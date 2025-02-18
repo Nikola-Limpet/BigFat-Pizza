@@ -58,6 +58,15 @@ const Layout = ({ children }) => {
       top: 0,
       behavior: 'smooth'
     });
+
+  };
+
+  const handleMobileNavClick = () => {
+    setIsMenuOpen(false);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   const handleLogout = () => {
@@ -172,7 +181,7 @@ const Layout = ({ children }) => {
                 <Link
                   to="/"
                   className="text-lg text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleMobileNavClick}
                 >
                   Home
                 </Link>
@@ -201,14 +210,14 @@ const Layout = ({ children }) => {
                         <Link
                           to="/profile"
                           className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
+                          onClick={handleMobileNavClick}
                         >
                           <span>Profile</span>
                         </Link>
                         <Link
                           to="/past-orders"
                           className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
+                          onClick={handleMobileNavClick}
                         >
                           <span>Past Orders</span>
                         </Link>
@@ -219,7 +228,7 @@ const Layout = ({ children }) => {
                   <Link
                     to="/auth/login"
                     className="flex items-center space-x-2 text-[#33670a] hover:text-[#45800f] font-display px-3 py-2 rounded-md hover:bg-gray-50 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={handleMobileNavClick}
                   >
                     <span>Login / Sign Up</span>
                   </Link>
