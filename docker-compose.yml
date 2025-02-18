@@ -6,10 +6,7 @@ services:
       context: ./front-end
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"
-    volumes:
-      - ./front-end:/app
-      - /app/node_modules
+      - "80:5173"
     environment:
       - VITE_API_URL=http://localhost:8080
     depends_on:
@@ -22,14 +19,10 @@ services:
     ports:
       - "8080:8080"
     env_file:
-      - .env.docker
+      - .env.production
     environment:
-      - NODE_ENV=development
-      - PORT=8080
+      - NODE_ENV=production
       - MONGO_DB_URI=mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongodb:27017/pizza?authSource=admin
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
     depends_on:
       mongodb:
         condition: service_healthy
@@ -51,4 +44,4 @@ services:
       retries: 5
 
 volumes:
-  mongodb_data:
+  mongodb_data: 
