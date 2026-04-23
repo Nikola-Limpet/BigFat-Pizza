@@ -47,4 +47,4 @@ coverage/
 *.pem
 *.key
 id_rsa
-id_rsa.pub
+id_rsa.pub.env.sandbox
