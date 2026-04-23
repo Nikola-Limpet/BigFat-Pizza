@@ -1,0 +1,143 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: ${DOCKERHUB_USERNAME:-yuujin12}/big-fat-pizza-nginx:latest
+    container_name: pizza-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+  frontend:
+    image: ${DOCKERHUB_USERNAME:-yuujin12}/big-fat-pizza-frontend:latest
+    container_name: pizza-frontend
+    expose:
+      - "5173"
+    environment:
+      - VITE_API_URL=http://${EC2_PUBLIC_IP:-localhost}:8080
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+  backend:
+    image: ${DOCKERHUB_USERNAME:-yuujin12}/big-fat-pizza-backend:latest
+    container_name: pizza-backend
+    expose:
+      - "8080"
+    env_file:
+      - .env.production
+    environment:
+      - NODE_ENV=production
+      - MONGO_DB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-password}@mongodb:27017/pizza?authSource=admin
+      - CORS_ORIGIN=http://${EC2_PUBLIC_IP:-localhost}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+  mongodb:
+    image: mongo:7.0
+    container_name: pizza-mongodb
+    expose:
+      - "27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-password}
+      - MONGO_INITDB_DATABASE=pizza
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+  # ==========================================
+  # MONITORING STACK
+  # ==========================================
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    container_name: pizza-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+  grafana:
+    image: grafana/grafana:10.2.3
+    container_name: pizza-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+  node-exporter:
+    image: prom/node-exporter:v1.7.0
+    container_name: pizza-node-exporter
+    expose:
+      - "9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    container_name: pizza-cadvisor
+    expose:
+      - "8081"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    restart: unless-stopped
+    networks:
+      - pizza-network
+
+volumes:
+  mongodb_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  pizza-network:
+    driver: bridge
