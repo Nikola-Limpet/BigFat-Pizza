@@ -200,6 +200,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Create production env file
+        run: |
+          cat > .env.production << 'EOF'
+          PORT=8080
+          NODE_ENV=production
+          MONGO_DB_URI=mongodb://admin:password@mongodb:27017/pizza?authSource=admin
+          JWT_SECRET=${{ secrets.JWT_SECRET || 'default-jwt-secret-change-me' }}
+          CORS_ORIGIN=http://${{ secrets.EC2_PUBLIC_IP }}
+          VITE_API_URL=http://${{ secrets.EC2_PUBLIC_IP }}/api
+          EOF
+
       - name: Copy compose file and configs to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
