@@ -232,6 +232,10 @@ jobs:
             
             cd ~/bigfat-pizza
             
+            echo "Fixing Docker permissions..."
+            mkdir -p ~/.docker
+            sudo chown -R $USER:$USER ~/.docker || true
+            
             echo "Pulling latest images..."
             export DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
             docker-compose -f docker-compose.prod.yml pull
