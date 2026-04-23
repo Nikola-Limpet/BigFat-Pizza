@@ -20,3 +20,9 @@ variable "dockerhub_username" {
   description = "Docker Hub username for pulling images"
   type        = string
 }
+
+variable "ami_id" {
+  description = "Ubuntu 22.04 AMI ID (us-east-1)"
+  type        = string
+  default     = "ami-0c7217cdde317cfec"
+}

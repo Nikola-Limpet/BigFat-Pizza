@@ -24,7 +24,7 @@ systemctl enable docker
 usermod -aG docker ubuntu
 
 # Install Docker Compose standalone (v2)
-DOCKER_CONFIG=${DOCKER_CONFIG:-/home/ubuntu/.docker}
+DOCKER_CONFIG=$${DOCKER_CONFIG:-/home/ubuntu/.docker}
 mkdir -p $DOCKER_CONFIG/cli-plugins
 curl -SL https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
