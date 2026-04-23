@@ -48,3 +48,10 @@ coverage/
 *.key
 id_rsa
 id_rsa.pub.env.sandbox
+
+# Sandbox secrets (never commit)
+.env.sandbox
+
+# Terraform plan files
+*.tfplan
+terraform/tfplan
