@@ -1,5 +1,7 @@
 # 🍕 BigFat Pizza - Full Stack Food Ordering Platform
 
+> CI/CD Pipeline triggered for SonarCloud analysis
+
 A modern, feature-rich pizza ordering platform built with the MERN stack (MongoDB, Express.js, React, Node.js). This project demonstrates a complete end-to-end solution for online food ordering with real-time order tracking, secure payment processing, and a responsive user interface.
 
 ## 🚀 Complete CI/CD & DevOps Pipeline
